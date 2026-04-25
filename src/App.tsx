@@ -276,7 +276,7 @@ export default function App() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               service_id: 'service_0kztjcw',
-              template_id: 'template_o5rhp8d',
+              template_id: 'template_xkbbv54',
               user_id: 'WSYK-Hg-ybgwidKVK',
               template_params: {
                 customer_name: orderData.customer.name,
@@ -454,7 +454,7 @@ export default function App() {
               >
                 <div className="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
                   <div className="flex-1 flex justify-center gap-8">
-                    <span>Ã°ÂÂÂ¬ FREE SHIPPING on orders over $150</span>
+                    <span>ÃÂ°ÃÂÃÂÃÂ¬ FREE SHIPPING on orders over $150</span>
                     <span className="hidden md:inline">| Use code RESEARCH10 for 10% off your first order</span>
                     <span className="hidden lg:inline">| <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline">ascendlabz@gmail.com</a></span>
                   </div>
@@ -1154,7 +1154,7 @@ export default function App() {
                               </div>
                               <div className="flex-1 min-w-0">
                                  <h4 className="text-sm font-bold text-slate-900 truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂ {item.quantity}</p>
+                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂ {item.quantity}</p>
                               </div>
                               <div className="font-black text-sm text-slate-900">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
@@ -1204,7 +1204,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> Ã¢ÂÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂ¢ÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
@@ -1303,7 +1303,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-slate-500 font-black">ÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
