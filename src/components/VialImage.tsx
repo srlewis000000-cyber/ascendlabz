@@ -13,7 +13,7 @@ export function VialImage({ name, className }: VialImageProps) {
   return (
     <div className={`relative w-full h-full overflow-hidden ${className || ''}`}>
       <img
-        src='https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80&auto=format&fit=crop'
+        src='/vial.png'
         alt={name}
         className='w-full h-full object-cover'
         referrerPolicy='no-referrer'
