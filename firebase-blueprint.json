@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Records of customer purchases",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique order ID" },
+        "status": { "type": "string", "enum": ["Pending", "Paid", "Pending Bitcoin Payment", "Confirmed", "Shipped"] },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["paypal", "bitcoin"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "items": { "type": "array" }
+      },
+      "required": ["id", "status", "total", "paymentMethod", "createdAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Inventory items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "inventory": { "type": "integer" }
+      },
+      "required": ["id", "name", "price", "inventory"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of all orders"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of products and inventory"
+    }
+  }
+}
