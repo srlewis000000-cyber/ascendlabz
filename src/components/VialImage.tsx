@@ -9,18 +9,20 @@ interface VialImageProps {
   color?: string;
 }
 
-/**
- * VialImage Component
- * Displays the universal "vial.png" absolute and unmodified.
- */
 export function VialImage({ name, className }: VialImageProps) {
   return (
     <div className={`relative w-full h-full overflow-hidden ${className || ''}`}>
       <img
-        src="/vial.png"
+        src='https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80&auto=format&fit=crop'
         alt={name}
-        className="w-full h-full object-cover"
-        referrerPolicy="no-referrer"
+        className='w-full h-full object-cover'
+        referrerPolicy='no-referrer'
+        onError={(e) => {
+          const target = e.currentTarget;
+          target.style.display = 'none';
+          const parent = target.parentElement;
+          if (parent) { parent.style.background = 'linear-gradient(135deg, #1e3a5f 0%, #0a1628 100%)'; }
+        }}
       />
     </div>
   );
