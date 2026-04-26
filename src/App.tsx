@@ -9,7 +9,7 @@ import {
   Truck,
   ShieldCheck,
   Package,
-  Menu,h
+  Menu,
   FlaskConical,
   Beaker,
   Dna,
