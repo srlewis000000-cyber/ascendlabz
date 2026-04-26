@@ -9,7 +9,7 @@ import {
   Truck,
   ShieldCheck,
   Package,
-  Menu,
+  Menu,h
   FlaskConical,
   Beaker,
   Dna,
@@ -454,7 +454,7 @@ export default function App() {
               >
                 <div className="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
                   <div className="flex-1 flex justify-center gap-8">
-                    <span>ÃÂ°ÃÂÃÂÃÂ¬ FREE SHIPPING on orders over $150</span>
+                              <span>FREE SHIPPING on orders over $150</span>
                     <span className="hidden md:inline">| Use code RESEARCH10 for 10% off your first order</span>
                     <span className="hidden lg:inline">| <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline">ascendlabz@gmail.com</a></span>
                   </div>
