@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+undefinedimport React, { useState, useEffect, useMemo } from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { 
   Bitcoin, 
@@ -626,7 +626,7 @@ export default function App() {
                       transition={{ delay: 0.1 }}
                       className="text-slate-500 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
-                      Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
+                      Most affordable research peptides online â buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
 
                     <motion.div 
@@ -675,6 +675,27 @@ export default function App() {
                    </div>
                 </section>
 
+                {/* Featured Products */}
+                <section className="px-6 lg:px-12 max-w-7xl mx-auto space-y-12">
+                   <div className="flex flex-col md:flex-row items-end justify-between gap-6 px-4">
+                      <div className="space-y-4">
+                         <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Top Performers</p>
+                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-slate-900">ELITE MATERIALS.</h2>
+                      </div>
+                      <button 
+                        onClick={() => setPage("shop")}
+                        className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors !no-underline"
+                      >
+                         Browse all products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </button>
+                   </div>
+                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {featuredProducts.map(p => (
+                        <ProductCard key={p.id} product={p} onAddToCart={addToCart} onViewProduct={(p) => { setSelectedProduct(p); setPage("product"); }} />
+                      ))}
+                   </div>
+                </section>
+
                 {/* How It Works */}
                 <section className="px-6 lg:px-12 max-w-7xl mx-auto py-16 space-y-12">
                    <div className="text-center space-y-4">
@@ -701,27 +722,6 @@ export default function App() {
                                <p className="text-slate-500 text-sm font-medium leading-relaxed">{item.desc}</p>
                             </div>
                         </div>
-                      ))}
-                   </div>
-                </section>
-
-                {/* Featured Products */}
-                <section className="px-6 lg:px-12 max-w-7xl mx-auto space-y-12">
-                   <div className="flex flex-col md:flex-row items-end justify-between gap-6 px-4">
-                      <div className="space-y-4">
-                         <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Top Performers</p>
-                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-slate-900">ELITE MATERIALS.</h2>
-                      </div>
-                      <button 
-                        onClick={() => setPage("shop")}
-                        className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors !no-underline"
-                      >
-                         Browse all products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
-                   </div>
-                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                      {featuredProducts.map(p => (
-                        <ProductCard key={p.id} product={p} onAddToCart={addToCart} onViewProduct={(p) => { setSelectedProduct(p); setPage("product"); }} />
                       ))}
                    </div>
                 </section>
@@ -823,7 +823,7 @@ export default function App() {
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Verified Purity</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence â best quality at the lowest price online.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
@@ -837,14 +837,14 @@ export default function App() {
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch â every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Lock className="w-10 h-10 text-slate-900 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely â zero data exposure, total privacy.</p>
                        </div>
                      </div>
                    </div>
@@ -1175,7 +1175,7 @@ export default function App() {
                               </div>
                               <div className="flex-1 min-w-0">
                                  <h4 className="text-sm font-bold text-slate-900 truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
+                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
                               </div>
                               <div className="font-black text-sm text-slate-900">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
@@ -1225,7 +1225,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
@@ -1262,7 +1262,7 @@ export default function App() {
                     <span className="text-2xl font-black tracking-tighter uppercase italic">ASCEND LABZ</span>
                  </div>
                  <p className="text-slate-400 max-w-xs leading-relaxed text-xs font-medium">
-                   Most affordable research peptides online — Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
+                   Most affordable research peptides online â Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
                  </p>
               </div>
 
@@ -1324,7 +1324,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
