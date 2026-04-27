@@ -1,4 +1,4 @@
-undefinedimport React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { 
   Bitcoin, 
