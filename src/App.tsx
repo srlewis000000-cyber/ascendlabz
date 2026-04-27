@@ -586,10 +586,10 @@ export default function App() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="space-y-12 pb-0"
+                className="space-y-4 pb-0"
               >
                 {/* Hero Section */}
-                <section className="relative min-h-[85vh] flex items-center justify-center p-6 lg:p-12 overflow-hidden bg-white">
+                <section className="relative min-h-[55vh] flex items-center justify-center p-4 lg:p-8 overflow-hidden bg-white">
                   <div className="absolute inset-0 z-0">
                     {/* Grid Background */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
@@ -599,7 +599,7 @@ export default function App() {
                     <div className="absolute bottom-[20%] right-[15%] w-[35vw] h-[35vw] bg-cyan-400/5 blur-[120px] rounded-full delay-700 animate-pulse" />
                   </div>
 
-                  <div className="relative z-10 max-w-5xl text-center space-y-10">
+                  <div className="relative z-10 max-w-5xl text-center space-y-5">
                     <motion.div 
                        initial={{ opacity: 0, scale: 0.9 }}
                        animate={{ opacity: 1, scale: 1 }}
@@ -614,7 +614,7 @@ export default function App() {
                     <motion.h1 
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-6xl md:text-8xl lg:text-[140px] font-black tracking-[-0.04em] leading-[0.85] italic text-slate-900"
+                      className="text-4xl md:text-6xl lg:text-8xl font-black tracking-[-0.04em] leading-[0.85] italic text-slate-900"
                     >
                       ELEVATE YOUR <br className="hidden md:block" /> 
                       <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800 drop-shadow-sm">BIOLOGY.</span>
@@ -654,7 +654,7 @@ export default function App() {
                        initial={{ opacity: 0, y: 20 }}
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ delay: 0.3 }}
-                       className="pt-8 flex flex-wrap items-center justify-center gap-6 lg:gap-12 text-slate-400 font-bold text-xs uppercase tracking-widest"
+                       className="pt-3 flex flex-wrap items-center justify-center gap-4 lg:gap-8 text-slate-400 font-bold text-xs uppercase tracking-widest"
                     >
                        <span className="flex items-center gap-2"><FlaskConical className="w-4 h-4 text-blue-600"/> Lab Tested</span>
                        <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-green-500"/> Third-Party Verified</span>
@@ -664,9 +664,44 @@ export default function App() {
                   </div>
                 </section>
 
+                {/* Quick Product Preview - visible above fold */}
+                <section className="px-4 lg:px-8 relative z-10 bg-white border-t border-slate-100">
+                  <div className="max-w-7xl mx-auto py-4">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 text-center">Top Sellers — Click to Shop</p>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      {[
+                        { name: 'Retatrutide', price: '$53.00', badge: '30mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
+                        { name: 'Tirzepatide', price: '$55.00', badge: '30mg', rating: '4.9', reviews: 142, tag: 'Top Rated' },
+                        { name: 'Semaglutide', price: '$45.00', badge: '10mg', rating: '4.8', reviews: 139, tag: 'Best Value' },
+                        { name: 'Cagrilintide', price: '$65.00', badge: '10mg', rating: '4.6', reviews: 98, tag: 'Premium' },
+                      ].map((p) => (
+                        <button
+                          key={p.name}
+                          onClick={() => setPage('shop')}
+                          className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-white transition-all group cursor-pointer"
+                        >
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="text-[8px] font-black bg-blue-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-widest">{p.badge}</span>
+                            <span className="text-[8px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-full">{p.tag}</span>
+                          </div>
+                          <h3 className="text-xs font-black text-slate-900 mb-1">{p.name}</h3>
+                          <div className="flex items-center gap-1 mb-1.5">
+                            <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
+                            <span className="text-[9px] font-bold text-slate-500">{p.rating} ({p.reviews})</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-black text-slate-900">{p.price}</span>
+                            <span className="text-[8px] font-black text-blue-600 group-hover:translate-x-0.5 transition-transform bg-blue-600 text-white px-2 py-0.5 rounded-full">BUY</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
                 {/* Trust Section Redesigned */}
-                <section className="px-4 -mt-12 relative z-20">
-                   <div className="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] p-10 lg:p-16 grid grid-cols-2 lg:grid-cols-4 gap-12 shadow-2xl relative overflow-hidden">
+                <section className="px-4 -mt-4 relative z-20">
+                   <div className="max-w-7xl mx-auto bg-slate-900 rounded-2xl p-5 lg:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl relative overflow-hidden">
                       <div className="absolute inset-0 bg-blue-600/5 pointer-events-none" />
                       <CounterStat value={500} suffix="+" label="Labs Served" />
                       <CounterStat value={99} suffix=".9%" label="Average Purity" />
