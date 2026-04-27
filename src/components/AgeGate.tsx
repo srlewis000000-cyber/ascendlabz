@@ -36,8 +36,8 @@ export const AgeGate: React.FC<{ onVerified: () => void }> = ({ onVerified }) =>
             className="w-full h-full sm:h-auto sm:max-w-xl bg-white sm:rounded-[40px] shadow-2xl overflow-hidden flex flex-col"
           >
             {/* Header / Intro */}
-            <div className="bg-slate-900 p-10 text-center space-y-4">
-              <div className="mx-auto w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-4">
+            <div className="bg-slate-900 p-6 sm:p-10 text-center space-y-4">
+              <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-2 sm:mb-4">
                 <FlaskConical className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-3xl font-black tracking-tighter text-white uppercase italic">ACCESS AUTHORIZATION REQUIRED.</h1>
@@ -46,7 +46,7 @@ export const AgeGate: React.FC<{ onVerified: () => void }> = ({ onVerified }) =>
               </p>
             </div>
 
-            <div className="p-10 space-y-8 flex-1">
+            <div className="p-6 sm:p-10 space-y-6 sm:space-y-8 flex-1 overflow-y-auto">
               <div className="space-y-6">
                 <div className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
                   <ShieldAlert className="w-6 h-6 text-blue-600 shrink-0" />
@@ -65,7 +65,7 @@ export const AgeGate: React.FC<{ onVerified: () => void }> = ({ onVerified }) =>
                 </div>
               </div>
 
-              <div className="space-y-6 pt-4 border-t border-slate-100">
+              <div className="space-y-4 pt-4 border-t border-slate-100">
                  <label className="flex items-start gap-4 cursor-pointer group">
                     <div className="relative mt-1">
                       <input 
@@ -86,7 +86,7 @@ export const AgeGate: React.FC<{ onVerified: () => void }> = ({ onVerified }) =>
                  <button
                    onClick={handleVerify}
                    disabled={!hasConsented}
-                   className={`w-full py-5 rounded-2xl font-black text-lg transition-all shadow-xl shadow-blue-600/10 ${
+                   className={`w-full py-4 sm:py-5 rounded-2xl font-black text-base sm:text-lg transition-all shadow-xl shadow-blue-600/10 ${
                      hasConsented 
                        ? "bg-blue-600 text-white hover:bg-blue-700 active:scale-95 cursor-pointer" 
                        : "bg-slate-100 text-slate-400 cursor-not-allowed"
