@@ -104,6 +104,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<ProductGroup | "All">("All");
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const [emailSubscribed, setEmailSubscribed] = useState(false);
+  const [subscriberEmail, setSubscriberEmail] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -121,7 +122,27 @@ export default function App() {
 
   const cartTotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
   
-  React.useEffect(() => {
+  React.  // Abandoned cart email - fires 30 min after cart data saved
+  useEffect(() => {
+    const saved = localStorage.getItem('ascend_cart_email_data');
+    if (!saved) return;
+    const { cartEmail, cartItems, cartTotal, savedAt } = JSON.parse(saved);
+    if (!cartEmail || !cartItems) return;
+    const elapsed = Date.now() - savedAt;
+    const delay = Math.max(0, 30 * 60 * 1000 - elapsed);
+    const timer = setTimeout(async () => {
+      try {
+        await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ service_id: 'service_0kztjcw', template_id: 'template_36e7vbk', user_id: 'WSYK-Hg-ybgwidKVK', template_params: { customer_email: cartEmail, cart_items: cartItems, cart_total: cartTotal } })
+        });
+        localStorage.removeItem('ascend_cart_email_data');
+      } catch (err) { console.error('Abandoned cart email error:', err); }
+    }, delay);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [page]);
 
@@ -748,12 +769,12 @@ export default function App() {
                          </motion.div>
                       ) : (
                         <form 
-                          onSubmit={(e) => { e.preventDefault(); setEmailSubscribed(true); }}
+                          onSubmit={async (e) => { e.preventDefault(); setEmailSubscribed(true); try { await fetch('https://api.emailjs.com/api/v1.0/email/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service_id: 'service_0kztjcw', template_id: 'template_rn5spsq', user_id: 'WSYK-Hg-ybgwidKVK', template_params: { subscriber_email: subscriberEmail } }) }); } catch(err) { console.error('Welcome email error:', err); } }}
                           className="flex gap-3 max-w-md"
                         >
                           <input 
                             required
-                            type="email" 
+                            type="email" value={subscriberEmail} onChange={(e) => setSubscriberEmail(e.target.value)} 
                             placeholder="laboratory-email@address.com" 
                             className="flex-1 bg-white border border-slate-200 px-6 py-4 rounded-xl focus:outline-none focus:border-blue-500 transition-colors font-medium text-sm"
                           />
@@ -1154,7 +1175,7 @@ export default function App() {
                               </div>
                               <div className="flex-1 min-w-0">
                                  <h4 className="text-sm font-bold text-slate-900 truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂ {item.quantity}</p>
+                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂ {item.quantity}</p>
                               </div>
                               <div className="font-black text-sm text-slate-900">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
@@ -1204,7 +1225,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂ¢ÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
@@ -1303,7 +1324,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
