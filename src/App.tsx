@@ -626,7 +626,7 @@ export default function App() {
                       transition={{ delay: 0.1 }}
                       className="text-slate-500 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
-                      Pharma-grade purity. Third-party lab verified. Shipped discreetly to your lab.
+                      Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
 
                     <motion.div 
@@ -759,7 +759,7 @@ export default function App() {
                    <div className="space-y-6">
                       <div className="space-y-4">
                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">DATA TRANSMISSION.</h2>
-                        <p className="text-slate-500 font-medium max-w-md">Stay updated on new peptide batches and research publication data. Join our scientific network.</p>
+                        <p className="text-slate-500 font-medium max-w-md">Get exclusive discounts on Retatrutide, Tirzepatide and other research peptides. Be first to know about restocks and best price drops.</p>
                       </div>
                       
                       {emailSubscribed ? (
@@ -823,28 +823,28 @@ export default function App() {
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Verified Purity</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a verifiable Certificate of Analysis from renowned 3rd party testing laboratories, guaranteeing over 99% purity.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Package className="w-10 h-10 text-blue-600 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Discreet & Fast Shipping</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Research shouldn't wait. We process orders within 48 hours and ship all materials in climate-controlled, unmarked packaging to protect your lab's privacy.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Affordable doesn't mean slow. We dispatch all orders within 48 hours in climate-controlled, discreet packaging. Buy research peptides online USA and get fast shipping.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike retail suppliers, we store all lyophilized peptides in strict cold-storage environments until the moment they are dispatched, preventing degradation.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Lock className="w-10 h-10 text-slate-900 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout flows accepting PayPal, major debit cards, and Bitcoin ensuring zero traces and totally protected data transmissions.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
                        </div>
                      </div>
                    </div>
@@ -1175,7 +1175,7 @@ export default function App() {
                               </div>
                               <div className="flex-1 min-w-0">
                                  <h4 className="text-sm font-bold text-slate-900 truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂ {item.quantity}</p>
+                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
                               </div>
                               <div className="font-black text-sm text-slate-900">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
@@ -1225,7 +1225,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
@@ -1262,7 +1262,7 @@ export default function App() {
                     <span className="text-2xl font-black tracking-tighter uppercase italic">ASCEND LABZ</span>
                  </div>
                  <p className="text-slate-400 max-w-xs leading-relaxed text-xs font-medium">
-                   Premium research synthetic peptides. Engineering extreme purity for clinical and private research environments globally.
+                   Most affordable research peptides online — Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
                  </p>
               </div>
 
@@ -1324,7 +1324,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
