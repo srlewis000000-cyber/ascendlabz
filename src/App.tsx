@@ -1057,7 +1057,7 @@ export default function App() {
                 transition={{ duration: 0.15 }}
                 className="max-w-[1240px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 p-6 lg:p-12"
               >
-                <div className="space-y-10">
+                <div className="space-y-10 order-2 lg:order-1">
                    <div className="flex items-center gap-4 pt-10">
                       <button onClick={() => setPage("shop")} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -1193,8 +1193,8 @@ export default function App() {
                    </div>
                 </div>
 
-                <div className="space-y-6 pt-10">
-                   <div className="bg-white border border-slate-200 rounded-[40px] p-10 h-fit space-y-10 sticky top-32 shadow-sm">
+                <div className="space-y-6 pt-10 order-1 lg:order-2">
+                   <div className="bg-white border border-slate-200 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
                       <h3 className="text-xl font-black tracking-tighter italic border-b border-slate-100 pb-6 uppercase text-slate-900">Order Package</h3>
                       
                       <div className="space-y-6">
