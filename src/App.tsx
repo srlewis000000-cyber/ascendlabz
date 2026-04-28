@@ -667,7 +667,7 @@ export default function App() {
                 {/* Quick Product Preview - visible above fold */}
                 <section className="px-4 lg:px-8 relative z-10 bg-white border-t border-slate-100">
                   <div className="max-w-7xl mx-auto py-4">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 text-center">Top Sellers — Click to Shop</p>
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 text-center">Top Sellers - Click to Shop</p>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                       {[
                         { name: 'Retatrutide', price: '$53.00', badge: '30mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
