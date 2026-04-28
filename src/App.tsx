@@ -626,7 +626,7 @@ export default function App() {
                       transition={{ delay: 0.1 }}
                       className="text-slate-500 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
-                      Most affordable research peptides online â buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
+                      Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
 
                     <motion.div 
@@ -858,7 +858,7 @@ export default function App() {
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Verified Purity</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence â best quality at the lowest price online.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
@@ -872,14 +872,14 @@ export default function App() {
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch â every vial arrives at full potency. The most affordable option that never cuts corners.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
                      <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Lock className="w-10 h-10 text-slate-900 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely â zero data exposure, total privacy.</p>
+                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
                        </div>
                      </div>
                    </div>
@@ -1297,7 +1297,7 @@ export default function App() {
                     <span className="text-2xl font-black tracking-tighter uppercase italic">ASCEND LABZ</span>
                  </div>
                  <p className="text-slate-400 max-w-xs leading-relaxed text-xs font-medium">
-                   Most affordable research peptides online â Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
+                   Most affordable research peptides online — Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
                  </p>
               </div>
 
