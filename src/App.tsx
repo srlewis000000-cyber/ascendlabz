@@ -341,8 +341,7 @@ export default function App() {
     return PRODUCTS.filter(p => p.group === selectedCategory);
   }, [selectedCategory]);
 
-    const featuredProducts = PRODUCTS.filter(p => ['retatrutide-10mg', 'tirzepatide-10mg', 'semaglutide-10mg', 'cagrilintide-10mg', 'bpc-157-10mg', 'tb-500-10mg', 'ipamorelin-10mg', 'nad+-100mg'].includes(p.id)).slice(0, 4);
-
+  const featuredProducts = PRODUCTS.filter(p => ['retatrutide', 'tirzepatide', 'semaglutide', 'cagrilintide', 'bpc-157', 'tb-500', 'ipamorelin', 'nad-plus'].includes(p.id)).slice(0, 4);
   if (orderComplete) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center p-6 text-slate-900 font-sans">
