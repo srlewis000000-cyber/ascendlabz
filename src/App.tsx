@@ -446,7 +446,7 @@ export default function App() {
         promoCode={promoCode}
         setPromoCode={setPromoCode}
       />
-      <div className="min-h-screen bg-[#f8fafc] text-[#0f172a] selection:bg-blue-500/10 relative">
+      <div className="min-h-screen bg-gray-950 text-gray-100 selection:bg-blue-500/30 relative">
 
         <AnimatePresence>
           {showBackToTop && (
