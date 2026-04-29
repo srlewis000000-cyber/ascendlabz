@@ -88,7 +88,7 @@ const CounterStat = ({ value, label, suffix = "" }: { value: number, label: stri
       <p className="text-3xl lg:text-4xl font-black italic text-white tracking-tighter">
         {count}{suffix}
       </p>
-      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{label}</p>
+      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{label}</p>
     </div>
   );
 };
@@ -367,27 +367,27 @@ export default function App() {
                {orderComplete.items.map(item => (
                  <div key={item.id} className="flex justify-between items-center text-sm">
                    <div className="flex items-center gap-2">
-                     <span className="font-bold text-slate-900 bg-white border border-gray-700 px-2 rounded">{item.quantity}x</span>
-                     <span className="text-slate-600 font-medium">{item.name} <span className="text-slate-400">({item.packSize} pk)</span></span>
+                     <span className="font-bold text-white bg-gray-950 border border-gray-700 px-2 rounded">{item.quantity}x</span>
+                     <span className="text-gray-400 font-medium">{item.name} <span className="text-gray-500">({item.packSize} pk)</span></span>
                    </div>
-                   <span className="font-bold text-slate-900">${(item.price * item.quantity).toFixed(2)}</span>
+                   <span className="font-bold text-white">${(item.price * item.quantity).toFixed(2)}</span>
                  </div>
                ))}
              </div>
              
              <div className="flex justify-between items-center pt-4 border-t border-gray-700">
-               <span className="text-xs font-black uppercase tracking-widest text-slate-400">Total Paid</span>
+               <span className="text-xs font-black uppercase tracking-widest text-gray-500">Total Paid</span>
                <span className="text-xl font-black text-blue-600">${orderComplete.total.toFixed(2)}</span>
              </div>
 
              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-700">
                 <div className="space-y-1">
-                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Tracking</p>
+                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Tracking</p>
                    <div className="font-mono text-sm font-bold text-blue-600 truncate">{orderComplete.id}</div>
                 </div>
                 <div className="space-y-1">
-                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Delivery By</p>
-                   <div className="font-bold text-sm text-slate-900">{new Date(new Date().setDate(new Date().getDate() + (orderComplete.total > 150 ? 5 : 3))).toLocaleDateString()}</div>
+                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Delivery By</p>
+                   <div className="font-bold text-sm text-white">{new Date(new Date().setDate(new Date().getDate() + (orderComplete.total > 150 ? 5 : 3))).toLocaleDateString()}</div>
                 </div>
              </div>
           </div>
@@ -491,7 +491,7 @@ export default function App() {
                 <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20">
                   <FlaskConical className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-xl font-black tracking-tighter uppercase italic group-hover:text-blue-600 transition-colors text-slate-900">ASCEND LABZ</span>
+                <span className="text-xl font-black tracking-tighter uppercase italic group-hover:text-blue-600 transition-colors text-white">ASCEND LABZ</span>
              </div>
 
              <div className="hidden lg:flex items-center gap-8">
@@ -501,7 +501,7 @@ export default function App() {
                     onClick={() => setPage(p as Page)}
                     className={cn(
                       "text-[10px] font-black uppercase tracking-[0.2em] transition-all relative py-2",
-                      page === p ? "text-blue-600" : "text-slate-400 hover:text-slate-900"
+                      page === p ? "text-blue-600" : "text-gray-500 hover:text-white"
                     )}
                   >
                     {p === "coa" ? "COA / LAB DATA" : 
@@ -520,14 +520,14 @@ export default function App() {
              <div className="flex items-center gap-6">
                 <button 
                   onClick={() => setIsSearchOpen(true)}
-                  className="p-2 text-slate-400 hover:text-slate-900 transition-colors group"
+                  className="p-2 text-gray-500 hover:text-white transition-colors group"
                   aria-label="Search research chemicals"
                 >
                   <Search className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </button>
                 <button 
                   onClick={() => setIsCartOpen(true)}
-                  className="relative p-2 text-slate-400 hover:text-slate-900 transition-colors"
+                  className="relative p-2 text-gray-500 hover:text-white transition-colors"
                 >
                   <ShoppingBag className="w-6 h-6" />
                   {cart.length > 0 && (
@@ -536,7 +536,7 @@ export default function App() {
                     </span>
                   )}
                 </button>
-                 <button onClick={() => setShowMobileMenu(!showMobileMenu)} className="lg:hidden p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                 <button onClick={() => setShowMobileMenu(!showMobileMenu)} className="lg:hidden p-2 text-gray-500 hover:text-white transition-colors">
                   {showMobileMenu ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
              </div>
@@ -565,7 +565,7 @@ export default function App() {
                   onClick={() => { setPage(p as Page); setShowMobileMenu(false); }}
                   className={cn(
                     "block w-full text-left px-4 py-3 text-sm font-black uppercase tracking-[0.15em] rounded-lg transition-all",
-                    page === p ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-gray-700"
+                    page === p ? "bg-blue-600 text-white" : "text-gray-200 hover:bg-gray-700"
                   )}
                 >
                   {p === "coa" ? "COA / LAB DATA" : p === "shop" ? "SHOP ALL" : p === "faq" ? "FAQ" : p.toUpperCase()}
@@ -623,7 +623,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="text-slate-300 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
+                      className="text-gray-400 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
                       Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
@@ -642,7 +642,7 @@ export default function App() {
                       </button>
                       <button 
                         onClick={() => setPage("coa")}
-                        className="w-full sm:w-auto px-10 py-5 bg-slate-50 hover:bg-gray-700 text-slate-900 rounded-2xl font-black text-lg transition-all border border-gray-700 flex items-center justify-center gap-3"
+                        className="w-full sm:w-auto px-10 py-5 bg-gray-900 hover:bg-gray-700 text-white rounded-2xl font-black text-lg transition-all border border-gray-700 flex items-center justify-center gap-3"
                       >
                         CERTIFICATES <Beaker className="w-5 h-5" />
                       </button>
@@ -653,12 +653,12 @@ export default function App() {
                        initial={{ opacity: 0, y: 20 }}
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ delay: 0.3 }}
-                       className="pt-3 flex flex-wrap items-center justify-center gap-4 lg:gap-8 text-slate-400 font-bold text-xs uppercase tracking-widest"
+                       className="pt-3 flex flex-wrap items-center justify-center gap-4 lg:gap-8 text-gray-500 font-bold text-xs uppercase tracking-widest"
                     >
                        <span className="flex items-center gap-2"><FlaskConical className="w-4 h-4 text-blue-600"/> Lab Tested</span>
                        <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-green-500"/> Third-Party Verified</span>
-                       <span className="flex items-center gap-2"><Package className="w-4 h-4 text-slate-500"/> Discreet Shipping</span>
-                       <span className="flex items-center gap-2"><Lock className="w-4 h-4 text-slate-900"/> Secure Checkout</span>
+                       <span className="flex items-center gap-2"><Package className="w-4 h-4 text-gray-400"/> Discreet Shipping</span>
+                       <span className="flex items-center gap-2"><Lock className="w-4 h-4 text-white"/> Secure Checkout</span>
                     </motion.div>
                   </div>
                 </section>
@@ -677,19 +677,19 @@ export default function App() {
                         <button
                           key={p.name}
                           onClick={() => setPage('shop')}
-                          className="bg-slate-50 border border-gray-700 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-gray-800 transition-all group cursor-pointer"
+                          className="bg-gray-900 border border-gray-700 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-gray-800 transition-all group cursor-pointer"
                         >
                           <div className="flex items-center justify-between mb-1.5">
                             <span className="text-[8px] font-black bg-blue-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-widest">{p.badge}</span>
                             <span className="text-[8px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-full">{p.tag}</span>
                           </div>
-                          <h3 className="text-xs font-black text-slate-900 mb-1">{p.name}</h3>
+                          <h3 className="text-xs font-black text-white mb-1">{p.name}</h3>
                           <div className="flex items-center gap-1 mb-1.5">
                             <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
-                            <span className="text-[9px] font-bold text-slate-500">{p.rating} ({p.reviews})</span>
+                            <span className="text-[9px] font-bold text-gray-400">{p.rating} ({p.reviews})</span>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-sm font-black text-slate-900">{p.price}</span>
+                            <span className="text-sm font-black text-white">{p.price}</span>
                             <span className="text-[8px] font-black text-blue-600 group-hover:translate-x-0.5 transition-transform bg-blue-600 text-white px-2 py-0.5 rounded-full">BUY</span>
                           </div>
                         </button>
@@ -714,11 +714,11 @@ export default function App() {
                    <div className="flex flex-col md:flex-row items-end justify-between gap-6 px-4">
                       <div className="space-y-4">
                          <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Top Performers</p>
-                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-slate-900">ELITE MATERIALS.</h2>
+                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-white">ELITE MATERIALS.</h2>
                       </div>
                       <button 
                         onClick={() => setPage("shop")}
-                        className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors !no-underline"
+                        className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-blue-600 transition-colors !no-underline"
                       >
                          Browse all products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
@@ -744,7 +744,7 @@ export default function App() {
                       ].map((item, i) => (
                         <div key={i} className="flex flex-col items-center text-center space-y-6 group">
                             <div className="relative">
-                               <div className="w-20 h-20 bg-slate-50 border border-gray-800 rounded-[2rem] flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-110">
+                               <div className="w-20 h-20 bg-gray-900 border border-gray-800 rounded-[2rem] flex items-center justify-center text-gray-500 group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-110">
                                   {item.icon}
                                </div>
                                <span className="absolute -top-3 -right-3 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-black italic shadow-lg">
@@ -761,11 +761,11 @@ export default function App() {
                 </section>
 
                 {/* Testimonials */}
-                <section className="bg-slate-50 py-16 rounded-[3rem] mx-4 relative overflow-hidden">
+                <section className="bg-gray-900 py-16 rounded-[3rem] mx-4 relative overflow-hidden">
                    <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
                       <div className="flex flex-col items-center text-center space-y-4">
                         <p className="text-[10px] font-black text-blue-400 underline decoration-blue-600 decoration-2 underline-offset-4 uppercase tracking-[0.4em]">Researcher Feedback</p>
-                        <h2 className="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900">VERIFIED VALIDITY.</h2>
+                        <h2 className="text-4xl lg:text-6xl font-black tracking-tighter text-white">VERIFIED VALIDITY.</h2>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -777,10 +777,10 @@ export default function App() {
                              <div className="flex gap-1 text-orange-400">
                                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
                              </div>
-                             <p className="text-slate-600 font-medium italic leading-relaxed">"{rev.quote}"</p>
+                             <p className="text-gray-400 font-medium italic leading-relaxed">"{rev.quote}"</p>
                              <div className="pt-6 border-t border-slate-50">
-                                <p className="text-xs font-black uppercase tracking-widest text-slate-900 italic">{rev.name}</p>
-                                <p className="text-[10px] text-slate-400 font-bold uppercase">{rev.institution}</p>
+                                <p className="text-xs font-black uppercase tracking-widest text-white italic">{rev.name}</p>
+                                <p className="text-[10px] text-gray-500 font-bold uppercase">{rev.institution}</p>
                              </div>
                           </div>
                         ))}
@@ -793,7 +793,7 @@ export default function App() {
                    <div className="space-y-6">
                       <div className="space-y-4">
                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">DATA TRANSMISSION.</h2>
-                        <p className="text-slate-500 font-medium max-w-md">Get exclusive discounts on Retatrutide, Tirzepatide and other research peptides. Be first to know about restocks and best price drops.</p>
+                        <p className="text-gray-400 font-medium max-w-md">Get exclusive discounts on Retatrutide, Tirzepatide and other research peptides. Be first to know about restocks and best price drops.</p>
                       </div>
                       
                       {emailSubscribed ? (
@@ -817,7 +817,7 @@ export default function App() {
                           </button>
                         </form>
                       )}
-                      <div className="text-[10px] text-slate-400 font-bold flex items-center gap-2">
+                      <div className="text-[10px] text-gray-500 font-bold flex items-center gap-2">
                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" /> Join 500+ researchers. No spam. Unsubscribe anytime.
                       </div>
                    </div>
@@ -827,7 +827,7 @@ export default function App() {
                       <div className="space-y-4">
                         <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Inquiry Protocol</p>
                         <h3 className="text-3xl font-black italic">DIRECT TECHNICAL SUPPORT.</h3>
-                        <p className="text-slate-400 text-sm">Need a specific COA or bulk research quote? Our laboratory specialists are standing by.</p>
+                        <p className="text-gray-500 text-sm">Need a specific COA or bulk research quote? Our laboratory specialists are standing by.</p>
                       </div>
                       <div className="space-y-4">
                         <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white/5 rounded-3xl border border-white/10 hover:border-blue-500/50 transition-all group">
@@ -835,12 +835,12 @@ export default function App() {
                               <Mail className="w-5 h-5" />
                            </div>
                            <div className="space-y-1">
-                              <p className="text-[10px] text-slate-400 font-bold">EMAIL THE LAB</p>
+                              <p className="text-[10px] text-gray-500 font-bold">EMAIL THE LAB</p>
                               <p className="text-xl font-bold tracking-tight">ascendlabz@gmail.com</p>
                            </div>
                         </a>
                       </div>
-                      <div className="flex items-center gap-4 text-xs font-bold text-slate-500">
+                      <div className="flex items-center gap-4 text-xs font-bold text-gray-400">
                         <Clock className="w-4 h-4" /> Response within 24 hours. Mon - Fri.
                       </div>
                    </div>
@@ -853,32 +853,32 @@ export default function App() {
                       <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">WHY CHOOSE ASCEND LABZ?</h2>
                    </div>
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
-                         <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Verified Purity</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
+                         <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Verified Purity</h3>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Package className="w-10 h-10 text-blue-600 shrink-0" />
                        <div>
-                         <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Discreet & Fast Shipping</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Affordable doesn't mean slow. We dispatch all orders within 48 hours in climate-controlled, discreet packaging. Buy research peptides online USA and get fast shipping.</p>
+                         <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Discreet & Fast Shipping</h3>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Affordable doesn't mean slow. We dispatch all orders within 48 hours in climate-controlled, discreet packaging. Buy research peptides online USA and get fast shipping.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
-                         <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
+                         <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
-                       <Lock className="w-10 h-10 text-slate-900 shrink-0" />
+                     <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                       <Lock className="w-10 h-10 text-white shrink-0" />
                        <div>
-                         <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
-                         <p className="text-sm text-slate-500 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
+                         <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
                        </div>
                      </div>
                    </div>
@@ -896,7 +896,7 @@ export default function App() {
                 className="max-w-7xl mx-auto p-6 lg:p-12 space-y-12"
               >
                 <div className="space-y-4">
-                   <div className="flex items-center gap-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                   <div className="flex items-center gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">
                       <button onClick={() => setPage("home")} className="hover:text-blue-400">Home</button>
                       <ChevronRight className="w-3 h-3" />
                       <span className="text-blue-400">Shop Catalog</span>
@@ -910,7 +910,7 @@ export default function App() {
                      onClick={() => setSelectedCategory("All")}
                      className={cn(
                        "px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border-2 transition-all",
-                       selectedCategory === "All" ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                       selectedCategory === "All" ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-gray-950 text-gray-400 hover:border-gray-700 hover:text-white"
                      )}
                    >
                      Show All
@@ -921,7 +921,7 @@ export default function App() {
                        onClick={() => setSelectedCategory(c.name)}
                        className={cn(
                          "px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border-2 transition-all",
-                         selectedCategory === c.name ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                         selectedCategory === c.name ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-gray-950 text-gray-400 hover:border-gray-700 hover:text-white"
                        )}
                      >
                        {c.name}
@@ -937,8 +937,8 @@ export default function App() {
 
                 {recentlyViewed.length > 0 && (
                    <div className="pt-20 border-t border-gray-700/50 mt-20">
-                     <div className="flex items-center gap-2 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                       <ShoppingCart className="w-4 h-4 text-slate-900" />
+                     <div className="flex items-center gap-2 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                       <ShoppingCart className="w-4 h-4 text-white" />
                        <span>Recently Viewed</span>
                      </div>
                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -946,7 +946,7 @@ export default function App() {
                          const product = PRODUCTS.find(p => p.id === id);
                          if (!product) return null;
                          return (
-                           <div key={id} onClick={() => { setSelectedProduct(product); setPage('product'); }} className="bg-white border border-gray-700 rounded-xl p-3 shadow-sm flex flex-col items-center text-center gap-2 relative overflow-hidden cursor-pointer hover:border-blue-600 transition-colors">
+                           <div key={id} onClick={() => { setSelectedProduct(product); setPage('product'); }} className="bg-gray-950 border border-gray-700 rounded-xl p-3 shadow-sm flex flex-col items-center text-center gap-2 relative overflow-hidden cursor-pointer hover:border-blue-600 transition-colors">
                              <div className="w-full h-24 bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
                                <VialImage 
                                  name={product.name} 
@@ -955,8 +955,8 @@ export default function App() {
                                  className="w-full h-full object-cover"
                                />
                              </div>
-                             <span className="text-[10px] font-black tracking-tighter uppercase text-slate-800 line-clamp-1">{product.name}</span>
-                             <span className="text-[9px] font-bold text-slate-400">${product.prices[1].toFixed(2)}</span>
+                             <span className="text-[10px] font-black tracking-tighter uppercase text-gray-100 line-clamp-1">{product.name}</span>
+                             <span className="text-[9px] font-bold text-gray-500">${product.prices[1].toFixed(2)}</span>
                            </div>
                          )
                        })}
@@ -1058,34 +1058,34 @@ export default function App() {
               >
                 <div className="space-y-10 order-2 lg:order-1">
                    <div className="flex items-center gap-4 pt-10">
-                      <button onClick={() => setPage("shop")} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white group">
+                      <button onClick={() => setPage("shop")} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Back to Shop
                       </button>
                    </div>
                    <h2 className="text-5xl font-black tracking-tighter italic">SECURE CHECKOUT.</h2>
                    
-                   <div className="space-y-8 bg-white border border-gray-800 p-10 rounded-[40px] shadow-sm">
+                   <div className="space-y-8 bg-gray-950 border border-gray-800 p-10 rounded-[40px] shadow-sm">
                       <div className="space-y-4 pt-2">
-                        <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
+                        <h3 className="text-xl font-bold flex items-center gap-3 italic text-white">
                            <Truck className="w-6 h-6 text-blue-600" />
                            DESTINATION ADDRESS
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           <input type="text" placeholder="Full Name" value={shippingAddress.fullName} onChange={(e) => setShippingAddress({...shippingAddress, fullName: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="email" placeholder="Email Address" value={shippingAddress.email} onChange={(e) => setShippingAddress({...shippingAddress, email: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="tel" placeholder="Phone Number" value={shippingAddress.phone} onChange={(e) => setShippingAddress({...shippingAddress, phone: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="Address Line 1" value={shippingAddress.line1} onChange={(e) => setShippingAddress({...shippingAddress, line1: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="Address Line 2 (Optional)" value={shippingAddress.line2} onChange={(e) => setShippingAddress({...shippingAddress, line2: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="City" value={shippingAddress.city} onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="State / Province" value={shippingAddress.state} onChange={(e) => setShippingAddress({...shippingAddress, state: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="ZIP / Postal Code" value={shippingAddress.zip} onChange={(e) => setShippingAddress({...shippingAddress, zip: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="Country" value={shippingAddress.country} onChange={(e) => setShippingAddress({...shippingAddress, country: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="text" placeholder="Full Name" value={shippingAddress.fullName} onChange={(e) => setShippingAddress({...shippingAddress, fullName: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
+                           <input type="email" placeholder="Email Address" value={shippingAddress.email} onChange={(e) => setShippingAddress({...shippingAddress, email: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
+                           <input type="tel" placeholder="Phone Number" value={shippingAddress.phone} onChange={(e) => setShippingAddress({...shippingAddress, phone: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400 md:col-span-2" />
+                           <input type="text" placeholder="Address Line 1" value={shippingAddress.line1} onChange={(e) => setShippingAddress({...shippingAddress, line1: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400 md:col-span-2" />
+                           <input type="text" placeholder="Address Line 2 (Optional)" value={shippingAddress.line2} onChange={(e) => setShippingAddress({...shippingAddress, line2: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400 md:col-span-2" />
+                           <input type="text" placeholder="City" value={shippingAddress.city} onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
+                           <input type="text" placeholder="State / Province" value={shippingAddress.state} onChange={(e) => setShippingAddress({...shippingAddress, state: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
+                           <input type="text" placeholder="ZIP / Postal Code" value={shippingAddress.zip} onChange={(e) => setShippingAddress({...shippingAddress, zip: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
+                           <input type="text" placeholder="Country" value={shippingAddress.country} onChange={(e) => setShippingAddress({...shippingAddress, country: e.target.value})} className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors placeholder:text-gray-400" />
                         </div>
                       </div>
                       
                       <div className="space-y-4 border-t border-gray-800 pt-6">
-                        <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
+                        <h3 className="text-xl font-bold flex items-center gap-3 italic text-white">
                            <Package className="w-6 h-6 text-blue-600" />
                            SELECT SHIPPING PROTOCOL
                         </h3>
@@ -1100,14 +1100,14 @@ export default function App() {
                               onClick={() => setShippingMethod(method.id as 'standard' | 'express' | 'overnight')}
                               className={cn(
                                 "flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all gap-2 relative overflow-hidden group",
-                                shippingMethod === method.id ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-gray-800"
+                                shippingMethod === method.id ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-gray-950 hover:border-gray-800"
                               )}
                             >
                                <div className="absolute top-2 right-2">
                                  <div className={cn("w-4 h-4 rounded-full border-2", shippingMethod === method.id ? "bg-blue-600 border-blue-500" : "border-gray-700")} />
                                </div>
                                <span className="text-white font-black italic text-xl">{method.name}</span>
-                               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">{method.time}</span>
+                               <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 text-center">{method.time}</span>
                                <span className="font-bold text-blue-600 mt-2">
                                  {method.id === 'standard' && cartTotal >= 150 ? 'FREE' : `$${method.price}`}
                                </span>
@@ -1118,7 +1118,7 @@ export default function App() {
 
                       <div className="space-y-4 pt-6 border-t border-gray-800">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
+                          <h3 className="text-xl font-bold flex items-center gap-3 italic text-white">
                              <CreditCard className="w-6 h-6 text-blue-600" />
                              SELECT PAYMENT PROTOCOL
                           </h3>
@@ -1135,21 +1135,21 @@ export default function App() {
                             onClick={() => setPaymentMethod("paypal")}
                             className={cn(
                               "flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all gap-3 relative overflow-hidden group",
-                              paymentMethod === "paypal" ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-gray-800"
+                              paymentMethod === "paypal" ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-gray-950 hover:border-gray-800"
                             )}
                           >
                              <div className="absolute top-2 right-2">
                                <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'paypal' ? "bg-blue-600 border-blue-500" : "border-gray-700")} />
                              </div>
                             <span className="text-status-paypal font-black italic text-2xl group-hover:scale-110 transition-transform">PayPal</span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Card & Crypto Support</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Card & Crypto Support</span>
                           </button>
 
                           <button
                             onClick={() => setPaymentMethod("bitcoin")}
                             className={cn(
                               "flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all gap-3 relative overflow-hidden group",
-                              paymentMethod === "bitcoin" ? "border-orange-600 bg-orange-50" : "border-slate-50 bg-white hover:border-gray-800"
+                              paymentMethod === "bitcoin" ? "border-orange-600 bg-orange-50" : "border-slate-50 bg-gray-950 hover:border-gray-800"
                             )}
                           >
                             <div className="absolute top-2 right-2">
@@ -1158,7 +1158,7 @@ export default function App() {
                             <span className="text-status-bitcoin text-2xl font-black group-hover:scale-110 transition-transform flex items-center gap-2">
                                <Bitcoin className="w-6 h-6" /> Bitcoin
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Blockchain Network</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Blockchain Network</span>
                           </button>
                         </div>
                       </div>
@@ -1176,13 +1176,13 @@ export default function App() {
                           )}
                           {paymentMethod === "bitcoin" && (
                             <motion.div key="btc" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                               <div className="bg-white rounded-2xl border border-gray-800 overflow-hidden">
+                               <div className="bg-gray-950 rounded-2xl border border-gray-800 overflow-hidden">
                                  <BitcoinPayment address={BITCOIN_ADDRESS} amount={finalTotal} onInitiate={handleBitcoinConfirm} disabled={!agreedToTerms || !isAddressValid} />
                                </div>
                             </motion.div>
                           )}
                           {!paymentMethod && (
-                            <div className="h-64 flex flex-col items-center justify-center text-slate-300 border-2 border-dashed border-gray-800 rounded-3xl space-y-4">
+                            <div className="h-64 flex flex-col items-center justify-center text-gray-400 border-2 border-dashed border-gray-800 rounded-3xl space-y-4">
                                <Lock className="w-10 h-10" />
                                <p className="font-bold opacity-50 uppercase tracking-widest text-xs">Payment Authorization Required</p>
                             </div>
@@ -1193,8 +1193,8 @@ export default function App() {
                 </div>
 
                 <div className="space-y-6 pt-10 order-1 lg:order-2">
-                   <div className="bg-white border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
-                      <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-slate-900">Order Package</h3>
+                   <div className="bg-gray-950 border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
+                      <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-white">Order Package</h3>
                       
                       <div className="space-y-6">
                          {cart.map(item => (
@@ -1208,10 +1208,10 @@ export default function App() {
                                  />
                               </div>
                               <div className="flex-1 min-w-0">
-                                 <h4 className="text-sm font-bold text-slate-900 truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
+                                 <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
+                                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
                               </div>
-                              <div className="font-black text-sm text-slate-900">${(item.price * item.quantity).toFixed(2)}</div>
+                              <div className="font-black text-sm text-white">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
                          ))}
                       </div>
@@ -1222,7 +1222,7 @@ export default function App() {
                           value={promoCode}
                           onChange={(e) => setPromoCode(e.target.value)}
                           placeholder="Promo code (e.g. RESEARCH10)" 
-                          className="flex-1 bg-white border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors uppercase"
+                          className="flex-1 bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-600 transition-colors uppercase"
                         />
                       </div>
 
@@ -1239,11 +1239,11 @@ export default function App() {
                          )}
                          <div className="flex justify-between text-gray-400 text-sm font-medium">
                             <span>Shipping</span>
-                            <span className={cn("font-bold uppercase text-[10px]", shippingCost === 0 ? "text-green-600" : "text-slate-900 text-sm")}>
+                            <span className={cn("font-bold uppercase text-[10px]", shippingCost === 0 ? "text-green-600" : "text-white text-sm")}>
                               {shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`}
                             </span>
                          </div>
-                         <div className="flex justify-between text-slate-900 text-3xl font-black pt-6 border-t border-gray-800">
+                         <div className="flex justify-between text-white text-3xl font-black pt-6 border-t border-gray-800">
                             <span>TOTAL</span>
                             <span className="text-blue-600 italic">${finalTotal.toFixed(2)}</span>
                          </div>
@@ -1255,10 +1255,10 @@ export default function App() {
                           id="termsCheck"
                           checked={agreedToTerms}
                           onChange={(e) => setAgreedToTerms(e.target.checked)}
-                          className="mt-1 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600"
+                          className="mt-1 w-4 h-4 rounded border-gray-700 text-blue-600 focus:ring-blue-600"
                         />
                         <div className="space-y-1">
-                          <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
+                          <label htmlFor="termsCheck" className="text-xs text-gray-400 leading-tight block">
                             I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
@@ -1295,7 +1295,7 @@ export default function App() {
                     </div>
                     <span className="text-2xl font-black tracking-tighter uppercase italic">ASCEND LABZ</span>
                  </div>
-                 <p className="text-slate-400 max-w-xs leading-relaxed text-xs font-medium">
+                 <p className="text-gray-500 max-w-xs leading-relaxed text-xs font-medium">
                    Most affordable research peptides online — Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 48 hours. Best price guaranteed.
                  </p>
               </div>
@@ -1303,7 +1303,7 @@ export default function App() {
               {/* Col 2 */}
               <div className="space-y-6">
                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">RESEARCH HUB</h4>
-                 <ul className="grid gap-3 text-[10px] font-black uppercase text-slate-400">
+                 <ul className="grid gap-3 text-[10px] font-black uppercase text-gray-500">
                     <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group" onClick={() => setPage("home")}>
                        <ChevronRight className="w-2 h-2 text-blue-600 group-hover:translate-x-1 transition-transform" /> Home
                     </li>
@@ -1330,14 +1330,14 @@ export default function App() {
                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">LAB CONTACT</h4>
                  <div className="space-y-4">
                     <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="block space-y-1 group">
-                       <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Support</p>
+                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Support</p>
                        <div className="flex items-center gap-2">
                           <Mail className="w-4 h-4 text-blue-600" />
                           <span className="text-sm font-bold group-hover:text-blue-400 transition-colors">ascendlabz@gmail.com</span>
                        </div>
                     </a>
                     <div className="space-y-1">
-                       <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Response Time</p>
+                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Response Time</p>
                        <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4 text-blue-600" />
                           <span className="text-sm font-bold">Within 24 Hours</span>
@@ -1349,7 +1349,7 @@ export default function App() {
               {/* Col 4 */}
               <div className="space-y-6">
                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">LEGAL</h4>
-                 <ul className="grid gap-3 text-[10px] font-black uppercase text-slate-400">
+                 <ul className="grid gap-3 text-[10px] font-black uppercase text-gray-500">
                     <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setPage("privacy")}>Privacy Policy</li>
                     <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setPage("terms")}>Terms & Conditions</li>
                     <li className="hover:text-white cursor-pointer transition-colors" onClick={() => setPage("policies")}>Refund & Shipping Policy</li>
@@ -1358,7 +1358,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-slate-500 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-gray-400 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
