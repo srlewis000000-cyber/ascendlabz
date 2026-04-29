@@ -341,7 +341,7 @@ export default function App() {
     return PRODUCTS.filter(p => p.group === selectedCategory);
   }, [selectedCategory]);
 
-  const featuredProducts = PRODUCTS.slice(0, 4);
+    const featuredProducts = PRODUCTS.filter(p => ['retatrutide-10mg', 'tirzepatide-10mg', 'semaglutide-10mg', 'cagrilintide-10mg', 'bpc-157-10mg', 'tb-500-10mg', 'ipamorelin-10mg', 'nad+-100mg'].includes(p.id)).slice(0, 4);
 
   if (orderComplete) {
     return (
@@ -670,10 +670,10 @@ export default function App() {
                     <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 text-center">Top Sellers - Click to Shop</p>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                       {[
-                        { name: 'Retatrutide', price: '$53.00', badge: '30mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
-                        { name: 'Tirzepatide', price: '$55.00', badge: '30mg', rating: '4.9', reviews: 142, tag: 'Top Rated' },
-                        { name: 'Semaglutide', price: '$45.00', badge: '10mg', rating: '4.8', reviews: 139, tag: 'Best Value' },
-                        { name: 'Cagrilintide', price: '$65.00', badge: '10mg', rating: '4.6', reviews: 98, tag: 'Premium' },
+                                  { name: 'Retatrutide', price: '$46.00', badge: '5mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
+                                            { name: 'Tirzepatide', price: '$32.20', badge: '5mg', rating: '4.9', reviews: 142, tag: 'Top Rated' },
+                                                      { name: 'Semaglutide', price: '$26.70', badge: '5mg', rating: '4.8', reviews: 139, tag: 'Best Value' },
+                                                                { name: 'Cagrilintide', price: '$36.80', badge: '5mg', rating: '4.6', reviews: 98, tag: 'Premium' },
                       ].map((p) => (
                         <button
                           key={p.name}
