@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ShoppingCart, Share2, Star, ChevronDown, ChevronUp, Info } from 'lucide-react';
+import { ArrowLeft, ShoppingCart, Share2, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product, CartItem } from '../types';
 import { VialImage } from './VialImage';
@@ -39,7 +39,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
   };
 
   const totalPrice = getPrice(selectedPack) * quantity;
-  const pricePerVial = getPrice(selectedPack) / selectedPack;
 
   const handleAddToCart = () => {
     onAddToCart({
@@ -65,7 +64,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800 px-4 py-3 flex items-center justify-between">
         <button onClick={onBack} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
           <ArrowLeft className="w-5 h-5" />
@@ -77,7 +75,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
-        {/* Product image */}
         <div className="relative rounded-2xl overflow-hidden bg-gray-900">
           <VialImage productId={product.id} category={product.category} className="w-full h-64 object-cover" />
           {product.badge && (
@@ -87,7 +84,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           )}
         </div>
 
-        {/* Product info */}
         <div>
           <h1 className="text-2xl font-bold text-white mb-2">{product.name}</h1>
           <div className="flex items-center gap-3 mb-3">
@@ -98,7 +94,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           )}
         </div>
 
-        {/* Dosage selector */}
         {hasMultipleDosages && (
           <div>
             <h3 className="text-sm font-semibold text-gray-300 mb-2">Select Dosage</h3>
@@ -109,14 +104,13 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
                   onClick={() => { setSelectedDosageIdx(idx); setSelectedPack(1); }}
                   className={'px-4 py-2 rounded-lg text-sm font-medium border transition-all ' + (selectedDosageIdx === idx ? 'bg-blue-600 border-blue-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500')}
                 >
-                  {d.mg}mg
+                  {d.mg}
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {/* Pack selector */}
         <div>
           <h3 className="text-sm font-semibold text-gray-300 mb-2">Select Pack Size</h3>
           <div className="grid grid-cols-4 gap-2">
@@ -146,7 +140,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </div>
         </div>
 
-        {/* Quantity + Add to Cart */}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="text-sm text-gray-400">Qty:</span>
@@ -168,7 +161,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </motion.button>
         </div>
 
-        {/* COA Section */}
         {currentDosage.coa && (
           <div>
             <button
@@ -198,7 +190,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </div>
         )}
 
-        {/* Product details accordion */}
         <div>
           <button
             onClick={() => setShowDetails(!showDetails)}
