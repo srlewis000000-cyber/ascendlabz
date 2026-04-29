@@ -10,7 +10,7 @@ export type ProductGroup =
   | "Immune & Inflammation"
   | "Peptide Blends & Combos";
 
-export type UnitType = 1 | 5 | 10;
+export type UnitType = 1 | 5 | 10 | 20;
 
 export interface CategorySpec {
   name: ProductGroup;

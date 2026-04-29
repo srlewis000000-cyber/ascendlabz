@@ -93,7 +93,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
 
                 <div className="space-y-4">
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Select Pack Size</p>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {(Object.keys(product.prices) as unknown as UnitType[]).map((size) => (
                       <button
                         key={size}
