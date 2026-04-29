@@ -344,11 +344,11 @@ export default function App() {
   const featuredProducts = PRODUCTS.filter(p => ['retatrutide', 'tirzepatide', 'semaglutide', 'cagrilintide', 'bpc-157', 'tb-500', 'ipamorelin', 'nad-plus'].includes(p.id)).slice(0, 4);
   if (orderComplete) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-6 text-slate-900 font-sans">
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center p-6 text-white font-sans">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-[480px] w-full bg-white rounded-[40px] p-12 shadow-2xl border border-slate-100 text-center space-y-8 relative overflow-hidden"
+          className="max-w-[480px] w-full bg-gray-900 rounded-[40px] p-12 shadow-2xl border border-gray-700 100 text-center space-y-8 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400" />
           <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto border border-blue-100">
@@ -356,18 +356,18 @@ export default function App() {
           </div>
           <div className="space-y-3 mb-6">
              <h1 className="text-3xl font-black tracking-tighter italic lg:text-4xl">SECURE CONFIRMATION.</h1>
-             <p className="text-slate-500 text-sm leading-relaxed">Your request ({orderComplete.id}) has been recorded on our secure ledger and is being processed for dispatch.</p>
-             <p className="text-slate-500 text-sm leading-relaxed font-bold bg-blue-50 border border-blue-100 p-3 rounded-lg text-blue-800">
+             <p className="text-gray-400 text-sm leading-relaxed">Your request ({orderComplete.id}) has been recorded on our secure ledger and is being processed for dispatch.</p>
+             <p className="text-gray-400 text-sm leading-relaxed font-bold bg-blue-50 border border-blue-100 p-3 rounded-lg text-blue-800">
                A confirmation email with your logistics tracking details will be sent to the email address provided.
              </p>
           </div>
           
-          <div className="bg-slate-50 rounded-3xl border border-slate-100 p-6 text-left space-y-4 mb-8">
+          <div className="bg-gray-800/50 rounded-3xl border border-gray-800 p-6 text-left space-y-4 mb-8">
              <div className="space-y-3">
                {orderComplete.items.map(item => (
                  <div key={item.id} className="flex justify-between items-center text-sm">
                    <div className="flex items-center gap-2">
-                     <span className="font-bold text-slate-900 bg-white border border-slate-200 px-2 rounded">{item.quantity}x</span>
+                     <span className="font-bold text-slate-900 bg-white border border-gray-700 px-2 rounded">{item.quantity}x</span>
                      <span className="text-slate-600 font-medium">{item.name} <span className="text-slate-400">({item.packSize} pk)</span></span>
                    </div>
                    <span className="font-bold text-slate-900">${(item.price * item.quantity).toFixed(2)}</span>
@@ -375,12 +375,12 @@ export default function App() {
                ))}
              </div>
              
-             <div className="flex justify-between items-center pt-4 border-t border-slate-200">
+             <div className="flex justify-between items-center pt-4 border-t border-gray-700">
                <span className="text-xs font-black uppercase tracking-widest text-slate-400">Total Paid</span>
                <span className="text-xl font-black text-blue-600">${orderComplete.total.toFixed(2)}</span>
              </div>
 
-             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200">
+             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-700">
                 <div className="space-y-1">
                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Tracking</p>
                    <div className="font-mono text-sm font-bold text-blue-600 truncate">{orderComplete.id}</div>
@@ -486,7 +486,7 @@ export default function App() {
             )}
           </AnimatePresence>
 
-          <nav className="w-full bg-white/80 backdrop-blur-xl border-b border-slate-200 px-6 lg:px-12 h-20 flex items-center justify-between transition-all">
+          <nav className="w-full bg-gray-950/90 backdrop-blur-xl border-b border-gray-800 px-6 lg:px-12 h-20 flex items-center justify-between transition-all">
              <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setPage("home")}>
                 <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20">
                   <FlaskConical className="w-6 h-6 text-white" />
@@ -550,7 +550,7 @@ export default function App() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className={cn("lg:hidden fixed left-0 right-0 bg-white border-b border-slate-200 shadow-xl z-40", showAnnouncement ? "top-[120px]" : "top-[80px]")}
+            className={cn("lg:hidden fixed left-0 right-0 bg-gray-900 border-b border-gray-800 shadow-xl z-40", showAnnouncement ? "top-[120px]" : "top-[80px]")}
           >
             <nav className="max-w-7xl mx-auto px-6 py-4 space-y-1">
               <button
@@ -565,7 +565,7 @@ export default function App() {
                   onClick={() => { setPage(p as Page); setShowMobileMenu(false); }}
                   className={cn(
                     "block w-full text-left px-4 py-3 text-sm font-black uppercase tracking-[0.15em] rounded-lg transition-all",
-                    page === p ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-slate-100"
+                    page === p ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-gray-700"
                   )}
                 >
                   {p === "coa" ? "COA / LAB DATA" : p === "shop" ? "SHOP ALL" : p === "faq" ? "FAQ" : p.toUpperCase()}
@@ -588,10 +588,10 @@ export default function App() {
                 className="space-y-4 pb-0"
               >
                 {/* Hero Section */}
-                <section className="relative min-h-[55vh] flex items-center justify-center p-4 lg:p-8 overflow-hidden bg-white">
+                <section className="relative min-h-[55vh] flex items-center justify-center p-4 lg:p-8 overflow-hidden hero-gradient">
                   <div className="absolute inset-0 z-0">
                     {/* Grid Background */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
                     
                     {/* Atmospheric Glows */}
                     <div className="absolute top-[20%] left-[15%] w-[45vw] h-[45vw] bg-blue-600/5 blur-[140px] rounded-full animate-pulse" />
@@ -613,7 +613,7 @@ export default function App() {
                     <motion.h1 
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-4xl md:text-6xl lg:text-8xl font-black tracking-[-0.04em] leading-[0.85] italic text-slate-900"
+                      className="text-4xl md:text-6xl lg:text-8xl font-black tracking-[-0.04em] leading-[0.85] italic text-white"
                     >
                       ELEVATE YOUR <br className="hidden md:block" /> 
                       <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800 drop-shadow-sm">BIOLOGY.</span>
@@ -623,7 +623,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="text-slate-500 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
+                      className="text-slate-300 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
                       Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
@@ -642,7 +642,7 @@ export default function App() {
                       </button>
                       <button 
                         onClick={() => setPage("coa")}
-                        className="w-full sm:w-auto px-10 py-5 bg-slate-50 hover:bg-slate-100 text-slate-900 rounded-2xl font-black text-lg transition-all border border-slate-200 flex items-center justify-center gap-3"
+                        className="w-full sm:w-auto px-10 py-5 bg-slate-50 hover:bg-gray-700 text-slate-900 rounded-2xl font-black text-lg transition-all border border-gray-700 flex items-center justify-center gap-3"
                       >
                         CERTIFICATES <Beaker className="w-5 h-5" />
                       </button>
@@ -664,9 +664,9 @@ export default function App() {
                 </section>
 
                 {/* Quick Product Preview - visible above fold */}
-                <section className="px-4 lg:px-8 relative z-10 bg-white border-t border-slate-100">
+                <section className="px-4 lg:px-8 relative z-10 bg-gray-900/80 border-t border-gray-800">
                   <div className="max-w-7xl mx-auto py-4">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 text-center">Top Sellers - Click to Shop</p>
+                    <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-3 text-center">Top Sellers - Click to Shop</p>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                       {[
                                   { name: 'Retatrutide', price: '$46.00', badge: '5mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
@@ -677,7 +677,7 @@ export default function App() {
                         <button
                           key={p.name}
                           onClick={() => setPage('shop')}
-                          className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-white transition-all group cursor-pointer"
+                          className="bg-slate-50 border border-gray-700 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-gray-800 transition-all group cursor-pointer"
                         >
                           <div className="flex items-center justify-between mb-1.5">
                             <span className="text-[8px] font-black bg-blue-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-widest">{p.badge}</span>
@@ -744,7 +744,7 @@ export default function App() {
                       ].map((item, i) => (
                         <div key={i} className="flex flex-col items-center text-center space-y-6 group">
                             <div className="relative">
-                               <div className="w-20 h-20 bg-slate-50 border border-slate-100 rounded-[2rem] flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-110">
+                               <div className="w-20 h-20 bg-slate-50 border border-gray-800 rounded-[2rem] flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:scale-110">
                                   {item.icon}
                                </div>
                                <span className="absolute -top-3 -right-3 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-black italic shadow-lg">
@@ -753,7 +753,7 @@ export default function App() {
                             </div>
                             <div className="space-y-2">
                                <h3 className="text-xl font-black italic tracking-tight">{item.title}</h3>
-                               <p className="text-slate-500 text-sm font-medium leading-relaxed">{item.desc}</p>
+                               <p className="text-gray-400 text-sm font-medium leading-relaxed">{item.desc}</p>
                             </div>
                         </div>
                       ))}
@@ -773,7 +773,7 @@ export default function App() {
                           { name: "SARAH L.", institution: "Independent Biochemist", quote: "The climate-stable packaging is a game changer. Arrived at the lab in pristine condition even during extreme summer heat." },
                           { name: "RESEARCH INST.", institution: "Clinical Observations", quote: "Swift dispatch and absolute transparency. Ascend Labz is now our primary source for specialized research peptides." }
                         ].map((rev, i) => (
-                          <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-6 hover:shadow-xl transition-all">
+                          <div key={i} className="bg-gray-900 p-10 rounded-[2.5rem] border border-gray-800 shadow-sm space-y-6 hover:shadow-xl transition-all">
                              <div className="flex gap-1 text-orange-400">
                                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
                              </div>
@@ -810,7 +810,7 @@ export default function App() {
                             required
                             type="email" value={subscriberEmail} onChange={(e) => setSubscriberEmail(e.target.value)} 
                             placeholder="laboratory-email@address.com" 
-                            className="flex-1 bg-white border border-slate-200 px-6 py-4 rounded-xl focus:outline-none focus:border-blue-500 transition-colors font-medium text-sm"
+                            className="flex-1 bg-gray-800 border border-gray-700 px-6 py-4 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors font-medium text-sm"
                           />
                           <button type="submit" className="bg-blue-600 text-white px-8 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition-all flex items-center gap-2">
                             Join <ArrowUpRight className="w-4 h-4" />
@@ -853,28 +853,28 @@ export default function App() {
                       <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">WHY CHOOSE ASCEND LABZ?</h2>
                    </div>
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Verified Purity</h3>
                          <p className="text-sm text-slate-500 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Package className="w-10 h-10 text-blue-600 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Discreet & Fast Shipping</h3>
                          <p className="text-sm text-slate-500 leading-relaxed font-medium">Affordable doesn't mean slow. We dispatch all orders within 48 hours in climate-controlled, discreet packaging. Buy research peptides online USA and get fast shipping.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
                          <p className="text-sm text-slate-500 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
-                     <div className="bg-white border border-slate-200 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
+                     <div className="bg-white border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Lock className="w-10 h-10 text-slate-900 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
@@ -910,7 +910,7 @@ export default function App() {
                      onClick={() => setSelectedCategory("All")}
                      className={cn(
                        "px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border-2 transition-all",
-                       selectedCategory === "All" ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                       selectedCategory === "All" ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
                      )}
                    >
                      Show All
@@ -921,7 +921,7 @@ export default function App() {
                        onClick={() => setSelectedCategory(c.name)}
                        className={cn(
                          "px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border-2 transition-all",
-                         selectedCategory === c.name ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                         selectedCategory === c.name ? "border-blue-600 bg-blue-600/10 text-blue-600" : "border-gray-700 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
                        )}
                      >
                        {c.name}
@@ -936,7 +936,7 @@ export default function App() {
                 </div>
 
                 {recentlyViewed.length > 0 && (
-                   <div className="pt-20 border-t border-slate-200/50 mt-20">
+                   <div className="pt-20 border-t border-gray-700/50 mt-20">
                      <div className="flex items-center gap-2 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                        <ShoppingCart className="w-4 h-4 text-slate-900" />
                        <span>Recently Viewed</span>
@@ -946,8 +946,8 @@ export default function App() {
                          const product = PRODUCTS.find(p => p.id === id);
                          if (!product) return null;
                          return (
-                           <div key={id} onClick={() => { setSelectedProduct(product); setPage('product'); }} className="bg-white border border-slate-200 rounded-xl p-3 shadow-sm flex flex-col items-center text-center gap-2 relative overflow-hidden cursor-pointer hover:border-blue-600 transition-colors">
-                             <div className="w-full h-24 bg-slate-50 rounded-lg overflow-hidden flex items-center justify-center">
+                           <div key={id} onClick={() => { setSelectedProduct(product); setPage('product'); }} className="bg-white border border-gray-700 rounded-xl p-3 shadow-sm flex flex-col items-center text-center gap-2 relative overflow-hidden cursor-pointer hover:border-blue-600 transition-colors">
+                             <div className="w-full h-24 bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
                                <VialImage 
                                  name={product.name} 
                                  mg={product.mg}
@@ -1065,26 +1065,26 @@ export default function App() {
                    </div>
                    <h2 className="text-5xl font-black tracking-tighter italic">SECURE CHECKOUT.</h2>
                    
-                   <div className="space-y-8 bg-white border border-slate-100 p-10 rounded-[40px] shadow-sm">
+                   <div className="space-y-8 bg-white border border-gray-800 p-10 rounded-[40px] shadow-sm">
                       <div className="space-y-4 pt-2">
                         <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
                            <Truck className="w-6 h-6 text-blue-600" />
                            DESTINATION ADDRESS
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           <input type="text" placeholder="Full Name" value={shippingAddress.fullName} onChange={(e) => setShippingAddress({...shippingAddress, fullName: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="email" placeholder="Email Address" value={shippingAddress.email} onChange={(e) => setShippingAddress({...shippingAddress, email: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="tel" placeholder="Phone Number" value={shippingAddress.phone} onChange={(e) => setShippingAddress({...shippingAddress, phone: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="Address Line 1" value={shippingAddress.line1} onChange={(e) => setShippingAddress({...shippingAddress, line1: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="Address Line 2 (Optional)" value={shippingAddress.line2} onChange={(e) => setShippingAddress({...shippingAddress, line2: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
-                           <input type="text" placeholder="City" value={shippingAddress.city} onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="State / Province" value={shippingAddress.state} onChange={(e) => setShippingAddress({...shippingAddress, state: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="ZIP / Postal Code" value={shippingAddress.zip} onChange={(e) => setShippingAddress({...shippingAddress, zip: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
-                           <input type="text" placeholder="Country" value={shippingAddress.country} onChange={(e) => setShippingAddress({...shippingAddress, country: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="text" placeholder="Full Name" value={shippingAddress.fullName} onChange={(e) => setShippingAddress({...shippingAddress, fullName: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="email" placeholder="Email Address" value={shippingAddress.email} onChange={(e) => setShippingAddress({...shippingAddress, email: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="tel" placeholder="Phone Number" value={shippingAddress.phone} onChange={(e) => setShippingAddress({...shippingAddress, phone: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
+                           <input type="text" placeholder="Address Line 1" value={shippingAddress.line1} onChange={(e) => setShippingAddress({...shippingAddress, line1: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
+                           <input type="text" placeholder="Address Line 2 (Optional)" value={shippingAddress.line2} onChange={(e) => setShippingAddress({...shippingAddress, line2: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300 md:col-span-2" />
+                           <input type="text" placeholder="City" value={shippingAddress.city} onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="text" placeholder="State / Province" value={shippingAddress.state} onChange={(e) => setShippingAddress({...shippingAddress, state: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="text" placeholder="ZIP / Postal Code" value={shippingAddress.zip} onChange={(e) => setShippingAddress({...shippingAddress, zip: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
+                           <input type="text" placeholder="Country" value={shippingAddress.country} onChange={(e) => setShippingAddress({...shippingAddress, country: e.target.value})} className="w-full bg-slate-50 border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors placeholder:text-slate-300" />
                         </div>
                       </div>
                       
-                      <div className="space-y-4 border-t border-slate-100 pt-6">
+                      <div className="space-y-4 border-t border-gray-800 pt-6">
                         <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
                            <Package className="w-6 h-6 text-blue-600" />
                            SELECT SHIPPING PROTOCOL
@@ -1100,13 +1100,13 @@ export default function App() {
                               onClick={() => setShippingMethod(method.id as 'standard' | 'express' | 'overnight')}
                               className={cn(
                                 "flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all gap-2 relative overflow-hidden group",
-                                shippingMethod === method.id ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-slate-100"
+                                shippingMethod === method.id ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-gray-800"
                               )}
                             >
                                <div className="absolute top-2 right-2">
-                                 <div className={cn("w-4 h-4 rounded-full border-2", shippingMethod === method.id ? "bg-blue-600 border-blue-500" : "border-slate-200")} />
+                                 <div className={cn("w-4 h-4 rounded-full border-2", shippingMethod === method.id ? "bg-blue-600 border-blue-500" : "border-gray-700")} />
                                </div>
-                               <span className="text-slate-900 font-black italic text-xl">{method.name}</span>
+                               <span className="text-white font-black italic text-xl">{method.name}</span>
                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">{method.time}</span>
                                <span className="font-bold text-blue-600 mt-2">
                                  {method.id === 'standard' && cartTotal >= 150 ? 'FREE' : `$${method.price}`}
@@ -1116,7 +1116,7 @@ export default function App() {
                         </div>
                       </div>
 
-                      <div className="space-y-4 pt-6 border-t border-slate-100">
+                      <div className="space-y-4 pt-6 border-t border-gray-800">
                         <div className="flex items-center justify-between">
                           <h3 className="text-xl font-bold flex items-center gap-3 italic text-slate-900">
                              <CreditCard className="w-6 h-6 text-blue-600" />
@@ -1135,11 +1135,11 @@ export default function App() {
                             onClick={() => setPaymentMethod("paypal")}
                             className={cn(
                               "flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all gap-3 relative overflow-hidden group",
-                              paymentMethod === "paypal" ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-slate-100"
+                              paymentMethod === "paypal" ? "border-blue-600 bg-blue-50" : "border-slate-50 bg-white hover:border-gray-800"
                             )}
                           >
                              <div className="absolute top-2 right-2">
-                               <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'paypal' ? "bg-blue-600 border-blue-500" : "border-slate-200")} />
+                               <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'paypal' ? "bg-blue-600 border-blue-500" : "border-gray-700")} />
                              </div>
                             <span className="text-status-paypal font-black italic text-2xl group-hover:scale-110 transition-transform">PayPal</span>
                             <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Card & Crypto Support</span>
@@ -1149,11 +1149,11 @@ export default function App() {
                             onClick={() => setPaymentMethod("bitcoin")}
                             className={cn(
                               "flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all gap-3 relative overflow-hidden group",
-                              paymentMethod === "bitcoin" ? "border-orange-600 bg-orange-50" : "border-slate-50 bg-white hover:border-slate-100"
+                              paymentMethod === "bitcoin" ? "border-orange-600 bg-orange-50" : "border-slate-50 bg-white hover:border-gray-800"
                             )}
                           >
                             <div className="absolute top-2 right-2">
-                               <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'bitcoin' ? "bg-orange-600 border-orange-500" : "border-slate-200")} />
+                               <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'bitcoin' ? "bg-orange-600 border-orange-500" : "border-gray-700")} />
                              </div>
                             <span className="text-status-bitcoin text-2xl font-black group-hover:scale-110 transition-transform flex items-center gap-2">
                                <Bitcoin className="w-6 h-6" /> Bitcoin
@@ -1176,13 +1176,13 @@ export default function App() {
                           )}
                           {paymentMethod === "bitcoin" && (
                             <motion.div key="btc" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                               <div className="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+                               <div className="bg-white rounded-2xl border border-gray-800 overflow-hidden">
                                  <BitcoinPayment address={BITCOIN_ADDRESS} amount={finalTotal} onInitiate={handleBitcoinConfirm} disabled={!agreedToTerms || !isAddressValid} />
                                </div>
                             </motion.div>
                           )}
                           {!paymentMethod && (
-                            <div className="h-64 flex flex-col items-center justify-center text-slate-300 border-2 border-dashed border-slate-100 rounded-3xl space-y-4">
+                            <div className="h-64 flex flex-col items-center justify-center text-slate-300 border-2 border-dashed border-gray-800 rounded-3xl space-y-4">
                                <Lock className="w-10 h-10" />
                                <p className="font-bold opacity-50 uppercase tracking-widest text-xs">Payment Authorization Required</p>
                             </div>
@@ -1193,13 +1193,13 @@ export default function App() {
                 </div>
 
                 <div className="space-y-6 pt-10 order-1 lg:order-2">
-                   <div className="bg-white border border-slate-200 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
-                      <h3 className="text-xl font-black tracking-tighter italic border-b border-slate-100 pb-6 uppercase text-slate-900">Order Package</h3>
+                   <div className="bg-white border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
+                      <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-slate-900">Order Package</h3>
                       
                       <div className="space-y-6">
                          {cart.map(item => (
                            <div key={item.id} className="flex gap-4">
-                              <div className="relative w-14 h-14 bg-slate-50 rounded-xl p-0.5 shrink-0 overflow-hidden border border-slate-100 flex items-center justify-center">
+                              <div className="relative w-14 h-14 bg-gray-800/50 rounded-xl p-0.5 shrink-0 overflow-hidden border border-gray-800 flex items-center justify-center">
                                  <VialImage 
                                     name={item.name} 
                                     mg={item.mg}
@@ -1216,20 +1216,20 @@ export default function App() {
                          ))}
                       </div>
 
-                      <div className="pt-8 border-t border-slate-100 flex gap-2">
+                      <div className="pt-8 border-t border-gray-800 flex gap-2">
                         <input 
                           type="text" 
                           value={promoCode}
                           onChange={(e) => setPromoCode(e.target.value)}
                           placeholder="Promo code (e.g. RESEARCH10)" 
-                          className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors uppercase"
+                          className="flex-1 bg-white border border-gray-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-600 transition-colors uppercase"
                         />
                       </div>
 
                       <div className="space-y-4 pt-8">
-                         <div className="flex justify-between text-slate-500 text-sm font-medium">
+                         <div className="flex justify-between text-gray-400 text-sm font-medium">
                             <span>Subtotal</span>
-                            <span className="text-slate-900">${cartTotal.toFixed(2)}</span>
+                            <span className="text-white">${cartTotal.toFixed(2)}</span>
                          </div>
                          {discountAmount > 0 && (
                            <div className="flex justify-between text-blue-600 text-sm font-bold">
@@ -1237,13 +1237,13 @@ export default function App() {
                               <span>-${discountAmount.toFixed(2)}</span>
                            </div>
                          )}
-                         <div className="flex justify-between text-slate-500 text-sm font-medium">
+                         <div className="flex justify-between text-gray-400 text-sm font-medium">
                             <span>Shipping</span>
                             <span className={cn("font-bold uppercase text-[10px]", shippingCost === 0 ? "text-green-600" : "text-slate-900 text-sm")}>
                               {shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`}
                             </span>
                          </div>
-                         <div className="flex justify-between text-slate-900 text-3xl font-black pt-6 border-t border-slate-100">
+                         <div className="flex justify-between text-slate-900 text-3xl font-black pt-6 border-t border-gray-800">
                             <span>TOTAL</span>
                             <span className="text-blue-600 italic">${finalTotal.toFixed(2)}</span>
                          </div>
@@ -1259,7 +1259,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-slate-500 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-slate-900 font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
