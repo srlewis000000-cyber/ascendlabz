@@ -31,7 +31,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     onAddToCart({
-      id: `${product.id}-${firstDosage.mg}-1`,
+      id: product.id + '-' + firstDosage.mg + '-1',
       name: product.name,
       price: firstDosage.prices[1],
       quantity: 1,
@@ -50,7 +50,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
       className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden cursor-pointer group flex flex-col"
       onClick={handleView}
     >
-      {/* Share button */}
       <div className="relative">
         <button
           onClick={(e) => { e.stopPropagation(); if (navigator.share) { navigator.share({ title: product.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
@@ -59,45 +58,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
         >
           <Share2 className="w-3.5 h-3.5" />
         </button>
-
-        {/* Dosage badge */}
         {hasMultipleDosages ? (
           <div className="absolute top-3 left-3 z-10 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-semibold px-2 py-1 rounded-full">
             {product.dosages.length} sizes
           </div>
         ) : (
           <div className="absolute top-3 left-3 z-10 bg-gray-800/90 backdrop-blur-sm text-gray-300 text-xs font-medium px-2 py-1 rounded-full">
-            {firstDosage.mg}mg
+            {firstDosage.mg}
           </div>
         )}
-
         <VialImage
           productId={product.id}
           category={product.category}
           className="w-full h-48 object-cover"
         />
       </div>
-
       <div className="p-4 flex flex-col flex-1">
         <h3 className="text-white font-semibold text-base mb-1 line-clamp-2 leading-snug">{product.name}</h3>
-
-        {/* Dosage chips */}
         {hasMultipleDosages && (
           <div className="flex flex-wrap gap-1 mb-2">
             {product.dosages.map(d => (
               <span key={d.mg} className="text-xs bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">
-                {d.mg}mg
+                {d.mg}
               </span>
             ))}
           </div>
         )}
-
         <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-
         <div className="mt-auto pt-3 flex items-center justify-between">
           <div>
             <p className="text-xs text-gray-500 leading-none mb-0.5">from</p>
-            <p className="text-green-400 font-bold text-lg leading-none">${lowestPrice.toFixed(2)}</p>
+            <p className="text-green-400 font-bold text-lg leading-none">{'$' + lowestPrice.toFixed(2)}</p>
           </div>
           <button
             onClick={handleQuickAdd}
