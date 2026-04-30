@@ -709,8 +709,8 @@ export default function App() {
                         <ProductCard
                           key={product.id}
                           product={product}
-                          onAddToCart={onAddToCart}
-                          onViewProduct={onViewProduct}
+                          onAddToCart={addToCart}
+                          onViewProduct={(p) => { setSelectedProduct(p); setPage('product'); }}
                         />
                       ))}
                    </div>
