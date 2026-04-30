@@ -415,7 +415,7 @@ export default function App() {
       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ service_id: 'service_ascendlabz', template_id: 'template_newsletter', user_id: 'YOUR_PUBLIC_KEY', template_params: { subscriber_email: subscriberEmail } })
+        body: JSON.stringify({ service_id: 'service_0kztjcw', template_id: 'template_72gxbfl', user_id: 'WSYK-Hg-ybgwidKVK', template_params: { subscriber_email: subscriberEmail } })
       });
     } catch(err) {}
   };
