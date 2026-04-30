@@ -1197,7 +1197,7 @@ export default function App() {
                               </div>
                               <div className="flex-1 min-w-0">
                                  <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
-                                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ {item.quantity}</p>
+                                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{item.packSize} VIAL PACK &middot; {item.quantity}</p>
                               </div>
                               <div className="font-black text-sm text-white">${(item.price * item.quantity).toFixed(2)}</div>
                            </div>
@@ -1247,7 +1247,7 @@ export default function App() {
                         />
                         <div className="space-y-1">
                           <label htmlFor="termsCheck" className="text-xs text-gray-400 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> . I confirm all ordered  products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
                           </label>
                           <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
                             I understand these products are NOT for human consumption.
@@ -1346,7 +1346,7 @@ export default function App() {
                     <p className="text-[9px] uppercase font-black tracking-widest text-red-500 leading-relaxed border-l border-red-500/30 pl-3">
                       ALL PRODUCTS ARE STRICTLY FOR LABORATORY RESEARCH PURPOSES ONLY. NOT FOR HUMAN CONSUMPTION. MUST BE 18+ TO PURCHASE.
                     </p>
-                    <p className="text-[9px] text-gray-400 font-black">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© {new Date().getFullYear()} ASCEND LABZ.</p>
+                    <p className="text-[9px] text-gray-400 font-black">&copy; {new Date().getFullYear()} ASCEND LABZ.</p>
                  </div>
               </div>
            </div>
