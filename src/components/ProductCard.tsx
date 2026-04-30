@@ -75,7 +75,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
       </div>
       <div className="p-4 flex flex-col flex-1">
         <h3 className="text-white font-semibold text-base mb-1 line-clamp-2 leading-snug">{product.name}</h3>
-        {hasMultipleDosages && (
+        {(
           <div className="flex flex-wrap gap-1 mb-2">
             {product.dosages.map(d => (
               <span key={d.mg} className="text-xs bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">
