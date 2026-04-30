@@ -682,10 +682,10 @@ export default function App() {
                 <section className="px-4 -mt-4 relative z-20">
                    <div className="max-w-7xl mx-auto bg-gray-900 rounded-2xl border border-gray-800 p-5 lg:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl relative overflow-hidden">
                       <div className="absolute inset-0 bg-blue-600/5 pointer-events-none" />
-                      <CounterStat value={500} suffix="+" label="Orders Fulfilled" />
+                      <CounterStat value={2000} suffix="+" label="Orders Fulfilled" />
                       <CounterStat value={99} suffix=".9%" label="Average Purity" />
                       <CounterStat value={48} suffix="hr" label="Ship Time (Hrs)" />
-                      <CounterStat value={7} suffix="+" label="Peptide Variants" />
+                      <CounterStat value={60} suffix="+" label="Peptide Variants" />
                    </div>
                 </section>
 
