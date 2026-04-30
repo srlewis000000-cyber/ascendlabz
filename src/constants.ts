@@ -195,7 +195,7 @@ export const PRODUCTS: Product[] = [
           d("20mg", 65, 299, 552.50, 1014),
         ], 4.5, 35),
     p("insulin", "Insulin", "Sexual Health & Wellness", [
-          d("1mg", 25, 115, 212.50, 390),
+          d("100iu/mL", 25, 115, 212.50, 390),
         ], 4.4, 27),
     p("selank", "Selank", "Cognitive & Neuro", [
           d("5mg", 21.25, 97.75, 180.63, 331.50),
