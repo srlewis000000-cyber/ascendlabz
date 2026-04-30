@@ -83,6 +83,18 @@ const CounterStat = ({ value, label, suffix = "" }: { value: number, label: stri
     }
   }, [isInView, value]);
 
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmailSubscribed(true);
+    try {
+      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ service_id: 'service_ascendlabz', template_id: 'template_newsletter', user_id: 'YOUR_PUBLIC_KEY', template_params: { subscriber_email: subscriberEmail } })
+      });
+    } catch(err) {}
+  };
+
   return (
     <div ref={ref} className="text-center space-y-1">
       <p className="text-3xl lg:text-4xl font-black italic text-white tracking-tighter">
@@ -780,7 +792,7 @@ export default function App() {
                       ) : (
                         <form
                           className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
-                          onSubmit={async (e) => { e.preventDefault(); setEmailSubscribed(true); try { const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service_id: 'service_ascendlabz', template_id: 'template_newsletter', user_id: 'YOUR_PUBLIC_KEY', template_params: { subscriber_email: subscriberEmail } }) }); } catch(err) {} }}
+                          onSubmit={handleNewsletterSubmit}
                         >
                           <input
                             type="email"
