@@ -588,7 +588,7 @@ export default function App() {
                 className="space-y-4 pb-0"
               >
                 {/* Hero Section */}
-                <section className="relative min-h-[55vh] flex items-center justify-center p-4 lg:p-8 overflow-hidden hero-gradient">
+                <section className="relative min-h-[90vh] flex items-center justify-center p-4 pt-20 lg:p-8 overflow-hidden hero-gradient">
                   <div className="absolute inset-0 z-0">
                     {/* Grid Background */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
@@ -598,7 +598,7 @@ export default function App() {
                     <div className="absolute bottom-[20%] right-[15%] w-[35vw] h-[35vw] bg-cyan-400/5 blur-[120px] rounded-full delay-700 animate-pulse" />
                   </div>
 
-                  <div className="relative z-10 max-w-5xl text-center space-y-5">
+                  <div className="relative z-10 max-w-5xl text-center space-y-6">
                     <motion.div 
                        initial={{ opacity: 0, scale: 0.9 }}
                        animate={{ opacity: 1, scale: 1 }}
@@ -623,7 +623,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="text-gray-400 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
+                      className="text-gray-300 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
                       Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
@@ -663,69 +663,40 @@ export default function App() {
                   </div>
                 </section>
 
-                {/* Quick Product Preview - visible above fold */}
-                <section className="px-4 lg:px-8 relative z-10 bg-gray-900/80 border-t border-gray-800">
-                  <div className="max-w-7xl mx-auto py-4">
-                    <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-3 text-center">Top Sellers - Click to Shop</p>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                      {[
-                                  { name: 'Retatrutide', price: '$46.00', badge: '5mg', rating: '4.7', reviews: 136, tag: 'Most Popular' },
-                                            { name: 'Tirzepatide', price: '$32.20', badge: '5mg', rating: '4.9', reviews: 142, tag: 'Top Rated' },
-                                                      { name: 'Semaglutide', price: '$26.70', badge: '5mg', rating: '4.8', reviews: 139, tag: 'Best Value' },
-                                                                { name: 'Cagrilintide', price: '$36.80', badge: '5mg', rating: '4.6', reviews: 98, tag: 'Premium' },
-                      ].map((p) => (
-                        <button
-                          key={p.name}
-                          onClick={() => setPage('shop')}
-                          className="bg-gray-900 border border-gray-700 rounded-xl p-3 text-left hover:border-blue-400 hover:shadow-md hover:bg-gray-800 transition-all group cursor-pointer"
-                        >
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[8px] font-black bg-blue-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-widest">{p.badge}</span>
-                            <span className="text-[8px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-full">{p.tag}</span>
-                          </div>
-                          <h3 className="text-xs font-black text-white mb-1">{p.name}</h3>
-                          <div className="flex items-center gap-1 mb-1.5">
-                            <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
-                            <span className="text-[9px] font-bold text-gray-400">{p.rating} ({p.reviews})</span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-black text-white">{p.price}</span>
-                            <span className="text-[8px] font-black text-blue-600 group-hover:translate-x-0.5 transition-transform bg-blue-600 text-white px-2 py-0.5 rounded-full">BUY</span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-
                 {/* Trust Section Redesigned */}
                 <section className="px-4 -mt-4 relative z-20">
-                   <div className="max-w-7xl mx-auto bg-slate-900 rounded-2xl p-5 lg:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl relative overflow-hidden">
+                   <div className="max-w-7xl mx-auto bg-gray-900 rounded-2xl border border-gray-800 p-5 lg:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl relative overflow-hidden">
                       <div className="absolute inset-0 bg-blue-600/5 pointer-events-none" />
-                      <CounterStat value={500} suffix="+" label="Labs Served" />
+                      <CounterStat value={500} suffix="+" label="Orders Fulfilled" />
                       <CounterStat value={99} suffix=".9%" label="Average Purity" />
-                      <CounterStat value={48} suffix="hr" label="Dispatch Protocol" />
-                      <CounterStat value={7} suffix="+" label="Peptide Categories" />
+                      <CounterStat value={48} suffix="hr" label="Ship Time (Hrs)" />
+                      <CounterStat value={7} suffix="+" label="Peptide Variants" />
                    </div>
                 </section>
 
                 {/* Featured Products */}
-                <section className="px-6 lg:px-12 max-w-7xl mx-auto space-y-12">
-                   <div className="flex flex-col md:flex-row items-end justify-between gap-6 px-4">
-                      <div className="space-y-4">
-                         <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Top Performers</p>
-                         <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-white">ELITE MATERIALS.</h2>
+                <section className="px-4 pt-14 pb-4 max-w-7xl mx-auto">
+                   <div className="flex items-end justify-between gap-6 mb-8">
+                      <div>
+                         <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">Top Products</p>
+                         <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white">Best-Selling Peptides</h2>
                       </div>
                       <button 
-                        onClick={() => setPage("shop")}
-                        className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-blue-600 transition-colors !no-underline"
+                        onClick={() => setPage('shop')}
+                        className="group flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-white transition-colors whitespace-nowrap"
                       >
-                         Browse all products <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        View All
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                    </div>
-                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                      {featuredProducts.map(p => (
-                        <ProductCard key={p.id} product={p} onAddToCart={addToCart} onViewProduct={(p) => { setSelectedProduct(p); setPage("product"); }} />
+                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                      {featuredProducts.map((product) => (
+                        <ProductCard
+                          key={product.id}
+                          product={product}
+                          onAddToCart={onAddToCart}
+                          onViewProduct={onViewProduct}
+                        />
                       ))}
                    </div>
                 </section>
@@ -733,8 +704,8 @@ export default function App() {
                 {/* How It Works */}
                 <section className="px-6 lg:px-12 max-w-7xl mx-auto py-16 space-y-12">
                    <div className="text-center space-y-4">
-                      <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Protocol Streamline</p>
-                      <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">OUR RESEARCH PIPELINE.</h2>
+                      <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">The Process</p>
+                      <h2 className="text-3xl lg:text-4xl font-black tracking-tight">How It Works.</h2>
                    </div>
                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                       {[
@@ -765,7 +736,7 @@ export default function App() {
                    <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
                       <div className="flex flex-col items-center text-center space-y-4">
                         <p className="text-[10px] font-black text-blue-400 underline decoration-blue-600 decoration-2 underline-offset-4 uppercase tracking-[0.4em]">Researcher Feedback</p>
-                        <h2 className="text-4xl lg:text-6xl font-black tracking-tighter text-white">VERIFIED VALIDITY.</h2>
+                        <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white">Trusted by Researchers.</h2>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -788,69 +759,71 @@ export default function App() {
                    </div>
                 </section>
 
-                {/* Newsletter & Homepage Contact */}
-                <section className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-16 items-center">
-                   <div className="space-y-6">
-                      <div className="space-y-4">
-                        <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">DATA TRANSMISSION.</h2>
-                        <p className="text-gray-400 font-medium max-w-md">Get exclusive discounts on Retatrutide, Tirzepatide and other research peptides. Be first to know about restocks and best price drops.</p>
+                {/* Newsletter & Contact CTA */}
+                <section className="px-4 py-16">
+                  <div className="max-w-4xl mx-auto bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+                    <div className="p-8 lg:p-12">
+                      {/* Header */}
+                      <div className="text-center mb-10">
+                        <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3">Stay Informed</p>
+                        <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white mb-3">Get Exclusive Research Updates</h2>
+                        <p className="text-gray-400 text-base max-w-xl mx-auto">Price drops, restocks, and new compound arrivals — delivered straight to your inbox. No spam, unsubscribe anytime.</p>
                       </div>
-                      
+
+                      {/* Email Form */}
                       {emailSubscribed ? (
-                         <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="flex items-center gap-4 text-green-600 p-6 bg-green-50 rounded-2xl border border-green-100">
-                            <CheckCircle2 className="w-6 h-6" />
-                            <span className="font-black uppercase tracking-widest text-xs">Access Granted. Batch alerts enabled.</span>
-                         </motion.div>
+                        <div className="flex flex-col items-center gap-3 py-4">
+                          <CheckCircle2 className="w-10 h-10 text-green-400" />
+                          <p className="text-white font-bold text-lg">You're on the list!</p>
+                          <p className="text-gray-400 text-sm">We'll notify you of price drops and new arrivals.</p>
+                        </div>
                       ) : (
-                        <form 
-                          onSubmit={async (e) => { e.preventDefault(); setEmailSubscribed(true); try { await fetch('https://api.emailjs.com/api/v1.0/email/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service_id: 'service_0kztjcw', template_id: 'template_rn5spsq', user_id: 'WSYK-Hg-ybgwidKVK', template_params: { subscriber_email: subscriberEmail } }) }); } catch(err) { console.error('Welcome email error:', err); } }}
-                          className="flex gap-3 max-w-md"
+                        <form
+                          className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+                          onSubmit={async (e) => { e.preventDefault(); setEmailSubscribed(true); try { const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service_id: 'service_ascendlabz', template_id: 'template_newsletter', user_id: 'YOUR_PUBLIC_KEY', template_params: { subscriber_email: subscriberEmail } }) }); } catch(err) {} }}
                         >
-                          <input 
+                          <input
+                            type="email"
                             required
-                            type="email" value={subscriberEmail} onChange={(e) => setSubscriberEmail(e.target.value)} 
-                            placeholder="laboratory-email@address.com" 
-                            className="flex-1 bg-gray-800 border border-gray-700 px-6 py-4 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors font-medium text-sm"
+                            value={subscriberEmail}
+                            onChange={(e) => setSubscriberEmail(e.target.value)}
+                            placeholder="Enter your email address"
+                            className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 text-sm"
                           />
-                          <button type="submit" className="bg-blue-600 text-white px-8 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition-all flex items-center gap-2">
-                            Join <ArrowUpRight className="w-4 h-4" />
+                          <button
+                            type="submit"
+                            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors text-sm whitespace-nowrap"
+                          >
+                            Subscribe
                           </button>
                         </form>
                       )}
-                      <div className="text-[10px] text-gray-500 font-bold flex items-center gap-2">
-                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" /> Join 500+ researchers. No spam. Unsubscribe anytime.
-                      </div>
-                   </div>
 
-                   <div className="bg-slate-900 rounded-[3rem] p-12 text-white space-y-8 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 blur-[80px] opacity-20" />
-                      <div className="space-y-4">
-                        <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Inquiry Protocol</p>
-                        <h3 className="text-3xl font-black italic">DIRECT TECHNICAL SUPPORT.</h3>
-                        <p className="text-gray-500 text-sm">Need a specific COA or bulk research quote? Our laboratory specialists are standing by.</p>
+                      {/* Divider */}
+                      <div className="border-t border-gray-800 mt-10 pt-8">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                          <div>
+                            <p className="text-sm text-gray-500 font-medium mb-1">Have a question or need a bulk quote?</p>
+                            <p className="text-white font-bold text-lg">ascendlabz@gmail.com</p>
+                          </div>
+                          <a
+                            href="mailto:ascendlabz@gmail.com"
+                            className="flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-semibold rounded-xl transition-colors text-sm"
+                          >
+                            <Mail className="w-4 h-4" />
+                            Contact the Lab
+                          </a>
+                        </div>
                       </div>
-                      <div className="space-y-4">
-                        <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white/5 rounded-3xl border border-white/10 hover:border-blue-500/50 transition-all group">
-                           <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-2xl shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                              <Mail className="w-5 h-5" />
-                           </div>
-                           <div className="space-y-1">
-                              <p className="text-[10px] text-gray-500 font-bold">EMAIL THE LAB</p>
-                              <p className="text-xl font-bold tracking-tight">ascendlabz@gmail.com</p>
-                           </div>
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-4 text-xs font-bold text-gray-400">
-                        <Clock className="w-4 h-4" /> Response within 24 hours. Mon - Fri.
-                      </div>
-                   </div>
+                    </div>
+                  </div>
                 </section>
 
                 {/* Why Choose Ascend Labz Component */}
                 <section className="max-w-7xl mx-auto px-6 lg:px-12 pb-16">
                    <div className="text-center space-y-4 mb-12">
                       <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Premium Quality</p>
-                      <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">WHY CHOOSE ASCEND LABZ?</h2>
+                      <h2 className="text-3xl lg:text-4xl font-black tracking-tight">WHY CHOOSE ASCEND LABZ?</h2>
                    </div>
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
