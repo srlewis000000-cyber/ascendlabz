@@ -294,7 +294,7 @@ export default function App() {
             })
           });
 
-          // Send customer confirmation email
+          // Send customer confirmation email (to buyer)
           await fetch('https://api.emailjs.com/api/v1.0/email/send', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -303,20 +303,12 @@ export default function App() {
               template_id: 'template_xkbbv54',
               user_id: 'WSYK-Hg-ybgwidKVK',
               template_params: {
-                customer_name: orderData.customer.name,
-                customer_email: orderData.customer.email,
-                customer_phone: orderData.customer.phone,
-                shipping_address: orderData.customer.shippingAddress.line1 || orderData.customer.shippingAddress.address1 || '',
-                city: orderData.customer.shippingAddress.city,
-                state: orderData.customer.shippingAddress.state,
-                zip: orderData.customer.shippingAddress.zip,
-                country: orderData.customer.shippingAddress.country || 'US',
-                shipping_method: orderData.shipping.name,
-                shipping_price: orderData.shipping.price,
-                total: orderData.total,
-                payment_method: orderData.paymentMethod,
+                ...emailParams,
+                to_email: shippingAddress.email || '',
+                reply_to: shippingAddress.email || '',
                 order_id: orderData.id,
-                orders: orderData.items.map((item: any) => ({ name: item.name, units: item.quantity, price: item.price }))
+                payment_method: orderData.paymentMethod,
+                orders: orderData.items.map((item: any) => ({ name: item.name, units: item.quantity, price: '$' + (Number(item.price) * Number(item.quantity)).toFixed(2) }))
               }
             })
           });
