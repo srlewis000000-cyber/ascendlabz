@@ -5,6 +5,7 @@ import { Product, CartItem } from '../types';
 import { VialImage } from './VialImage';
 import { StarRating } from './StarRating';
 import { COADisplay } from './COADisplay';
+import { ProductSchema } from './ProductSchema';
 
 interface ProductPageProps {
   product: Product;
@@ -63,7 +64,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <ProductSchema product={product} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <div className="sticky top-0 z-40 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800 px-4 py-3 flex items-center justify-between">
         <button onClick={onBack} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
           <ArrowLeft className="w-5 h-5" />
@@ -218,5 +221,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
         </div>
       </div>
     </div>
+    </>
   );
 };
