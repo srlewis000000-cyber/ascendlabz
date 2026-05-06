@@ -12,6 +12,103 @@
                                   <meta name="author" content="AscendLabz" />
                                       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
                                           <link rel="canonical" href="https://www.ascendlabz.org/" />
+    <!-- SEO_PER_ROUTE_FIX: dynamic canonical + per-route SEO meta (added to fix Google "Alternate page with proper canonical tag" issue) -->
+    <script>
+    (function(){
+      try {
+        var origin = 'https://www.ascendlabz.org';
+        var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+        var slug = path === '/' ? '' : path.replace(/^\//, '').toLowerCase();
+        var brand = 'AscendLabz';
+        // Per-route SEO data. Titles aim for high-intent keywords; descriptions <= ~160 chars.
+        var META = {
+          '': {
+            title: 'AscendLabz | #1 Most Affordable Retatrutide, Tirzepatide & Research Peptides Online',
+            desc: 'AscendLabz \u2014 buy affordable research peptides online. Retatrutide, tirzepatide, semaglutide, BPC-157 and more. 99%+ purity, third-party COAs, fast US shipping.'
+          },
+          'shop': {
+            title: 'Shop Research Peptides Online | AscendLabz',
+            desc: 'Browse the full AscendLabz catalog of research peptides. Retatrutide, tirzepatide, semaglutide, BPC-157, TB-500, NAD+, GHK-Cu and more \u2014 99%+ purity with third-party COAs.'
+          },
+          'about': { title: 'About AscendLabz | Trusted Research Peptide Supplier', desc: 'AscendLabz is a US-based research peptide supplier focused on purity, transparency, and affordability. Learn about our standards, testing, and mission.' },
+          'contact': { title: 'Contact AscendLabz | Research Peptide Support', desc: 'Get in touch with AscendLabz support for product, COA, and shipping questions. Fast responses from our research-peptide team.' },
+          'faq': { title: 'Research Peptides FAQ | AscendLabz', desc: 'Answers to common questions about ordering, shipping, purity, COAs, and storage of research peptides from AscendLabz.' },
+          'coa': { title: 'Certificates of Analysis (COAs) | AscendLabz', desc: 'Third-party Certificates of Analysis for every AscendLabz peptide. Independently verified purity \u2014 transparency you can trust.' },
+          'lab-solutions': { title: 'Lab Solutions | AscendLabz Research Reagents', desc: 'High-purity research peptides and reagents for labs, clinics, and researchers. Bulk pricing and dedicated support from AscendLabz.' },
+          'policies': { title: 'Store Policies | AscendLabz', desc: 'Shipping, returns, and customer policies for AscendLabz research peptide orders.' },
+          'terms': { title: 'Terms of Service | AscendLabz', desc: 'AscendLabz terms of service for research peptide purchases. Research-use-only products, not for human consumption.' },
+          'privacy': { title: 'Privacy Policy | AscendLabz', desc: 'How AscendLabz collects, uses, and protects your information when you shop research peptides.' }
+        };
+        // Product slugs: name + concise marketing description
+        var PRODUCTS = {
+          'retatrutide': ['Retatrutide', 'GLP-1/GIP/glucagon triple-agonist peptide for weight-management research. 99%+ purity, third-party COA, fast US shipping.'],
+          'tirzepatide': ['Tirzepatide', 'Dual GLP-1/GIP receptor-agonist peptide for metabolic and weight-loss research. Pharma-grade purity with COA from AscendLabz.'],
+          'semaglutide': ['Semaglutide', 'GLP-1 receptor-agonist peptide for weight-loss and glucose research. 99%+ purity, third-party tested, ships fast in the US.'],
+          'bpc-157': ['BPC-157', 'Body Protective Compound 157 \u2014 healing and recovery research peptide. High purity, COA verified, affordable from AscendLabz.'],
+          'cagrilintide': ['Cagrilintide', 'Long-acting amylin analog peptide for appetite and weight-management research. 99%+ purity with third-party COA.'],
+          'tb-500': ['TB-500', 'Thymosin Beta-4 fragment peptide for tissue-repair and recovery research. High-purity research-grade quality from AscendLabz.'],
+          'sermorelin': ['Sermorelin', 'GHRH analog peptide for growth-hormone research. 99%+ purity, third-party verified, fast US shipping.'],
+          'nad-plus': ['NAD+', 'Nicotinamide adenine dinucleotide for cellular-energy and longevity research. Pharma-grade, COA-verified from AscendLabz.'],
+          'pt-141': ['PT-141 (Bremelanotide)', 'Melanocortin agonist peptide for sexual-function research. High-purity research-grade with COA.'],
+          'ghk-cu': ['GHK-Cu', 'Copper tripeptide for skin, hair, and recovery research. 99%+ purity with third-party COA from AscendLabz.'],
+          'survodutide': ['Survodutide', 'GLP-1/glucagon dual-agonist peptide for weight and metabolic research. Pharma-grade purity, COA verified.'],
+          'ipamorelin': ['Ipamorelin', 'Selective GHRP for growth-hormone research. 99%+ purity, third-party COA, affordable from AscendLabz.'],
+          'melanotan-2': ['Melanotan-2', 'Melanocortin-receptor agonist peptide for pigmentation research. High purity with COA from AscendLabz.'],
+          'tesamorelin': ['Tesamorelin', 'GHRH analog peptide for visceral-fat and growth-hormone research. 99%+ purity, COA verified.'],
+          'aod-9604': ['AOD-9604', 'Modified hGH fragment peptide for fat-metabolism research. Pharma-grade purity from AscendLabz.'],
+          'hexarelin': ['Hexarelin', 'Potent GHRP for growth-hormone research. High purity with third-party COA, fast US shipping.'],
+          'mazdutide': ['Mazdutide', 'GLP-1/glucagon dual-agonist peptide for metabolic and weight-loss research. 99%+ purity with COA.'],
+          'igf-1-lr3': ['IGF-1 LR3', 'Long-Arg3 IGF-1 analog peptide for growth and recovery research. Pharma-grade purity from AscendLabz.'],
+          'epitalon': ['Epitalon', 'Tetrapeptide for longevity and telomerase research. 99%+ purity with third-party COA.'],
+          'ghrp-2': ['GHRP-2', 'Growth-hormone releasing peptide for endocrine research. High purity, COA verified.'],
+          'mots-c': ['MOTS-c', 'Mitochondrial-derived peptide for metabolic and longevity research. Pharma-grade quality from AscendLabz.'],
+          'ghrp-6': ['GHRP-6', 'Growth-hormone releasing peptide for appetite and GH research. 99%+ purity with COA.'],
+          '5-amino-1mq': ['5-Amino-1MQ', 'NNMT-inhibitor compound for metabolic and obesity research. High purity from AscendLabz.'],
+          'ahk-cu': ['AHK-Cu', 'Copper tripeptide for hair-growth research. Pharma-grade purity with third-party COA.'],
+          'melanotan-1': ['Melanotan-1', 'Melanocortin-receptor agonist peptide for pigmentation research. 99%+ purity with COA.'],
+          'gdf-8': ['GDF-8 (Myostatin)', 'Myostatin-related peptide for muscle research. High purity, COA verified from AscendLabz.'],
+          'kisspeptin-10': ['Kisspeptin-10', 'Reproductive endocrine research peptide. Pharma-grade purity with third-party COA.'],
+          'ss-31': ['SS-31 (Elamipretide)', 'Mitochondria-targeted peptide for cellular-energy research. 99%+ purity with COA.'],
+          'triptorelin': ['Triptorelin', 'GnRH analog peptide for endocrine research. High purity from AscendLabz with third-party COA.'],
+          'cagrilintide-semaglutide': ['Cagrilintide + Semaglutide Stack', 'Cagrilintide and semaglutide combined research peptide stack. 99%+ purity, COA verified, fast US shipping.'],
+          'hcg': ['HCG', 'Human chorionic gonadotropin research peptide. Pharma-grade purity with third-party COA from AscendLabz.'],
+          'cerebrolysin': ['Cerebrolysin', 'Neuropeptide preparation for cognitive and neurological research. High purity from AscendLabz.'],
+          'bpc-tb-stack': ['BPC-157 + TB-500 Stack', 'BPC-157 and TB-500 combined recovery and repair research stack. 99%+ purity with COA.']
+        };
+        var info;
+        if (PRODUCTS[slug]) {
+          var p = PRODUCTS[slug];
+          info = { title: 'Buy ' + p[0] + ' Online | Research Peptide | ' + brand, desc: p[1] };
+        } else if (META[slug]) {
+          info = META[slug];
+        } else if (slug === '') {
+          info = META[''];
+        } else {
+          // Unknown route: keep homepage SEO but canonical to current path
+          info = { title: META[''].title, desc: META[''].desc };
+        }
+        var canonicalUrl = origin + (slug ? '/' + slug : '/');
+        function setMeta(selector, attr, value, createTag, createAttrs) {
+          var el = document.head.querySelector(selector);
+          if (!el && createTag) {
+            el = document.createElement(createTag);
+            if (createAttrs) for (var k in createAttrs) el.setAttribute(k, createAttrs[k]);
+            document.head.appendChild(el);
+          }
+          if (el) el.setAttribute(attr, value);
+        }
+        setMeta('link[rel="canonical"]', 'href', canonicalUrl, 'link', { rel: 'canonical' });
+        setMeta('meta[property="og:url"]', 'content', canonicalUrl, 'meta', { property: 'og:url' });
+        setMeta('meta[property="og:title"]', 'content', info.title, 'meta', { property: 'og:title' });
+        setMeta('meta[property="og:description"]', 'content', info.desc, 'meta', { property: 'og:description' });
+        setMeta('meta[name="twitter:title"]', 'content', info.title, 'meta', { name: 'twitter:title' });
+        setMeta('meta[name="twitter:description"]', 'content', info.desc, 'meta', { name: 'twitter:description' });
+        setMeta('meta[name="description"]', 'content', info.desc, 'meta', { name: 'description' });
+        document.title = info.title;
+      } catch (e) { /* fail silently to not break the app */ }
+    })();
+    </script>
+
                                               <meta name="google-site-verification" content="2Ja41hSGC16re4VnE5tx4XmSmBTUaTMd-38tpZXhw6c" />
                                               
                                                   <!-- Open Graph / Facebook -->
