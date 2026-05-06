@@ -97,7 +97,54 @@ const CounterStat = ({ value, label, suffix = "" }: { value: number, label: stri
 };
 
 export default function App() {
-  const [page, setPage] = useState<Page>("home");
+  // --- URL-driven routing ---------------------------------------------------
+  const PRODUCT_SLUGS = React.useMemo(()=>new Set(PRODUCTS.map(p=>p.id)),[]);
+  const pathToState = React.useCallback((pathname: string): { page: Page; product: Product | null } => {
+    const clean = pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+    if (!clean) return { page: "home", product: null };
+    const knownPages: Page[] = ["shop","checkout","coa","faq","lab-solutions","admin","about","contact","policies","terms","privacy"];
+    if ((knownPages as string[]).includes(clean)) return { page: clean as Page, product: null };
+    if (PRODUCT_SLUGS.has(clean)) {
+      const product = PRODUCTS.find(p => p.id === clean) || null;
+      return { page: "product", product };
+    }
+    return { page: "home", product: null };
+  }, [PRODUCT_SLUGS]);
+  const initial = typeof window !== "undefined" ? pathToState(window.location.pathname) : { page: "home" as Page, product: null as Product | null };
+  const [page, _setPage] = useState<Page>(initial.page);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(initial.product);
+  const selectedProductRef = React.useRef<Product | null>(initial.product);
+  React.useEffect(() => { selectedProductRef.current = selectedProduct; }, [selectedProduct]);
+  const stateToPath = (p: Page, prod: Product | null): string => {
+    if (p === "home") return "/";
+    if (p === "product" && prod) return "/" + prod.id;
+    return "/" + p;
+  };
+  const setPage = React.useCallback((next: Page) => {
+    _setPage(next);
+    const target = stateToPath(next, next === "product" ? selectedProductRef.current : null);
+    if (typeof window !== "undefined" && window.location.pathname !== target) {
+      window.history.pushState({ page: next }, "", target);
+    }
+  }, []);
+  React.useEffect(() => {
+    if (page === "product" && selectedProduct) {
+      const target = "/" + selectedProduct.id;
+      if (window.location.pathname !== target) {
+        window.history.pushState({ page: "product", id: selectedProduct.id }, "", target);
+      }
+    }
+  }, [page, selectedProduct]);
+  React.useEffect(() => {
+    const onPop = () => {
+      const { page: p, product } = pathToState(window.location.pathname);
+      _setPage(p);
+      setSelectedProduct(product);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [pathToState]);
+  // --- end routing ----------------------------------------------------------
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
   const [shippingMethod, setShippingMethod] = useState<'standard' | 'express' | 'overnight'>('standard');
   const [orderComplete, setOrderComplete] = useState<Order | null>(null);
@@ -110,7 +157,7 @@ export default function App() {
   const [subscriberEmail, setSubscriberEmail] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  
   const [promoCode, setPromoCode] = useState("");
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [shippingAddress, setShippingAddress] = useState({
