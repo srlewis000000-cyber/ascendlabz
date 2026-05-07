@@ -9,11 +9,11 @@ interface VialImageProps {
   color?: string;
 }
 
-export function VialImage({ name, className }: VialImageProps) {
+export function VialImage({ name, className, image }: VialImageProps) {
   return (
     <div className={`relative w-full h-full overflow-hidden ${className || ''}`}>
       <img
-        src='/vial.png'
+        src={image || '/vial.png'}
         alt={name}
         className='w-full h-full object-cover'
         referrerPolicy='no-referrer'
