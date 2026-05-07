@@ -70,7 +70,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
         <VialImage
           name={product.name}
           image={product.image}
-          className="w-full h-48 object-cover"
+          className="w-full"
         />
       </div>
       <div className="p-4 flex flex-col flex-1">
