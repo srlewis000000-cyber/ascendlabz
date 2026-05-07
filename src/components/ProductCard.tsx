@@ -68,8 +68,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           </div>
         )}
         <VialImage
-          productId={product.id}
-          category={product.category}
+          name={product.name}
+          image={product.image}
           className="w-full h-48 object-cover"
         />
       </div>
