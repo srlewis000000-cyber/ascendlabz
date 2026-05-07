@@ -11,7 +11,7 @@ interface VialImageProps {
 
 export function VialImage({ name, className, image }: VialImageProps) {
   return (
-    <div className={`relative w-full h-full overflow-hidden ${className || ''}`}>
+        <div className={`relative w-full aspect-square overflow-hidden bg-gray-900 ${className || ''}`}>
       <img
         src={image || '/vial.png'}
         alt={name}
