@@ -50,7 +50,7 @@ export const PRODUCTS: Product[] = [
           d("40mg", 149, 685.40, 1266.50, 2324.40),
           d("50mg", 164, 754.40, 1394, 2558.40),
           d("60mg", 179, 823.40, 1521.50, 2792.40),
-        ], 4.9, 142),
+        ], 4.9, 142, "/retatrutide.jpg"),
     p("tirzepatide", "Tirzepatide", "Weight Loss & Metabolic", [
           d("5mg", 32.20, 148.12, 273.70, 502.32),
           d("10mg", 57, 262.20, 484.50, 889.20, { taskNumber: "TZ-2024-031", date: "2024-02-20", purity: "99.5%", content: "10.2mg", key: "tirzepatide-10mg" }),
@@ -60,7 +60,7 @@ export const PRODUCTS: Product[] = [
           d("40mg", 78.20, 359.72, 664.70, 1219.92),
           d("50mg", 87.40, 402.04, 742.90, 1363.44),
           d("60mg", 101.20, 465.52, 860.20, 1578.72),
-        ], 4.8, 217),
+        ], 4.8, 217, "/tirzepatide.jpg"),
     p("semaglutide", "Semaglutide", "Weight Loss & Metabolic", [
           d("5mg", 26.70, 122.82, 226.95, 416.52),
           d("10mg", 26.70, 122.82, 226.95, 416.52),
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     p("bpc-157", "BPC-157", "Healing & Recovery", [
           d("5mg", 23, 105.80, 195.50, 358.80, { taskNumber: "BP-2024-089", date: "2024-01-10", purity: "99.1%", content: "5.1mg", key: "bpc-157-5mg" }),
           d("10mg", 25.70, 118.22, 218.45, 400.92),
-        ], 4.8, 204),
+        ], 4.8, 204, "/bpc-157.jpg"),
     p("tb-500", "TB-500", "Healing & Recovery", [
           d("5mg", 26.70, 122.82, 226.95, 416.52),
           d("10mg", 32.20, 148.12, 273.70, 502.32),
