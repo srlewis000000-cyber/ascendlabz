@@ -79,7 +79,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
         <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-          <VialImage productId={product.id} category={product.category} className="w-full h-64 object-cover" />
+          <VialImage name={product.name} image={product.image} className="w-full h-64 object-cover" />
           {product.badge && (
             <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
               {product.badge}
