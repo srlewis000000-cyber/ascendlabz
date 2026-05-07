@@ -15,7 +15,7 @@ export function VialImage({ name, className, image }: VialImageProps) {
       <img
         src={image || '/vial.png'}
         alt={name}
-        className='w-full h-full object-cover'
+                  className='w-full h-full object-contain bg-gray-900'
         referrerPolicy='no-referrer'
         onError={(e) => {
           const target = e.currentTarget;
