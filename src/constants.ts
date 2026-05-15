@@ -34,7 +34,7 @@ const p = (
       group,
       categoryColor: CATEGORIES.find(c => c.name === group)?.color || "#ffffff",
       mg: dosages[0].mg,
-      coa: dosages[0].coa,
+      coa: dosages.find(x => x.coa)?.coa || dosages[0].coa,
       rating,
       reviewCount,
       image,
@@ -43,23 +43,23 @@ const p = (
 export const PRODUCTS: Product[] = [
     p("retatrutide", "Retatrutide", "Weight Loss & Metabolic", [
           d("5mg", 46, 211.60, 391, 717.60),
-          d("10mg", 54, 248.40, 459, 842.40, { taskNumber: "RT-2024-047", date: "2024-03-15", purity: "99.2%", content: "10.1mg", key: "retatrutide-10mg" }),
+          d("10mg", 54, 248.40, 459, 842.40),
           d("15mg", 79, 363.40, 671.50, 1232.40),
           d("20mg", 94, 432.40, 799, 1466.40),
-          d("30mg", 119, 547.40, 1011.50, 1856.40),
+          d("30mg", 119, 547.40, 1011.50, 1856.40, { taskNumber: "#70490", date: "08 JUL 2025", purity: "99.780%", content: "31.08 mg", key: "9ESQLUYRP983", imageUrl: "/coas/coa-retatrutide-30mg.jpg" }),
           d("40mg", 149, 685.40, 1266.50, 2324.40),
           d("50mg", 164, 754.40, 1394, 2558.40),
           d("60mg", 179, 823.40, 1521.50, 2792.40),
         ], 4.9, 142, "/retatrutide.jpg"),
     p("tirzepatide", "Tirzepatide", "Weight Loss & Metabolic", [
           d("5mg", 32.20, 148.12, 273.70, 502.32),
-          d("10mg", 57, 262.20, 484.50, 889.20, { taskNumber: "TZ-2024-031", date: "2024-02-20", purity: "99.5%", content: "10.2mg", key: "tirzepatide-10mg" }),
+          d("10mg", 57, 262.20, 484.50, 889.20),
           d("15mg", 57, 262.20, 484.50, 889.20),
           d("20mg", 61.60, 283.36, 523.60, 960.96),
-          d("30mg", 64.40, 296.24, 547.40, 1004.64),
+          d("30mg", 64.40, 296.24, 547.40, 1004.64, { taskNumber: "#70489", date: "08 JUL 2025", purity: "99.637%", content: "31.33 mg", key: "9SFDV8AW56HZ", imageUrl: "/coas/coa-tirzepatide-30mg.jpg" }),
           d("40mg", 78.20, 359.72, 664.70, 1219.92),
           d("50mg", 87.40, 402.04, 742.90, 1363.44),
-          d("60mg", 101.20, 465.52, 860.20, 1578.72),
+          d("60mg", 101.20, 465.52, 860.20, 1578.72, { taskNumber: "#70489", date: "08 JUL 2025", purity: "99.856%", content: "67.51 mg", key: "VLFK4QWYT8YF", imageUrl: "/coas/coa-tirzepatide-60mg.jpg" }),
         ], 4.8, 217, "/tirzepatide.jpg"),
     p("semaglutide", "Semaglutide", "Weight Loss & Metabolic", [
           d("5mg", 26.70, 122.82, 226.95, 416.52),
@@ -85,19 +85,19 @@ export const PRODUCTS: Product[] = [
           d("10mg", 90, 414, 765, 1404),
         ], 4.8, 52),
     p("bpc-157", "BPC-157", "Healing & Recovery", [
-          d("5mg", 23, 105.80, 195.50, 358.80, { taskNumber: "BP-2024-089", date: "2024-01-10", purity: "99.1%", content: "5.1mg", key: "bpc-157-5mg" }),
-          d("10mg", 25.70, 118.22, 218.45, 400.92),
+          d("5mg", 23, 105.80, 195.50, 358.80),
+          d("10mg", 25.70, 118.22, 218.45, 400.92, { taskNumber: "#70491", date: "08 JUL 2025", purity: "99.755%", content: "14.04 mg", key: "CGNEL1DPZYUQ", imageUrl: "/coas/coa-bpc157-10mg.jpg" }),
         ], 4.8, 204, "/bpc-157.jpg"),
     p("tb-500", "TB-500", "Healing & Recovery", [
           d("5mg", 26.70, 122.82, 226.95, 416.52),
           d("10mg", 32.20, 148.12, 273.70, 502.32),
         ], 4.7, 156),
     p("bpc-tb-stack", "BPC-157 + TB-500 Stack", "Healing & Recovery", [
-          d("10mg", 40.80, 187.68, 346.80, 636.48),
+          d("10mg", 40.80, 187.68, 346.80, 636.48, { taskNumber: "#70494", date: "08 JUL 2025", purity: "Verified", content: "BPC 5.71 mg / TB 5.44 mg", key: "YRQWWS5JFKHI", imageUrl: "/coas/coa-bpc-tb-stack-10mg.jpg" }),
           d("20mg", 55, 253, 467.50, 858),
         ], 4.9, 112),
     p("glow-stack", "Glow Stack (BPC+TB+GHK)", "Healing & Recovery", [
-          d("70mg", 71.25, 327.75, 605.63, 1111.50, { taskNumber: "GL-2024-012", date: "2024-02-05", purity: "98.9%", content: "Blend verified", key: "glow-stack" }),
+          d("70mg", 71.25, 327.75, 605.63, 1111.50, { taskNumber: "#70495", date: "10 JUL 2025", purity: "Verified Blend", content: "BPC 11.91 / GHK 58.75 / TB 11.23 mg", key: "VLFK4QWYT8YF", imageUrl: "/coas/coa-glow-stack-70mg.jpg" }),
         ], 4.9, 78),
     p("multi-repair-stack", "Multi Repair Stack", "Healing & Recovery", [
           d("80mg", 63, 289.80, 535.50, 982.80),
@@ -114,8 +114,8 @@ export const PRODUCTS: Product[] = [
           d("10mg", 43.20, 198.72, 367.20, 673.92),
         ], 4.6, 98),
     p("tesamorelin", "Tesamorelin", "Growth Hormone & IGF", [
-          d("5mg", 39.60, 182.16, 336.60, 617.76, { taskNumber: "TS-2024-019", date: "2024-03-01", purity: "99.3%", content: "5.0mg", key: "tesamorelin-5mg" }),
-          d("10mg", 46, 211.60, 391, 717.60),
+          d("5mg", 39.60, 182.16, 336.60, 617.76),
+          d("10mg", 46, 211.60, 391, 717.60, { taskNumber: "#70492", date: "08 JUL 2025", purity: "99.032%", content: "10.66 mg", key: "1SU8R9DKKUFA", imageUrl: "/coas/coa-tesamorelin-10mg.jpg" }),
         ], 4.7, 74),
     p("ipamorelin", "Ipamorelin", "Growth Hormone & IGF", [
           d("5mg", 27.60, 126.96, 234.60, 430.56),
