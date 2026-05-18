@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Calendar, FileText, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Calendar, FileText, CheckCircle2, Image as ImageIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Product } from '../types';
 
@@ -83,6 +83,32 @@ export const COADisplay: React.FC<COADisplayProps> = ({ product, onClose }) => {
           </div>
         </div>
 
+        {/* Original COA Scan */}
+        {coa.imageUrl && (
+          <div className="space-y-4 pt-4 border-t border-slate-100">
+            <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest flex items-center gap-2">
+              <ImageIcon className="w-4 h-4 text-[#00a651]" />
+              ORIGINAL LAB CERTIFICATE
+            </h3>
+            <a
+              href={coa.imageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-xl border border-slate-200 overflow-hidden bg-white hover:border-[#00a651] transition-colors"
+            >
+              <img
+                src={coa.imageUrl}
+                alt={`${product.name} ${product.mg} Certificate of Analysis`}
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+            <p className="text-[10px] font-bold text-slate-400 text-center uppercase tracking-widest">
+              Click image to open full size
+            </p>
+          </div>
+        )}
+
         {/* Verification Footer */}
         <div className="bg-slate-50 p-6 rounded-xl space-y-4 border border-slate-100">
           <div className="flex items-center gap-3 text-slate-500">
@@ -100,10 +126,10 @@ export const COADisplay: React.FC<COADisplayProps> = ({ product, onClose }) => {
           </div>
         </div>
       </div>
-      
+
       {onClose && (
         <div className="p-6 border-t border-slate-100 flex justify-end">
-          <button 
+          <button
             onClick={onClose}
             className="px-6 py-2 bg-slate-900 text-white text-xs font-black uppercase tracking-widest rounded-lg hover:bg-slate-800 transition-colors"
           >
