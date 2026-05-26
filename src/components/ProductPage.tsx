@@ -185,7 +185,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
                   className="overflow-hidden"
                 >
                   <div className="pt-3">
-                    <COADisplay coaData={(currentDosage.coa || product.coa)!} productName={product.name} />
+                    <COADisplay product={{ ...product, coa: (currentDosage.coa || product.coa) }} productName={product.name} />
                   </div>
                 </motion.div>
               )}
