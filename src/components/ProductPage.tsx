@@ -279,9 +279,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
                 {related.map(r => {
                   const rPrice = r.dosages?.[0]?.prices?.[1] ?? (r as any).prices?.[1] ?? 0;
                   return (
-                    <button
+                    <a
                       key={r.id}
-                      onClick={() => onSelectProduct ? onSelectProduct(r) : window.scrollTo({ top: 0, behavior: 'smooth' })}
+                      href={'/' + r.id}
+                      onClick={(e) => { if (onSelectProduct) { e.preventDefault(); onSelectProduct(r); } }}
                       className="group relative flex flex-col items-start p-3 rounded-xl bg-gray-900 border border-blue-500/15 hover:border-amber-500/50 hover:-translate-y-1 transition-all text-left"
                     >
                       <div className="w-full h-24 rounded-lg overflow-hidden bg-gray-800 mb-2">
@@ -293,7 +294,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
                         <span className="text-emerald-400 font-bold text-sm">{'$' + Number(rPrice).toFixed(2)}</span>
                         <span className="text-[10px] text-amber-300 group-hover:text-amber-200">View →</span>
                       </div>
-                    </button>
+                    </a>
                   );
                 })}
               </div>
