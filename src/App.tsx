@@ -690,7 +690,7 @@ export default function App() {
                     >
                       <button 
                         onClick={() => setPage("shop")}
-                        className="w-full sm:w-auto px-10 py-5 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-blue-600/10"
+                        className="w-full sm:w-auto px-10 py-5 bg-amber-500 text-black rounded-2xl font-black text-lg hover:bg-amber-400 shadow-lg shadow-amber-500/40 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-blue-600/10"
                       >
                         EXPLORE CATALOG <ArrowRight className="w-5 h-5" />
                       </button>
@@ -1003,7 +1003,7 @@ export default function App() {
                 className="flex items-start justify-center pt-10"
               >
                 <div className="w-full">
-                  <ProductPage product={selectedProduct} onBack={() => setPage("shop")} onAddToCart={addToCart} />
+                  <ProductPage product={selectedProduct} onBack={() => setPage("shop")} onAddToCart={addToCart} onSelectProduct={(p) => { setSelectedProduct(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
                 </div>
               </motion.div>
             )}
