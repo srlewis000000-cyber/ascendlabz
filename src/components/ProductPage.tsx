@@ -29,6 +29,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
   const [showDetails, setShowDetails] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [addedFeedback, setAddedFeedback] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const currentDosage = product.dosages[selectedDosageIdx];
   const hasMultipleDosages = product.dosages.length > 1;
@@ -49,17 +50,22 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
   }, [product.id, product.group]);
 
   const handleAddToCart = () => {
-    onAddToCart({
-      id: product.id + '-' + currentDosage.mg + '-' + selectedPack,
-      name: product.name,
-      price: getPrice(selectedPack),
-      quantity,
-      mg: currentDosage.mg,
-      vials: selectedPack,
-      image: product.image,
-    } as any);
-    setAddedFeedback(true);
-    setTimeout(() => setAddedFeedback(false), 1500);
+    if (isProcessing) return;
+    setIsProcessing(true);
+    setTimeout(() => {
+      onAddToCart({
+        id: product.id + '-' + currentDosage.mg + '-' + selectedPack,
+        name: product.name,
+        price: getPrice(selectedPack),
+        quantity,
+        mg: currentDosage.mg,
+        vials: selectedPack,
+        image: product.image,
+      } as any);
+      setIsProcessing(false);
+      setAddedFeedback(true);
+      setTimeout(() => setAddedFeedback(false), 1500);
+    }, 650);
   };
 
   const handleShare = () => {
@@ -84,7 +90,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </button>
         </div>
 
-        <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
+        <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
+            <div className="lg:sticky lg:top-6">
           <div className="relative rounded-2xl overflow-hidden bg-gray-900">
             <VialImage name={product.name} image={product.image} className="w-full h-64 object-cover" />
             {(product as any).badge && (
@@ -93,6 +101,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               </div>
             )}
           </div>
+            </div>
+            <div className="space-y-6">
 
           <div>
             <h1 className="text-2xl font-bold text-white mb-2">{product.name}</h1>
@@ -192,7 +202,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               className={'w-full py-4 rounded-xl font-extrabold text-base flex items-center justify-center gap-2 transition-all ' + (addedFeedback ? 'bg-green-600 text-white' : 'hover:brightness-110')}
             >
               <ShoppingCart className="w-5 h-5" />
-              {addedFeedback ? 'Added to Cart!' : 'Add to Cart'}
+              {isProcessing ? 'Adding to cart…' : (addedFeedback ? 'Added to Cart!' : 'Add to Cart')}
             </motion.button>
 
             <div className="grid grid-cols-4 gap-2 pt-2">
@@ -243,6 +253,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               </AnimatePresence>
             </div>
           )}
+
+            </div>
+          </div>
 
           <div>
             <button
@@ -305,3 +318,4 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
     </>
   );
 };
+
