@@ -90,22 +90,18 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </button>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
-            <div className="lg:sticky lg:top-6">
+        <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
           <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-            <VialImage name={product.name} image={product.image} className="w-full h-64 object-cover" />
+            <VialImage name={product.name} image={product.image} className="w-full h-96 sm:h-[28rem] object-contain p-6" />
             {(product as any).badge && (
               <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
                 {(product as any).badge}
               </div>
             )}
           </div>
-            </div>
-            <div className="space-y-6">
 
           <div>
-            <h1 className="text-2xl font-bold text-white mb-2">{product.name}</h1>
+            <h1 className="text-3xl font-bold text-white mb-2">{product.name}</h1>
             <div className="flex items-center gap-3 mb-3">
               <StarRating rating={product.rating} reviewCount={product.reviewCount} />
             </div>
@@ -253,9 +249,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               </AnimatePresence>
             </div>
           )}
-
-            </div>
-          </div>
 
           <div>
             <button
