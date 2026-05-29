@@ -65,7 +65,7 @@ const CounterStat = ({ value, label, suffix = "" }: { value: number, label: stri
 
   React.useEffect(() => {
     if (isInView) {
-      let start = end * 0.85;
+      let start = value * 0.85;
       const end = value;
       const duration = 2000;
       const increment = end / (duration / 16);
