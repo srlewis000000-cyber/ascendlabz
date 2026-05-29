@@ -6,15 +6,15 @@ const FAQItem: React.FC<{ question: string; answer: string | React.ReactNode }> 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-slate-100 last:border-0 overflow-hidden">
+    <div className="border-b border-gray-800 last:border-0 overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between py-6 lg:py-8 text-left group"
       >
-        <h3 className={`text-lg lg:text-xl font-bold tracking-tight transition-colors ${isOpen ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-500'}`}>
+        <h3 className={`text-lg lg:text-xl font-bold tracking-tight transition-colors ${isOpen ? 'text-blue-400' : 'text-white group-hover:text-blue-400'}`}>
           {question}
         </h3>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isOpen ? 'bg-blue-600 text-white rotate-180' : 'bg-slate-100 text-slate-500 group-hover:bg-blue-50'}`}>
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isOpen ? 'bg-blue-600 text-white rotate-180' : 'bg-gray-800 text-gray-400 group-hover:bg-blue-50'}`}>
           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
         </div>
       </button>
@@ -26,7 +26,7 @@ const FAQItem: React.FC<{ question: string; answer: string | React.ReactNode }> 
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
           >
-            <div className="pb-8 text-slate-500 leading-relaxed font-medium">
+            <div className="pb-8 text-gray-400 leading-relaxed font-medium">
               {answer}
             </div>
           </motion.div>
@@ -73,25 +73,25 @@ export const FAQPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50/30">
+    <div className="min-h-screen bg-transparent text-white">
       {/* Header */}
       <section className="pb-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center space-y-4">
         <div className="flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full border border-blue-100 mb-4">
           <HelpCircle className="w-4 h-4" />
           <span className="text-[10px] font-black uppercase tracking-widest">Help Center</span>
         </div>
-        <h1 className="text-6xl font-black tracking-tighter text-slate-900 leading-[0.9]">
+        <h1 className="text-5xl lg:text-6xl font-black tracking-tighter text-white leading-[0.9]">
           FREQUENTLY ASKED.<br/>
-          <span className="text-transparent border-text-stroke-1" style={{ WebkitTextStroke: '1px #0f172a' }}>RESEARCH QUESTIONS.</span>
+          <span className="text-transparent border-text-stroke-1" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.5)' }}>RESEARCH QUESTIONS.</span>
         </h1>
-        <p className="max-w-xl text-slate-500 font-medium py-6">
+        <p className="max-w-xl text-gray-300 font-medium py-6 mx-auto">
           Everything you need to know about our quality standards, shipping protocols, and research compliance.
         </p>
       </section>
 
       {/* FAQ Accordion */}
       <section className="px-6 pb-16 max-w-4xl mx-auto">
-        <div className="bg-white rounded-[2.5rem] p-8 lg:p-12 shadow-sm border border-slate-100">
+        <div className="bg-white rounded-[2.5rem] p-8 lg:p-12 shadow-sm border border-gray-800">
           {faqs.map((faq, index) => (
             <FAQItem key={index} question={faq.question} answer={faq.answer} />
           ))}
@@ -101,7 +101,7 @@ export const FAQPage = () => {
         <div className="mt-16 bg-slate-900 rounded-[2rem] p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-2">
             <h3 className="text-white text-2xl font-bold tracking-tight">Still have questions?</h3>
-            <p className="text-slate-400">Can't find the answer you're looking for? Reach out to our research specialists.</p>
+            <p className="text-gray-500">Can't find the answer you're looking for? Reach out to our research specialists.</p>
           </div>
           <a
             href="mailto:ascendlabz@gmail.com"
