@@ -1369,6 +1369,17 @@ export default function App() {
                           <Clock className="w-4 h-4 text-blue-600" />
                           <span className="text-sm font-bold">Within 24 Hours</span>
                        </div>
+                      </div>
+                      <div className="space-y-2 pt-2">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Community</p>
+                        <div className="flex items-center gap-3">
+                          <a href="https://www.reddit.com/r/Peptides/" target="_blank" rel="noopener noreferrer" aria-label="Reddit" className="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-600 transition-colors flex items-center justify-center group">
+                            <svg className="w-4 h-4 text-gray-300 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm6.6 13.2c.1.3.1.6.1.9 0 3-3.4 5.4-7.6 5.4s-7.6-2.4-7.6-5.4c0-.3 0-.6.1-.9-.6-.3-1-.9-1-1.6 0-1 .8-1.8 1.8-1.8.5 0 .9.2 1.3.5 1.3-.9 3-1.4 4.9-1.5l.9-4.3c0-.1.1-.2.2-.2.1-.1.2-.1.3 0l3 .6c.2-.4.6-.7 1.1-.7.7 0 1.3.6 1.3 1.3s-.6 1.3-1.3 1.3c-.7 0-1.2-.5-1.3-1.2l-2.7-.6-.8 3.8c1.9.1 3.6.6 4.9 1.5.3-.3.8-.5 1.3-.5 1 0 1.8.8 1.8 1.8 0 .7-.5 1.3-1.1 1.6zM8 13.5c0-.7.6-1.3 1.3-1.3s1.3.6 1.3 1.3-.6 1.3-1.3 1.3-1.3-.6-1.3-1.3zm6.5 3.4c-.8.8-2 1.2-3.2 1.2-1.2 0-2.4-.4-3.2-1.2-.2-.2-.2-.4 0-.6.2-.2.4-.2.6 0 .6.6 1.6 1 2.6 1 1 0 2-.4 2.6-1 .2-.2.4-.2.6 0 .2.2.2.5 0 .6zm-.3-2.2c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3z"/></svg>
+                          </a>
+                          <a href="mailto:ascendlabz@gmail.com" aria-label="Email" className="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-600 transition-colors flex items-center justify-center group">
+                            <Mail className="w-4 h-4 text-gray-300 group-hover:text-white" />
+                          </a>
+                        </div>
                     </div>
                  </div>
               </div>
