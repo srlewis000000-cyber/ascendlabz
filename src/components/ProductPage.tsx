@@ -90,9 +90,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
           </button>
         </div>
 
-        <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="lg:grid lg:grid-cols-[5fr_6fr] lg:gap-10 lg:items-start space-y-8 lg:space-y-0">
           <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-            <VialImage name={product.name} image={product.image} className="w-full h-96 sm:h-[28rem] object-contain p-6" />
+            <VialImage name={product.name} image={product.image} className="w-full h-[28rem] sm:h-[32rem] lg:h-[36rem] object-contain p-6" />
             {(product as any).badge && (
               <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
                 {(product as any).badge}
@@ -100,7 +101,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
             )}
           </div>
 
-          <div>
+          <div className="space-y-8">
+            <div>
             <h1 className="text-3xl font-bold text-white mb-2">{product.name}</h1>
             <div className="flex items-center gap-3 mb-3">
               <StarRating rating={product.rating} reviewCount={product.reviewCount} />
@@ -220,7 +222,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               </div>
             </div>
           </div>
+          </div>
+        </div>
 
+        <div className="space-y-8 lg:pt-10">
           {(currentDosage.coa || (product as any).coa) && (
             <div>
               <button
@@ -306,6 +311,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
               </div>
             </div>
           )}
+        </div>
         </div>
       </div>
     </>
