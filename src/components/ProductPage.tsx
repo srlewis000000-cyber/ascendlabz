@@ -91,9 +91,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAdd
         </div>
 
         <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="lg:grid lg:grid-cols-[5fr_6fr] lg:gap-10 lg:items-start space-y-8 lg:space-y-0">
-          <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-            <VialImage name={product.name} image={product.image} className="w-full h-[28rem] sm:h-[32rem] lg:h-[36rem] object-contain p-6" />
+        <div className="lg:grid lg:grid-cols-[5fr_6fr] lg:gap-10 lg:items-stretch space-y-8 lg:space-y-0">
+          <div className="relative rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center min-h-[28rem] lg:min-h-[32rem]">
+            <VialImage name={product.name} image={product.image} className="w-full h-auto max-h-[32rem] lg:max-h-[40rem] object-contain p-6" />
             {(product as any).badge && (
               <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
                 {(product as any).badge}
