@@ -61,11 +61,11 @@ type Page = "home" | "shop" | "product" | "checkout" | "coa" | "faq" | "lab-solu
 const CounterStat = ({ value, label, suffix = "" }: { value: number, label: string, suffix?: string }) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(value);
 
   React.useEffect(() => {
     if (isInView) {
-      let start = 0;
+      let start = end * 0.85;
       const end = value;
       const duration = 2000;
       const increment = end / (duration / 16);
@@ -528,7 +528,7 @@ export default function App() {
               >
                 <div className="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
                   <div className="flex-1 flex justify-center gap-8">
-                              <span>FREE SHIPPING on orders over $150</span>
+                              <span>FREE SHIPPING on orders over $99</span>
                     <span className="hidden md:inline">| Use code RESEARCH10 for 10% off your first order</span>
                     <span className="hidden lg:inline">| <a href="mailto:ascendlabz@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline">ascendlabz@gmail.com</a></span>
                   </div>
@@ -721,10 +721,10 @@ export default function App() {
                 <section className="px-4 -mt-4 relative z-20">
                    <div className="max-w-7xl mx-auto bg-gray-900 rounded-2xl border border-gray-800 p-5 lg:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl relative overflow-hidden">
                       <div className="absolute inset-0 bg-blue-600/5 pointer-events-none" />
-                      <CounterStat value={2000} suffix="+" label="Orders Fulfilled" />
-                      <CounterStat value={99} suffix=".9%" label="Average Purity" />
-                      <CounterStat value={48} suffix="hr" label="Ship Time (Hrs)" />
-                      <CounterStat value={60} suffix="+" label="Peptide Variants" />
+                      <CounterStat value={750} suffix="+" label="Orders Fulfilled" />
+                      <CounterStat value={99} suffix="%+" label="Avg. Purity" />
+                      <CounterStat value={24} suffix="hr" label="Avg. Ship Time" />
+                      <CounterStat value={20} suffix="+" label="Peptide Variants" />
                    </div>
                 </section>
 
@@ -794,9 +794,9 @@ export default function App() {
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                          { name: "DR. M. CHEN", institution: "University Research Lab", quote: "Exceptional purity levels. The COA data matched perfectly with our independent verification for all 10ml samples." },
-                          { name: "SARAH L.", institution: "Independent Biochemist", quote: "The climate-stable packaging is a game changer. Arrived at the lab in pristine condition even during extreme summer heat." },
-                          { name: "RESEARCH INST.", institution: "Clinical Observations", quote: "Swift dispatch and absolute transparency. Ascend Labz is now our primary source for specialized research peptides." }
+                          { name: "VERIFIED REVIEWS", institution: "Trustpilot & Reddit", quote: "We're collecting verified reviews from our customers on Reddit and Trustpilot. Real, public feedback will replace this section soon — we'd rather show nothing than fake testimonials." },
+                          { name: "EARLY CUSTOMERS", institution: "Get 10% off (RESEARCH10)", quote: "Be one of our first reviewers. Order today, post an honest review after receiving, and we'll feature it here with a link to your post." },
+                          { name: "BULK & WHOLESALE", institution: "ascendlabz@gmail.com", quote: "Buying for a lab, clinic, or institution? Email us for tiered wholesale pricing on orders of 50+ vials, custom invoicing, and net-30 terms." }
                         ].map((rev, i) => (
                           <div key={i} className="bg-gray-900 p-10 rounded-[2.5rem] border border-gray-800 shadow-sm space-y-6 hover:shadow-xl transition-all">
                              <div className="flex gap-1 text-orange-400">
@@ -820,8 +820,8 @@ export default function App() {
                       {/* Header */}
                       <div className="text-center mb-10">
                         <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3">Stay Informed</p>
-                        <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white mb-3">Get Exclusive Research Updates</h2>
-                        <p className="text-gray-400 text-base max-w-xl mx-auto">Price drops, restocks, and new compound arrivals — delivered straight to your inbox. No spam, unsubscribe anytime.</p>
+                        <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white mb-3">Join the Lab List</h2>
+                        <p className="text-gray-400 text-base max-w-xl mx-auto">Join the lab list — get 10% off your first order, restock alerts, and new compound drops. No spam.</p>
                       </div>
 
                       {/* Email Form */}
