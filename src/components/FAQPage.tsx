@@ -91,7 +91,7 @@ export const FAQPage = () => {
 
       {/* FAQ Accordion */}
       <section className="px-6 pb-16 max-w-4xl mx-auto">
-        <div className="bg-white rounded-[2.5rem] p-8 lg:p-12 shadow-sm border border-gray-800">
+        <div className="bg-gray-900/40 rounded-[2.5rem] p-8 lg:p-12 border border-gray-800">
           {faqs.map((faq, index) => (
             <FAQItem key={index} question={faq.question} answer={faq.answer} />
           ))}
@@ -105,7 +105,7 @@ export const FAQPage = () => {
           </div>
           <a
             href="mailto:ascendlabz@gmail.com"
-            className="group flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap"
+            className="group flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-500 hover:text-white hover:text-white transition-all whitespace-nowrap"
           >
             Email Support <Mail className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
