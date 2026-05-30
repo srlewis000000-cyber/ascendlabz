@@ -78,12 +78,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     key={item.id} 
                     className="flex gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm"
                   >
-                    <div className="relative w-16 h-16 shrink-0 bg-slate-50 rounded-xl p-0.5 overflow-hidden border border-slate-100 flex items-center justify-center">
+                    <div className="relative w-16 h-16 shrink-0 bg-slate-900 rounded-xl overflow-hidden border border-gray-800 flex items-center justify-center">
                         <VialImage 
                           name={item.name} 
                           mg={item.mg}
                           image={item.image}
-                          className="w-full h-full object-cover rounded-lg"
+                          variant="thumb"
                         />
                     </div>
                     <div className="flex-1 min-w-0 space-y-1">
