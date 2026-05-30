@@ -47,7 +47,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}
       transition={{ duration: 0.3 }}
-      className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden cursor-pointer group flex flex-col"
+      className="bg-gradient-to-b from-gray-900 to-slate-950 border border-gray-800 hover:border-blue-600/40 rounded-xl overflow-hidden cursor-pointer group flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/10"
       onClick={handleView}
     >
       <div className="relative">
@@ -70,7 +70,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
         <VialImage
           name={product.name}
           image={product.image}
-          className="w-full"
+          variant="card"
         />
       </div>
       <div className="p-4 flex flex-col flex-1">
