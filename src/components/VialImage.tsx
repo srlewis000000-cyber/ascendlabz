@@ -13,72 +13,65 @@ interface VialImageProps {
 const FALLBACK_IMG = '/vial.png';
 
 export function VialImage({ name, className, image, variant = 'card' }: VialImageProps) {
-  const src = image || FALLBACK_IMG;
-  const isFallback = !image || image === FALLBACK_IMG;
+  const [src, setSrc] = React.useState(image || FALLBACK_IMG);
+  const isFallback = src === FALLBACK_IMG;
   const isThumb = variant === 'thumb';
   const isDetail = variant === 'detail';
 
-  const aspectClass = isDetail
-    ? 'aspect-[4/5] lg:aspect-auto lg:h-full'
-    : isThumb
-      ? 'w-full h-full'
-      : 'aspect-square';
+  React.useEffect(() => { setSrc(image || FALLBACK_IMG); }, [image]);
+
+  const wrapperBg = {
+    background:
+      'radial-gradient(ellipse at 50% 35%, #1e3a5f 0%, #0f172a 45%, #050912 100%)',
+  };
 
   return (
-    <div className={`group/vial relative ${isThumb ? '' : 'w-full'} ${aspectClass} overflow-hidden ${className || ''}`}>
-      {/* Studio gradient backdrop */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: isThumb
-            ? 'radial-gradient(ellipse at 50% 35%, #1e3a5f 0%, #0f172a 100%)'
-            : 'radial-gradient(ellipse at 50% 35%, #1e3a5f 0%, #0f172a 45%, #050912 100%)'
-        }}
-      />
-      {/* Soft blue spotlight behind vial (skip on thumb) */}
+    <div className={`relative w-full h-full overflow-hidden group/vial ${className || ''}`} style={wrapperBg}>
       {!isThumb && (
-        <div
-          className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full opacity-60 pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0) 70%)',
-            filter: 'blur(20px)'
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(circle at 50% 45%, rgba(96,165,250,0.28) 0%, rgba(59,130,246,0.12) 30%, transparent 65%)' }} />
       )}
-      {/* The vial image itself */}
-      <img
-        src={src}
-        alt={name}
-        className={`relative z-10 w-full h-full object-contain ${isThumb ? 'p-1' : 'p-4'} transition-transform duration-500 group-hover/vial:scale-105`}
-        referrerPolicy="no-referrer"
-        onError={(e) => {
-          const target = e.currentTarget;
-          target.src = FALLBACK_IMG;
-        }}
-      />
-      {/* Branded label overlay for fallback images (skip on thumb — too small) */}
-      {isFallback && !isThumb && (
-        <div className="absolute inset-0 z-20 flex items-end justify-center pb-[18%] pointer-events-none">
-          <div className="bg-white/95 backdrop-blur-sm border border-blue-200 px-3 py-1.5 rounded-sm shadow-lg max-w-[55%]">
-            <div className="text-[7px] font-black tracking-[0.2em] text-blue-700 uppercase leading-none mb-0.5 text-center">Ascend Labz</div>
-            <div className="text-[10px] font-black text-slate-900 uppercase tracking-tight leading-tight text-center truncate">{name}</div>
-            <div className="text-[6px] font-bold tracking-[0.15em] text-slate-500 uppercase leading-none mt-0.5 text-center">For Research Use Only</div>
+
+      <div className="relative w-full h-full flex items-center justify-center">
+        <img
+          src={src}
+          alt={name}
+          onError={() => setSrc(FALLBACK_IMG)}
+          className={`relative z-10 object-contain transition-transform duration-500 group-hover/vial:scale-105 ${isThumb ? 'max-h-full max-w-full' : isDetail ? 'max-h-[26rem] lg:max-h-[32rem] w-auto' : 'max-h-[14rem] sm:max-h-[16rem] w-auto'}`}
+        />
+
+        {isFallback && !isThumb && (
+          <div className="absolute z-20 pointer-events-none flex items-center justify-center"
+            style={{
+              left: '50%',
+              top: '58%',
+              transform: 'translate(-50%, -50%)',
+              width: isDetail ? '48%' : '60%',
+            }}
+          >
+            <div className="w-full text-center"
+              style={{
+                background: 'linear-gradient(180deg, #fdfdfb 0%, #f4f1ea 100%)',
+                boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.18)',
+                borderRadius: '2px',
+                padding: isDetail ? '10px 8px' : '5px 4px',
+              }}
+            >
+              <div className="font-bold tracking-[0.18em] text-blue-700"
+                style={{ fontSize: isDetail ? '11px' : '7px', lineHeight: 1.1 }}>ASCEND LABZ</div>
+              <div className="font-semibold text-slate-900 uppercase tracking-wide"
+                style={{ fontSize: isDetail ? '13px' : '8.5px', lineHeight: 1.15, marginTop: '3px' }}>{name}</div>
+              <div className="text-slate-600 tracking-wider"
+                style={{ fontSize: isDetail ? '8px' : '5.5px', marginTop: '4px' }}>For Research Use Only</div>
+            </div>
           </div>
-        </div>
-      )}
-      {/* Bottom fade so image blends into card (skip on thumb) */}
+        )}
+      </div>
+
       {!isThumb && (
-        <div
-          className="absolute inset-x-0 bottom-0 h-16 z-30 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(17,24,39,0) 0%, rgba(17,24,39,0.55) 100%)'
-          }}
-        />
+        <div className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(5,9,18,0.85))' }} />
       )}
-      {/* Subtle inner border highlight */}
-      <div className="absolute inset-0 z-40 pointer-events-none rounded-[inherit] ring-1 ring-inset ring-white/5" />
     </div>
   );
 }
-
-export default VialImage;
