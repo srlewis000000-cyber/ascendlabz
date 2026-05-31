@@ -85,6 +85,9 @@ const STATIC_ROUTES = {
   '/policies':            { title: 'Policies | AscendLabz',                                       description: 'AscendLabz shipping, returns, and research-use policies.' },
   '/lab-solutions':       { title: 'Lab Solutions | AscendLabz',                                  description: 'AscendLabz lab solutions — research peptides and supporting compounds for in-vitro and pre-clinical research.' },
   '/performance-portal':  { title: 'Performance Portal | AscendLabz',                             description: 'AscendLabz performance portal for tracking research-peptide projects.' },
+  '/checkout':           { title: 'Secure Checkout | AscendLabz', description: 'Complete your AscendLabz research peptide order securely. PayPal and crypto accepted. Free shipping on orders $99+.' },
+  '/cart':               { title: 'Your Cart | AscendLabz', description: 'Review the research peptides in your AscendLabz cart before proceeding to secure checkout.' },
+  '/account':            { title: 'Account | AscendLabz', description: 'Manage your AscendLabz research peptide orders and account details.' },
 };
 
 function escapeHtml(s) {
