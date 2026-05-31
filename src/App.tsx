@@ -1153,7 +1153,7 @@ export default function App() {
                         
                         {(!isAddressValid || !agreedToTerms) && paymentMethod && (
                           <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-800 text-sm font-medium">
-                            Please complete the required destination address fields and agree to the Terms & Conditions before authorizing payment.
+                            Heads up: PayPal, Pay Later, and Debit / Credit Card buttons below stay locked until you fill out the shipping address on the previous step and check the "I am 18+ and agree to the Terms & Conditions" box on the right. This is a normal part of our secure checkout — nothing is broken on your end. Once both are complete, the payment buttons will unlock automatically.
                           </div>
                         )}
 
