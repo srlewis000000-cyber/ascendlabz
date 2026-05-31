@@ -1111,6 +1111,29 @@ export default function App() {
                         </div>
                       </div>
                       
+                      {(!isAddressValid || !agreedToTerms) && (
+                        <div className="bg-amber-100 border-2 border-amber-500 text-amber-900 px-5 py-4 rounded-xl text-sm shadow-lg mb-4 animate-pulse-slow">
+                          <div className="flex items-start gap-3">
+                            <AlertTriangle className="w-6 h-6 text-amber-700 flex-shrink-0 mt-0.5" />
+                            <div>
+                              <p className="font-black uppercase tracking-wider text-base mb-2">
+                                Payment Buttons Are Locked Until You Finish These Steps
+                              </p>
+                              <p className="leading-relaxed">
+                                The PayPal, Pay Later, and Debit / Credit Card buttons further down the page <strong>will stay greyed-out</strong> until you:
+                              </p>
+                              <ol className="list-decimal ml-5 mt-2 space-y-1">
+                                <li>Fill out every required field in the <strong>Destination Address</strong> section above (name, address, city, ZIP / postal code, and country).</li>
+                                <li>Scroll to the order summary on the right and check the box that says <em>"I am 18+ and agree to the Terms &amp; Conditions"</em>.</li>
+                              </ol>
+                              <p className="mt-2 text-xs italic">
+                                This is a normal part of our secure checkout — nothing is broken. As soon as both items are complete, the payment options unlock automatically.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="space-y-4 border-t border-gray-800 pt-6">
                         <h3 className="text-xl font-bold flex items-center gap-3 italic text-white">
                            <Package className="w-6 h-6 text-blue-600" />
@@ -1152,8 +1175,8 @@ export default function App() {
                         </div>
                         
                         {(!isAddressValid || !agreedToTerms) && paymentMethod && (
-                          <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-800 text-sm font-medium">
-                            Heads up: PayPal, Pay Later, and Debit / Credit Card buttons below stay locked until you fill out the shipping address on the previous step and check the "I am 18+ and agree to the Terms & Conditions" box on the right. This is a normal part of our secure checkout — nothing is broken on your end. Once both are complete, the payment buttons will unlock automatically.
+                          <div className="bg-amber-50 border border-amber-300 text-amber-900 px-4 py-3 rounded-xl text-sm">
+                            <strong>Payment locked:</strong> finish the shipping address above and check the <em>"I am 18+ and agree to the Terms &amp; Conditions"</em> box on the right to unlock the buttons below.
                           </div>
                         )}
 
