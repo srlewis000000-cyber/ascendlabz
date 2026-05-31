@@ -1243,7 +1243,7 @@ export default function App() {
                 </div>
 
                 <div className="space-y-6 pt-10 order-1 lg:order-2">
-                   <div className="bg-gray-950 border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
+                   <div className="bg-gray-950 border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto shadow-sm checkout-summary-scroll">
                       <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-white">Order Package</h3><div className={`mb-6 -mx-2 px-4 py-3 rounded-2xl border-2 transition-all duration-300 ${agreedToTerms ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-amber-500/10 border-amber-500/60 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/10 animate-pulse-slow'}`}>
                         <p className={`text-[10px] uppercase tracking-widest font-black mb-2 ${agreedToTerms ? 'text-emerald-400' : 'text-amber-400'}`}>
                           {agreedToTerms ? '✓ Step 2 of 2 Complete' : '⚠ Step 2 of 2 — Required to Unlock Payment'}
