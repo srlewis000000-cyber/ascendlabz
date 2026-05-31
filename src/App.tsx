@@ -1244,7 +1244,30 @@ export default function App() {
 
                 <div className="space-y-6 pt-10 order-1 lg:order-2">
                    <div className="bg-gray-950 border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-32 shadow-sm">
-                      <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-white">Order Package</h3>
+                      <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-white">Order Package</h3><div className={`mb-6 -mx-2 px-4 py-3 rounded-2xl border-2 transition-all duration-300 ${agreedToTerms ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-amber-500/10 border-amber-500/60 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/10 animate-pulse-slow'}`}>
+                        <p className={`text-[10px] uppercase tracking-widest font-black mb-2 ${agreedToTerms ? 'text-emerald-400' : 'text-amber-400'}`}>
+                          {agreedToTerms ? '✓ Step 2 of 2 Complete' : '⚠ Step 2 of 2 — Required to Unlock Payment'}
+                        </p>
+                        <div className="flex items-start gap-3">
+                        <input
+                          type="checkbox"
+                          id="termsCheck"
+                          checked={agreedToTerms}
+                          onChange={(e) => setAgreedToTerms(e.target.checked)}
+                          className="mt-1 w-4 h-4 rounded border-gray-700 text-blue-600 focus:ring-blue-600"
+                        />
+                        <div className="space-y-1">
+                          <label htmlFor="termsCheck" className="text-xs text-gray-400 leading-tight block">
+                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> . I confirm all ordered  products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
+                          </label>
+                          <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
+                            I understand these products are NOT for human consumption.
+                          </p>
+                        </div>
+                      </div>
+                      </div>
+
+                      
                       
                       <div className="space-y-6">
                          {cart.map(item => (
@@ -1299,23 +1322,7 @@ export default function App() {
                          </div>
                       </div>
 
-                      <div className="pt-4 flex items-start gap-3">
-                        <input
-                          type="checkbox"
-                          id="termsCheck"
-                          checked={agreedToTerms}
-                          onChange={(e) => setAgreedToTerms(e.target.checked)}
-                          className="mt-1 w-4 h-4 rounded border-gray-700 text-blue-600 focus:ring-blue-600"
-                        />
-                        <div className="space-y-1">
-                          <label htmlFor="termsCheck" className="text-xs text-gray-400 leading-tight block">
-                            I am 18+ and agree to the <button onClick={(e) => { e.preventDefault(); setPage('terms'); }} className="text-blue-600 font-bold hover:underline">Terms & Conditions</button> . I confirm all ordered  products are for <span className="text-white font-black uppercase tracking-widest">laboratory research use only</span>.
-                          </label>
-                          <p className="text-[10px] text-red-600 font-black tracking-widest uppercase">
-                            I understand these products are NOT for human consumption.
-                          </p>
-                        </div>
-                      </div>
+                      
 
                    </div>
                 </div>
