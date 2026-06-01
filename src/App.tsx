@@ -337,25 +337,10 @@ export default function App() {
               service_id: 'service_0kztjcw',
               template_id: 'template_q3h417w',
               user_id: 'WSYK-Hg-ybgwidKVK',
-              template_params: emailParams
-            })
-          });
-
-          // Send customer confirmation email (to buyer)
-          await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              service_id: 'service_0kztjcw',
-              template_id: 'template_xkbbv54',
-              user_id: 'WSYK-Hg-ybgwidKVK',
               template_params: {
                 ...emailParams,
                 to_email: shippingAddress.email || '',
                 reply_to: shippingAddress.email || '',
-                order_id: orderData.id,
-                payment_method: orderData.paymentMethod,
-                orders: orderData.items.map((item: any) => ({ name: item.name, units: item.quantity, price: '$' + (Number(item.price) * Number(item.quantity)).toFixed(2) }))
               }
             })
           });
