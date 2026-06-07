@@ -7,9 +7,10 @@ interface PayPalIntegrationProps {
   onSuccess: (details: any) => void;
   onError: (error: any) => void;
   disabled?: boolean;
+  fundingSource?: "paypal" | "venmo";
 }
 
-export const PayPalIntegration: React.FC<PayPalIntegrationProps> = ({ amount, onSuccess, onError, disabled }) => {
+export const PayPalIntegration: React.FC<PayPalIntegrationProps> = ({ amount, onSuccess, onError, disabled, fundingSource = "paypal" }) => {
   const [{ isPending }] = usePayPalScriptReducer();
 
   return (
@@ -21,12 +22,12 @@ export const PayPalIntegration: React.FC<PayPalIntegrationProps> = ({ amount, on
       )}
       <PayPalButtons
         disabled={disabled}
-        style={{
-          layout: "vertical",
-          color: "gold",
-          shape: "rect",
-          label: "checkout",
-        }}
+        fundingSource={fundingSource}
+        style={
+          fundingSource === "venmo"
+            ? { layout: "vertical", color: "blue", shape: "rect", label: "pay" }
+            : { layout: "vertical", color: "gold", shape: "rect", label: "checkout" }
+        }
         createOrder={(data, actions) => {
           return actions.order.create({
             intent: "CAPTURE",
