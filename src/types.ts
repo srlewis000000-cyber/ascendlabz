@@ -1,4 +1,4 @@
-export type PaymentMethod = "paypal" | "bitcoin";
+export type PaymentMethod = "paypal" | "bitcoin" | "venmo";
 export type OrderStatus = "Pending" | "Paid" | "Pending Bitcoin Payment" | "Confirmed" | "Shipped";
 export type ProductGroup =
   | "Weight Loss & Metabolic"
