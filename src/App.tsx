@@ -7,7 +7,7 @@ import {
   CheckCircle2, 
   ArrowLeft,
   Truck,
-  ShieldCheck,
+  ShieldCheck,h
   Package,
   Menu,
   FlaskConical,
@@ -168,6 +168,7 @@ export default function App() {
     clientId: import.meta.env.VITE_PAYPAL_CLIENT_ID || "sb",
     currency: "USD",
     intent: "capture",
+        "enable-funding": "venmo",
   };
 
   const cartTotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
@@ -1165,7 +1166,7 @@ export default function App() {
                           </div>
                         )}
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <button
                             onClick={() => setPaymentMethod("paypal")}
                             className={cn(
@@ -1179,6 +1180,20 @@ export default function App() {
                             <span className="text-status-paypal font-black italic text-2xl group-hover:scale-110 transition-transform">PayPal</span>
                             <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Card & Crypto Support</span>
                           </button>
+
+              <button
+                onClick={() => setPaymentMethod("venmo")}
+                className={cn(
+                  "flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all gap-3 relative overflow-hidden group",
+                  paymentMethod === "venmo" ? "border-blue-500 bg-blue-50" : "border-slate-50 bg-gray-950 hover:border-gray-800"
+                )}
+              >
+                <div className="absolute top-2 right-2">
+                  <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'venmo' ? "bg-blue-500 border-blue-400" : "border-gray-700")} />
+                </div>
+                <span className="text-[#3D95CE] font-black italic text-2xl group-hover:scale-110 transition-transform">Venmo</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Mobile Payments</span>
+              </button>
 
                           <button
                             onClick={() => setPaymentMethod("bitcoin")}
@@ -1209,6 +1224,15 @@ export default function App() {
                               <PayPalIntegration amount={finalTotal} onSuccess={handlePayPalSuccess} onError={() => {}} disabled={!agreedToTerms || !isAddressValid} />
                             </motion.div>
                           )}
+              {paymentMethod === "venmo" && (
+                <motion.div key="vnmo" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+                  <div className="bg-blue-50 p-6 rounded-2xl flex gap-4 text-sm text-blue-600 border border-blue-100">
+                    <ShieldCheck className="w-6 h-6 shrink-0" />
+                    <p className="font-medium">Pay via Venmo — tap the button below on your mobile device.</p>
+                  </div>
+                  <PayPalIntegration amount={finalTotal} onSuccess={handlePayPalSuccess} onError={() => {}} disabled={!agreedToTerms || !isAddressValid} fundingSource="venmo" />
+                </motion.div>
+              )}
                           {paymentMethod === "bitcoin" && (
                             <motion.div key="btc" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                                <div className="bg-gray-950 rounded-2xl border border-gray-800 overflow-hidden">
