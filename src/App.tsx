@@ -7,7 +7,7 @@ import {
   CheckCircle2, 
   ArrowLeft,
   Truck,
-  ShieldCheck,h
+  ShieldCheck,
   Package,
   Menu,
   FlaskConical,
