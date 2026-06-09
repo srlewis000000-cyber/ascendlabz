@@ -1192,7 +1192,7 @@ export default function App() {
                   <div className={cn("w-4 h-4 rounded-full border-2", paymentMethod === 'venmo' ? "bg-blue-500 border-blue-400" : "border-gray-700")} />
                 </div>
                 <span className="text-[#3D95CE] font-black italic text-2xl group-hover:scale-110 transition-transform">Venmo</span>
-                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Mobile Payments</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Fast & Easy Payments</span>
               </button>
 
                           <button
@@ -1228,7 +1228,7 @@ export default function App() {
                 <motion.div key="vnmo" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
                   <div className="bg-blue-50 p-6 rounded-2xl flex gap-4 text-sm text-blue-600 border border-blue-100">
                     <ShieldCheck className="w-6 h-6 shrink-0" />
-                    <p className="font-medium">Pay via Venmo — tap the button below on your mobile device.</p>
+                    <p className="font-medium">Pay securely via Venmo on any device.</p>
                   </div>
                   <PayPalIntegration amount={finalTotal} onSuccess={handlePayPalSuccess} onError={() => {}} disabled={!agreedToTerms || !isAddressValid} fundingSource="venmo" />
                 </motion.div>
