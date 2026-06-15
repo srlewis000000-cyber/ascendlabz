@@ -73,7 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           variant="card"
         />
       </div>
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-4 flex flex-col">
         <h3 className="text-white font-semibold text-base mb-1 line-clamp-2 leading-snug">{product.name}</h3>
         {(
           <div className="flex flex-wrap gap-1 mb-2">
