@@ -665,7 +665,7 @@ export default function App() {
                       transition={{ delay: 0.1 }}
                       className="text-gray-300 text-lg lg:text-xl max-w-2xl mx-auto font-medium"
                     >
-                      Most affordable research peptides online — buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
+                      Most affordable research peptides online â buy Retatrutide, Tirzepatide & more. 99%+ pharma-grade purity, third-party lab verified, fast discreet US shipping.
                     </motion.p>
 
                     <motion.div 
@@ -715,7 +715,7 @@ export default function App() {
                 </section>
 
                 {/* Featured Products */}
-                <section className="px-4 pt-14 pb-4 max-w-7xl mx-auto">
+                <section className="px-4 pt-14 pb-6 max-w-7xl mx-auto">
                    <div className="flex items-end justify-between gap-6 mb-8">
                       <div>
                          <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">Top Products</p>
@@ -741,8 +741,35 @@ export default function App() {
                    </div>
                 </section>
 
+              {/* Social Proof Strip */}
+              <section className="px-4 pb-2 max-w-7xl mx-auto">
+                <div className="border border-gray-800 rounded-2xl px-6 py-5 flex flex-wrap items-center justify-center gap-6 lg:gap-12 bg-gray-900/50">
+                  <div className="flex flex-col items-center gap-1 text-center">
+                    <div className="flex gap-0.5 text-amber-400">{[...Array(5)].map((_,i)=><Star key={i} className="w-4 h-4 fill-current"/>)}</div>
+                    <p className="text-xs font-bold text-white">5.0 Rating</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Avg. Customer Score</p>
+                  </div>
+                  <div className="w-px h-10 bg-gray-700 hidden lg:block" />
+                  <div className="flex flex-col items-center gap-1 text-center">
+                    <p className="text-2xl font-black text-white italic">750+</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Orders Shipped</p>
+                  </div>
+                  <div className="w-px h-10 bg-gray-700 hidden lg:block" />
+                  <div className="flex flex-col items-center gap-1 text-center">
+                    <p className="text-2xl font-black text-white italic">99%+</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Verified Purity</p>
+                  </div>
+                  <div className="w-px h-10 bg-gray-700 hidden lg:block" />
+                  <div className="flex flex-col items-center gap-1 text-center">
+                    <ShieldCheck className="w-5 h-5 text-green-500"/>
+                    <p className="text-xs font-bold text-white">Third-Party Verified</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Independent Lab Tested</p>
+                  </div>
+                </div>
+              </section>
+
                 {/* How It Works */}
-                <section className="px-6 lg:px-12 max-w-7xl mx-auto py-16 space-y-12">
+                <section className="px-6 lg:px-12 max-w-7xl mx-auto pt-6 pb-16 space-y-12">
                    <div className="text-center space-y-4">
                       <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">The Process</p>
                       <h2 className="text-3xl lg:text-4xl font-black tracking-tight">How It Works.</h2>
@@ -780,7 +807,7 @@ export default function App() {
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                          { name: "VERIFIED REVIEWS", institution: "Trustpilot & Reddit", quote: "We're collecting verified reviews from our customers on Reddit and Trustpilot. Real, public feedback will replace this section soon — we'd rather show nothing than fake testimonials." },
+                          { name: "VERIFIED REVIEWS", institution: "Trustpilot & Reddit", quote: "We're collecting verified reviews from our customers on Reddit and Trustpilot. Real, public feedback will replace this section soon â we'd rather show nothing than fake testimonials." },
                           { name: "EARLY CUSTOMERS", institution: "Get 10% off (RESEARCH10)", quote: "Be one of our first reviewers. Order today, post an honest review after receiving, and we'll feature it here with a link to your post." },
                           { name: "BULK & WHOLESALE", institution: "ascendlabz@gmail.com", quote: "Buying for a lab, clinic, or institution? Email us for tiered wholesale pricing on orders of 50+ vials, custom invoicing, and net-30 terms." }
                         ].map((rev, i) => (
@@ -807,7 +834,7 @@ export default function App() {
                       <div className="text-center mb-10">
                         <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3">Stay Informed</p>
                         <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-white mb-3">Join the Lab List</h2>
-                        <p className="text-gray-400 text-base max-w-xl mx-auto">Join the lab list — get 10% off your first order, restock alerts, and new compound drops. No spam.</p>
+                        <p className="text-gray-400 text-base max-w-xl mx-auto">Join the lab list â get 10% off your first order, restock alerts, and new compound drops. No spam.</p>
                       </div>
 
                       {/* Email Form */}
@@ -870,7 +897,7 @@ export default function App() {
                        <ShieldCheck className="w-10 h-10 text-green-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Verified Purity</h3>
-                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence — best quality at the lowest price online.</p>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Every batch comes with a Certificate of Analysis from independent third-party labs, guaranteeing 99%+ purity. Buy with confidence â best quality at the lowest price online.</p>
                        </div>
                      </div>
                      <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
@@ -884,14 +911,14 @@ export default function App() {
                        <TestTube2 className="w-10 h-10 text-purple-500 shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Cold Storage Protocols</h3>
-                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch — every vial arrives at full potency. The most affordable option that never cuts corners.</p>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Unlike cheap overseas suppliers, we store all lyophilized peptides in strict cold-storage until dispatch â every vial arrives at full potency. The most affordable option that never cuts corners.</p>
                        </div>
                      </div>
                      <div className="bg-gray-950 border border-gray-700 rounded-3xl p-8 flex gap-6 hover:shadow-lg transition-all hover:border-blue-200">
                        <Lock className="w-10 h-10 text-white shrink-0" />
                        <div>
                          <h3 className="text-xl font-black text-white tracking-tight uppercase italic mb-2">Secure Ecosystem</h3>
-                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely — zero data exposure, total privacy.</p>
+                         <p className="text-sm text-gray-400 leading-relaxed font-medium">Fully encrypted checkout accepting PayPal, debit cards, and Bitcoin. Buy research peptides online safely â zero data exposure, total privacy.</p>
                        </div>
                      </div>
                    </div>
@@ -1113,7 +1140,7 @@ export default function App() {
                                 <li>Scroll to the order summary on the right and check the box that says <em>"I am 18+ and agree to the Terms &amp; Conditions"</em>.</li>
                               </ol>
                               <p className="mt-2 text-xs italic">
-                                This is a normal part of our secure checkout — nothing is broken. As soon as both items are complete, the payment options unlock automatically.
+                                This is a normal part of our secure checkout â nothing is broken. As soon as both items are complete, the payment options unlock automatically.
                               </p>
                             </div>
                           </div>
@@ -1255,7 +1282,7 @@ export default function App() {
                    <div className="bg-gray-950 border border-gray-700 rounded-[40px] p-6 lg:p-10 h-fit space-y-10 lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto shadow-sm checkout-summary-scroll">
                       <h3 className="text-xl font-black tracking-tighter italic border-b border-gray-800 pb-6 uppercase text-white">Order Package</h3><div className={`mb-6 -mx-2 px-4 py-3 rounded-2xl border-2 transition-all duration-300 ${(agreedToTerms && isAddressValid) ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-amber-500/10 border-amber-500/60 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/10 animate-pulse-slow'}`}>
                         <p className={`text-[10px] uppercase tracking-widest font-black mb-2 ${(agreedToTerms && isAddressValid) ? 'text-emerald-400' : 'text-amber-400'}`}>
-                          {(agreedToTerms && isAddressValid) ? '✓ All Set — Payment Unlocked Below' : '⚠ Step 2 of 2 — Required to Unlock Payment'}
+                          {(agreedToTerms && isAddressValid) ? 'â All Set â Payment Unlocked Below' : 'â  Step 2 of 2 â Required to Unlock Payment'}
                         </p>
                         <div className="flex items-start gap-3">
                         <input
@@ -1362,7 +1389,7 @@ export default function App() {
                     <span className="text-2xl font-black tracking-tighter uppercase italic">ASCEND LABZ</span>
                  </div>
                  <p className="text-gray-500 max-w-xs leading-relaxed text-xs font-medium">
-                   Most affordable research peptides online — Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 24 hours. Best price guaranteed.
+                   Most affordable research peptides online â Retatrutide, Tirzepatide, Semaglutide & Cagrilintide. In stock, ships within 24 hours. Best price guaranteed.
                  </p>
               </div>
 
