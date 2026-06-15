@@ -85,7 +85,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           </div>
         )}
         <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-        <div className="mt-auto pt-3 flex items-center justify-between">
+        <div className="mt-3 pt-3 flex items-center justify-between">
           <div>
             <p className="text-xs text-gray-500 leading-none mb-0.5">from</p>
             <p className="text-green-400 font-bold text-lg leading-none">{'$' + lowestPrice.toFixed(2)}</p>
