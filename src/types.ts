@@ -1,75 +1,49 @@
 export type PaymentMethod = "paypal" | "bitcoin" | "venmo";
 export type OrderStatus = "Pending" | "Paid" | "Pending Bitcoin Payment" | "Confirmed" | "Shipped";
+
 export type ProductGroup =
-  | "Weight Loss & Metabolic"
-    | "Healing & Recovery"
-      | "Growth Hormone & IGF"
-        | "Anti-Aging & Longevity"
-          | "Sexual Health & Wellness"
-            | "Cognitive & Neuro"
-              | "Immune & Inflammation"
-                | "Peptide Blends & Combos";
+  | "Tissue Repair Research"
+  | "Cellular Research"
+  | "Dermal Research"
+  | "Secretagogue Research"
+  | "Cognitive Research";
 
-                export type UnitType = 1 | 5 | 10 | 20;
+export interface ProductVariant {
+  size: string;
+  price: number;
+  compareAt?: number;
+}
 
-                export interface CategorySpec {
-                  name: ProductGroup;
-                    color: string;
-                    }
+export interface Product {
+  id: string;
+  name: string;
+  group: ProductGroup;
+  variants: ProductVariant[];
+  /** Purity reported on the current batch COA, e.g. "99.755%". */
+  purity: string;
+  image: string;
+  coaImage: string;
+  description: string[];
+}
 
-                    export interface ProductDosage {
-                      mg: string;
-                        prices: { [K in UnitType]: number };
-                          coa?: {
-                              taskNumber: string;
-                                  date: string;
-                                      purity: string;
-                                          content: string;
-                                              key: string;
-                                                  imageUrl?: string;
-                                                    };
-                                                    }
+export interface CartItem {
+  /** `${productId}-${size}` */
+  id: string;
+  productId: string;
+  name: string;
+  size: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
 
-                                                    export interface CartItem {
-                                                      id: string;
-                                                        name: string;
-                                                          price: number;
-                                                            quantity: number;
-                                                              packSize: UnitType;
-                                                                image: string;
-                                                                  group: ProductGroup;
-                                                                    mg: string;
-                                                                    }
-
-                                                                    export interface Order {
-                                                                      id: string;
-                                                                        items: CartItem[];
-                                                                          total: number;
-                                                                            paymentMethod: PaymentMethod;
-                                                                              status: OrderStatus;
-                                                                                createdAt: string;
-                                                                                  email?: string;
-                                                                                    shippingAddress?: any;
-                                                                                    }
-
-                                                                                    export interface Product {
-                                                                                      id: string;
-                                                                                        name: string;
-                                                                                          description: string;
-                                                                                            dosages: ProductDosage[];
-                                                                                              prices: { [K in UnitType]: number };
-                                                                                                group: ProductGroup;
-                                                                                                  categoryColor: string;
-                                                                                                    mg: string;
-                                                                                                      coa?: {
-                                                                                                          taskNumber: string;
-                                                                                                              date: string;
-                                                                                                                  purity: string;
-                                                                                                                      content: string;
-                                                                                                                          key: string;
-                                                                                                                              imageUrl?: string;
-                                                                                                                                };
-                                                                                                                                  rating: number;
-                                                                                                                                    reviewCount: number;
-                                                                                                                                      image?: string;
-                                                                                                                                      }
+export interface Order {
+  id: string;
+  items: CartItem[];
+  total: number;
+  paymentMethod: PaymentMethod;
+  status: OrderStatus;
+  createdAt: string;
+  email?: string;
+  shippingAddress?: any;
+}

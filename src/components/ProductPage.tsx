@@ -1,320 +1,195 @@
-import React, { useState, useMemo } from 'react';
-import { ArrowLeft, ShoppingCart, Share2, ChevronDown, ChevronUp, Info, ShieldCheck, Truck, FlaskConical, Lock, Clock } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Product, CartItem } from '../types';
-import { VialImage } from './VialImage';
-import { StarRating } from './StarRating';
-import { COADisplay } from './COADisplay';
-import { ProductSchema } from './ProductSchema';
-import { PRODUCTS } from '../constants';
+import React, { useEffect, useMemo, useState } from "react";
+import { Check, ChevronDown, FileText, Minus, Plus, X } from "lucide-react";
+import { Product, CartItem } from "../types";
+import { PRODUCTS } from "../constants";
+import { linkTo } from "../lib/router";
+import { money } from "../lib/pricing";
+import { cn } from "../lib/utils";
+import { ProductCard } from "./ProductCard";
+import { ProductSchema } from "./ProductSchema";
 
 interface ProductPageProps {
   product: Product;
-  onBack: () => void;
   onAddToCart: (item: CartItem) => void;
-  onSelectProduct?: (p: Product) => void;
+  onBuyNow: (item: CartItem) => void;
 }
 
-const PACK_OPTIONS = [
-  { vials: 1, label: '1 Vial', badge: null },
-  { vials: 5, label: '5 Vials', badge: 'Save 5%' },
-  { vials: 10, label: '10 Vials', badge: 'Save 10%' },
-  { vials: 20, label: '20 Vials', badge: 'Best Value' },
+const ACCORDIONS: { title: string; body: React.ReactNode }[] = [
+  {
+    title: "Storage & Handling",
+    body: "Store lyophilized vials in a freezer, protected from light, until ready for use. Reconstitute with bacteriostatic water in a controlled laboratory setting only. Once reconstituted, keep refrigerated and follow your lab's protocol for the use window.",
+  },
+  {
+    title: "Returns & Refunds",
+    body: (
+      <>Because these are research chemicals, we can't accept returns once an order ships, except for items that arrive damaged, defective, or incorrect. Contact us within 7 days of delivery with photos and we'll make it right. See the full <a href="/policies/refund-policy" onClick={linkTo("/policies/refund-policy")} className="underline">Refund Policy</a>.</>
+    ),
+  },
+  {
+    title: "Shipping",
+    body: (
+      <>Orders ship within 24 hours of purchase (excluding weekends and holidays) with tracking emailed once shipped. Standard shipping is free on orders over $150. See the full <a href="/policies/shipping-policy" onClick={linkTo("/policies/shipping-policy")} className="underline">Shipping Policy</a>.</>
+    ),
+  },
+  {
+    title: "Lab Testing & Purity",
+    body: (
+      <>Every batch is independently tested by Janoshik Analytical via HPLC/MS. The Certificate of Analysis for the current batch is shown in the product images and can be verified with the unique key printed on it at janoshik.com/verify. Learn more on our <a href="/pages/quality-testing" onClick={linkTo("/pages/quality-testing")} className="underline">Quality & Testing</a> page.</>
+    ),
+  },
 ];
 
-export const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onAddToCart, onSelectProduct }) => {
-  const [selectedDosageIdx, setSelectedDosageIdx] = useState(0);
-  const [selectedPack, setSelectedPack] = useState(1);
-  const [showCOA, setShowCOA] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-  const [addedFeedback, setAddedFeedback] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
+export const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart, onBuyNow }) => {
+  const [variantIdx, setVariantIdx] = useState(0);
+  const [qty, setQty] = useState(1);
+  const [imageIdx, setImageIdx] = useState(0);
+  const [openAcc, setOpenAcc] = useState<number | null>(null);
+  const [showCoa, setShowCoa] = useState(false);
+  const [added, setAdded] = useState(false);
 
-  const currentDosage = product.dosages[selectedDosageIdx];
-  const hasMultipleDosages = product.dosages.length > 1;
+  useEffect(() => { setVariantIdx(0); setQty(1); setImageIdx(0); setOpenAcc(null); }, [product.id]);
 
-  const getPrice = (vials: number) => {
-    if (vials === 1) return currentDosage.prices[1];
-    if (vials === 5) return currentDosage.prices[5] || currentDosage.prices[1] * 5 * 0.95;
-    if (vials === 10) return currentDosage.prices[10] || currentDosage.prices[1] * 10 * 0.90;
-    if (vials === 20) return currentDosage.prices[20] || currentDosage.prices[1] * 20 * 0.85;
-    return currentDosage.prices[1] * vials;
-  };
+  useEffect(() => {
+    document.title = `${product.name} | AscendLabz`;
+    return () => { document.title = "AscendLabz | Research Peptides"; };
+  }, [product.name]);
 
-  const totalPrice = getPrice(selectedPack) * quantity;
-  const anchorPrice = totalPrice * 1.25;
-
+  const variant = product.variants[variantIdx];
+  const images = [product.image, product.coaImage];
   const related = useMemo(() => {
-    return PRODUCTS.filter(p => p.group === product.group && p.id !== product.id).slice(0, 3);
+    const same = PRODUCTS.filter(p => p.group === product.group && p.id !== product.id);
+    const rest = PRODUCTS.filter(p => p.group !== product.group && p.id !== product.id);
+    return [...same, ...rest].slice(0, 4);
   }, [product.id, product.group]);
 
-  const handleAddToCart = () => {
-    if (isProcessing) return;
-    setIsProcessing(true);
-    setTimeout(() => {
-      onAddToCart({
-        id: product.id + '-' + currentDosage.mg + '-' + selectedPack,
-        name: product.name,
-        price: getPrice(selectedPack),
-        quantity,
-        mg: currentDosage.mg,
-        vials: selectedPack,
-        image: product.image,
-      } as any);
-      setIsProcessing(false);
-      setAddedFeedback(true);
-      setTimeout(() => setAddedFeedback(false), 1500);
-    }, 650);
-  };
+  const item = (): CartItem => ({
+    id: `${product.id}-${variant.size}`,
+    productId: product.id,
+    name: product.name,
+    size: variant.size,
+    price: variant.price,
+    quantity: qty,
+    image: product.image,
+  });
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({ title: product.name, url: window.location.href });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-    }
+  const add = () => {
+    onAddToCart(item());
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
   };
 
   return (
-    <>
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
       <ProductSchema product={product} />
-      <div className="min-h-screen bg-gray-950 text-white">
-        <div className="sticky top-0 z-40 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800 px-4 py-3 flex items-center justify-between">
-          <button onClick={onBack} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm">Back</span>
-          </button>
-          <button onClick={handleShare} className="p-2 text-gray-400 hover:text-white transition-colors">
-            <Share2 className="w-5 h-5" />
-          </button>
-        </div>
 
-        <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="lg:grid lg:grid-cols-[5fr_6fr] lg:gap-10 lg:items-stretch space-y-8 lg:space-y-0">
-          <div className="relative rounded-2xl overflow-hidden border border-gray-800 min-h-[28rem] lg:min-h-[34rem]">
-            <VialImage name={product.name} image={product.image} variant="detail" />
-            {(product as any).badge && (
-              <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
-                {(product as any).badge}
-              </div>
-            )}
+      <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
+        {/* Gallery */}
+        <div>
+          <div className="overflow-hidden rounded-lg border border-line bg-white">
+            <img src={images[imageIdx]} alt={imageIdx === 0 ? product.name : `${product.name} Certificate of Analysis`} className="aspect-square w-full object-contain" />
           </div>
-
-          <div className="space-y-8">
-            <div>
-            <h1 className="text-3xl font-bold text-white mb-2">{product.name}</h1>
-            <div className="flex items-center gap-3 mb-3">
-              <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                In Stock
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 border border-blue-500/30 text-blue-300">
-                <FlaskConical className="w-3 h-3" />
-                99%+ Purity
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 border border-purple-500/30 text-purple-300">
-                <Truck className="w-3 h-3" />
-                Discreet US Shipping
-              </span>
-            </div>
-
-            {(product as any).description && (
-              <p className="text-gray-400 text-sm leading-relaxed">{(product as any).description}</p>
-            )}
-          </div>
-
-          {hasMultipleDosages && (
-            <div>
-              <h3 className="text-sm font-semibold text-gray-300 mb-2">Select Dosage</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.dosages.map((d, idx) => (
-                  <button
-                    key={d.mg}
-                    onClick={() => { setSelectedDosageIdx(idx); setSelectedPack(1); }}
-                    className={'px-4 py-2 rounded-lg text-sm font-medium border transition-all ' + (selectedDosageIdx === idx ? 'bg-blue-600 border-blue-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500')}
-                  >
-                    {d.mg}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-300 mb-2">Select Pack Size</h3>
-            <div className="grid grid-cols-4 gap-2">
-              {PACK_OPTIONS.map(({ vials, label, badge }) => {
-                const price = getPrice(vials);
-                const pricePer = price / vials;
-                const isSelected = selectedPack === vials;
-                return (
-                  <button
-                    key={vials}
-                    onClick={() => setSelectedPack(vials)}
-                    className={'relative flex flex-col items-center p-3 rounded-xl border transition-all ' + (isSelected ? 'bg-blue-600/20 border-blue-500' : 'bg-gray-800 border-gray-700 hover:border-gray-500')}
-                  >
-                    {badge && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-green-500 text-black text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap">
-                        {badge}
-                      </span>
-                    )}
-                    <span className="text-xs text-gray-400 mb-1">{label}</span>
-                    <span className={'text-sm font-bold ' + (isSelected ? 'text-blue-300' : 'text-white')}>
-                      {'$' + price.toFixed(2)}
-                    </span>
-                    <span className="text-[10px] text-gray-500">{'$' + pricePer.toFixed(2) + '/vial'}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-400">Qty:</span>
-              <div className="flex items-center gap-2 bg-gray-800 rounded-lg p-1">
-                <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white rounded-md hover:bg-gray-700 transition-colors">-</button>
-                <span className="w-8 text-center text-white font-medium">{quantity}</span>
-                <button onClick={() => setQuantity(q => q + 1)} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white rounded-md hover:bg-gray-700 transition-colors">+</button>
-              </div>
-              <div className="ml-auto flex flex-col items-end">
-                <span className="text-xs text-gray-500 line-through">{'$' + anchorPrice.toFixed(2)}</span>
-                <span className="text-xl font-bold text-green-400">{'$' + totalPrice.toFixed(2)}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs text-amber-300/90 bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2">
-              <Clock className="w-3.5 h-3.5" />
-              <span>Order today, we ship within 24h (Mon–Fri)</span>
-            </div>
-
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={handleAddToCart}
-              style={addedFeedback ? {} : { background: 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)', color: '#1a1a1a', boxShadow: '0 8px 24px rgba(245, 158, 11, 0.35), inset 0 1px 0 rgba(255,255,255,0.25)' }}
-              className={'w-full py-4 rounded-xl font-extrabold text-base flex items-center justify-center gap-2 transition-all ' + (addedFeedback ? 'bg-green-600 text-white' : 'hover:brightness-110')}
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {isProcessing ? 'Adding to cart…' : (addedFeedback ? 'Added to Cart!' : 'Add to Cart')}
-            </motion.button>
-
-            <div className="grid grid-cols-4 gap-2 pt-2">
-              <div className="flex flex-col items-center text-center gap-1 text-[10px] text-gray-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Lab Tested</span>
-              </div>
-              <div className="flex flex-col items-center text-center gap-1 text-[10px] text-gray-400">
-                <Lock className="w-4 h-4 text-blue-400" />
-                <span>Secure Checkout</span>
-              </div>
-              <div className="flex flex-col items-center text-center gap-1 text-[10px] text-gray-400">
-                <Truck className="w-4 h-4 text-purple-400" />
-                <span>Discreet Pkg.</span>
-              </div>
-              <div className="flex flex-col items-center text-center gap-1 text-[10px] text-gray-400">
-                <FlaskConical className="w-4 h-4 text-amber-400" />
-                <span>99%+ Purity</span>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <div className="space-y-8 lg:pt-10">
-          {(currentDosage.coa || (product as any).coa) && (
-            <div>
-              <button
-                onClick={() => setShowCOA(!showCOA)}
-                className="w-full flex items-center justify-between p-4 bg-gray-900 rounded-xl border border-gray-700 hover:border-gray-500 transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm font-medium">Certificate of Analysis (COA)</span>
-                </div>
-                {showCOA ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
+          <div className="mt-3 flex gap-3">
+            {images.map((src, i) => (
+              <button key={src} onClick={() => setImageIdx(i)} className={cn("h-20 w-20 overflow-hidden rounded-md border-2 bg-white", i === imageIdx ? "border-ink" : "border-line")} aria-label={i === 0 ? "Show product image" : "Show Certificate of Analysis"}>
+                <img src={src} alt="" className="h-full w-full object-contain" />
               </button>
-              <AnimatePresence>
-                {showCOA && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pt-3">
-                      <COADisplay product={{ ...product, coa: (currentDosage.coa || (product as any).coa) } as any} productName={product.name} />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          )}
+            ))}
+          </div>
+        </div>
 
-          <div>
-            <button
-              onClick={() => setShowDetails(!showDetails)}
-              className="w-full flex items-center justify-between p-4 bg-gray-900 rounded-xl border border-gray-700 hover:border-gray-500 transition-colors"
-            >
-              <span className="text-sm font-medium">Product Details & Research Use</span>
-              {showDetails ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
-            </button>
-            <AnimatePresence>
-              {showDetails && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden"
-                >
-                  <div className="p-4 bg-gray-900/50 rounded-b-xl border-x border-b border-gray-700 text-sm text-gray-400 space-y-2">
-                    <p>For research purposes only. Not for human consumption.</p>
-                    <p>Purity: {(product as any).purity || '99%+'} | Storage: -20°C | Lyophilized powder</p>
-                    {(product as any).molecularWeight && <p>Molecular Weight: {(product as any).molecularWeight}</p>}
-                    {(product as any).sequence && <p className="font-mono text-xs break-all">Sequence: {(product as any).sequence}</p>}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+        {/* Buy box */}
+        <div>
+          <h1 className="text-3xl text-ink sm:text-4xl">{product.name}</h1>
+          <div className="mt-3 flex items-baseline gap-3">
+            <span className={cn("text-2xl font-semibold", variant.compareAt ? "text-sale" : "text-ink")}>{money(variant.price)}</span>
+            {variant.compareAt && variant.compareAt > variant.price && (
+              <>
+                <span className="text-lg text-ink-soft line-through">{money(variant.compareAt)}</span>
+                <span className="rounded-full bg-ink px-3 py-0.5 text-xs font-semibold text-white">Sale</span>
+              </>
+            )}
           </div>
 
-          {related.length > 0 && (
-            <div className="pt-4 border-t border-gray-800">
-              <h2 className="text-lg font-bold text-white mb-1">You May Also Like</h2>
-              <p className="text-xs text-gray-500 mb-4">Other researchers in {product.group} also purchased</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {related.map(r => {
-                  const rPrice = r.dosages?.[0]?.prices?.[1] ?? (r as any).prices?.[1] ?? 0;
-                  return (
-                    <a
-                      key={r.id}
-                      href={'/' + r.id}
-                      onClick={(e) => { if (onSelectProduct) { e.preventDefault(); onSelectProduct(r); } }}
-                      className="group relative flex flex-col items-start p-3 rounded-xl bg-gray-900 border border-blue-500/15 hover:border-amber-500/50 hover:-translate-y-1 transition-all text-left"
-                    >
-                      <div className="w-full h-24 rounded-lg overflow-hidden bg-gray-800 mb-2">
-                        <VialImage name={r.name} image={r.image} className="w-full h-full object-cover" />
-                      </div>
-                      <span className="text-sm font-semibold text-white line-clamp-1">{r.name}</span>
-                      <span className="text-xs text-gray-500 line-clamp-1">{r.dosages?.[0]?.mg || (r as any).mg}</span>
-                      <div className="mt-2 flex items-center justify-between w-full">
-                        <span className="text-emerald-400 font-bold text-sm">{'$' + Number(rPrice).toFixed(2)}</span>
-                        <span className="text-[10px] text-amber-300 group-hover:text-amber-200">View →</span>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
+          <p className="mt-4 text-sm text-ink-soft">Lab-Tested for Purity | COA Verified | Secure Checkout | Free Shipping on Orders $150+</p>
+
+          <div className="mt-5 space-y-2">
+            <p className="rounded-md border border-brand/30 bg-brand-soft px-4 py-2.5 text-sm font-semibold text-brand-dark">
+              This Batch: {product.purity} Purity (HPLC/MS Verified)
+            </p>
+            <p className="rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-white">
+              Buy 2, Get 1 Free — automatically applied at checkout, no code needed
+            </p>
+          </div>
+
+          <fieldset className="mt-6">
+            <legend className="mb-2 text-sm text-ink">Size</legend>
+            <div className="flex flex-wrap gap-2">
+              {product.variants.map((v, i) => (
+                <button key={v.size} onClick={() => setVariantIdx(i)} className={cn("min-w-20 rounded-full border px-5 py-2 text-sm transition-colors", i === variantIdx ? "border-ink bg-ink text-white" : "border-line bg-white text-ink hover:border-ink")} aria-pressed={i === variantIdx}>
+                  {v.size}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
+          </fieldset>
+
+          <div className="mt-6">
+            <p className="mb-2 text-sm text-ink">Quantity</p>
+            <div className="inline-flex items-center rounded-md border border-line">
+              <button onClick={() => setQty(q => Math.max(1, q - 1))} className="p-3 hover:text-brand" aria-label="Decrease quantity"><Minus className="h-4 w-4" /></button>
+              <span className="w-10 text-center" aria-live="polite">{qty}</span>
+              <button onClick={() => setQty(q => q + 1)} className="p-3 hover:text-brand" aria-label="Increase quantity"><Plus className="h-4 w-4" /></button>
+            </div>
+          </div>
+
+          <div className="mt-6 space-y-3">
+            <button onClick={add} className="btn-outline w-full py-3.5 text-base">
+              {added ? <><Check className="h-5 w-5" /> Added to cart</> : "Add to cart"}
+            </button>
+            <button onClick={() => onBuyNow(item())} className="btn-primary w-full py-3.5 text-base">Buy it now</button>
+          </div>
+
+          <button onClick={() => setShowCoa(true)} className="mt-5 flex items-center gap-2 text-sm font-semibold text-brand-dark underline underline-offset-4">
+            <FileText className="h-4 w-4" /> View Certificate of Analysis (COA)
+          </button>
+          <p className="mt-3 flex items-center gap-2 text-sm text-ink-soft">
+            <span className="h-2.5 w-2.5 rounded-full bg-green-600" /> In stock
+          </p>
+
+          <div className="mt-6 divide-y divide-line border-y border-line">
+            {ACCORDIONS.map((a, i) => (
+              <div key={a.title}>
+                <button onClick={() => setOpenAcc(openAcc === i ? null : i)} className="flex w-full items-center justify-between py-4 text-left text-[15px] font-semibold text-ink" aria-expanded={openAcc === i}>
+                  {a.title}
+                  <ChevronDown className={cn("h-4 w-4 transition-transform", openAcc === i && "rotate-180")} />
+                </button>
+                {openAcc === i && <div className="pb-4 text-sm leading-relaxed text-ink-soft">{a.body}</div>}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-ink-soft">
+            {product.description.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
         </div>
       </div>
-    </>
+
+      {related.length > 0 && (
+        <section className="mt-16 border-t border-line pt-10">
+          <h2 className="mb-6 text-2xl text-ink">You may also like</h2>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
+            {related.map(p => <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />)}
+          </div>
+        </section>
+      )}
+
+      {showCoa && (
+        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/70 p-4" onClick={() => setShowCoa(false)} role="dialog" aria-modal="true" aria-label={`${product.name} Certificate of Analysis`}>
+          <div className="relative max-h-full overflow-auto rounded-lg bg-white" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setShowCoa(false)} className="absolute right-2 top-2 rounded-full bg-white/90 p-2 shadow" aria-label="Close"><X className="h-5 w-5" /></button>
+            <img src={product.coaImage} alt={`${product.name} Certificate of Analysis`} className="max-h-[85vh] w-auto" />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
-

@@ -1,250 +1,232 @@
-import { Product, ProductGroup, ProductDosage } from "./types";
+import { Product, ProductGroup } from "./types";
 
-export const CATEGORIES: { name: ProductGroup; color: string }[] = [
-  { name: "Weight Loss & Metabolic", color: "#3b82f6" },
-  { name: "Healing & Recovery", color: "#22c55e" },
-  { name: "Growth Hormone & IGF", color: "#f97316" },
-  { name: "Anti-Aging & Longevity", color: "#a855f7" },
-  { name: "Sexual Health & Wellness", color: "#ec4899" },
-  { name: "Cognitive & Neuro", color: "#eab308" },
-  { name: "Immune & Inflammation", color: "#ef4444" },
-  { name: "Peptide Blends & Combos", color: "#14b8a6" },
-  ];
+// Catalog mirrored from the AscendLabz Shopify store. Image 1 is the vial shot,
+// image 2 is the Janoshik Certificate of Analysis for the current batch.
 
-const d = (mg: string, p1: number, p5: number, p10: number, p20: number, coa?: ProductDosage['coa']): ProductDosage => ({
-    mg,
-    prices: { 1: p1, 5: p5, 10: p10, 20: p20 },
-    ...(coa ? { coa } : {}),
-});
+export const CATEGORIES: { name: ProductGroup; slug: string; description: string }[] = [
+  { name: "Tissue Repair Research", slug: "tissue-repair-research", description: "Peptides studied in tissue-repair research, including BPC-157, TB-500, GHK-Cu, KPV and CJC-1295. Every compound ships with a third-party Certificate of Analysis confirming 99%+ purity via HPLC/MS." },
+  { name: "Cellular Research", slug: "cognitive-mood-longevity", description: "Peptides studied in cellular, cognitive, and longevity research, including Thymosin Alpha-1, MOTS-c, IGF-1 LR3, and NAD+. Every compound in this collection ships with a third-party Certificate of Analysis confirming 99%+ purity via HPLC/MS." },
+  { name: "Dermal Research", slug: "skin-anti-aging-wellness", description: "Peptides studied for skin and dermal research, including Glutathione and Melanotan II. Every compound ships with a third-party Certificate of Analysis confirming 99%+ purity via HPLC/MS." },
+  { name: "Secretagogue Research", slug: "secretagogue-research", description: "Growth-hormone secretagogue peptides for endocrine research. Every compound ships with a third-party Certificate of Analysis confirming 99%+ purity via HPLC/MS." },
+  { name: "Cognitive Research", slug: "cognitive-research", description: "Peptides studied in cognitive and neuro research, including Selank and Semax. Every compound ships with a third-party Certificate of Analysis confirming 99%+ purity via HPLC/MS." },
+];
 
-const p = (
-    id: string,
-    name: string,
-    group: ProductGroup,
-    dosages: ProductDosage[],
-    rating: number = 4.7,
-    reviewCount: number = 89,
-    image?: string
-  ): Product => ({
-      id,
-      name,
-      description: `${name} is a high-purity research peptide synthesized for analytical evaluation. Professional grade lyophilized powder with >99% purity guaranteed. Validated via HPLC/MS for specialized biological observation. Not for human consumption.`,
-      dosages,
-      prices: dosages[0].prices,
-      group,
-      categoryColor: CATEGORIES.find(c => c.name === group)?.color || "#ffffff",
-      mg: dosages[0].mg,
-      coa: dosages.find(x => x.coa)?.coa || dosages[0].coa,
-      rating,
-      reviewCount,
-      image,
-  });
+export const ALL_PEPTIDES_DESCRIPTION =
+  "The full AscendLabz catalog: research peptides spanning tissue repair, metabolic, cellular, and dermal research. Every batch is independently tested via HPLC/MS, with a Certificate of Analysis available for each product. For in-vitro laboratory research use only.";
+
+export const FREE_SHIPPING_THRESHOLD = 150;
 
 export const PRODUCTS: Product[] = [
-    p("retatrutide", "Retatrutide", "Weight Loss & Metabolic", [
-          d("5mg", 46, 211.60, 391, 717.60),
-          d("10mg", 54, 248.40, 459, 842.40),
-          d("15mg", 79, 363.40, 671.50, 1232.40),
-          d("20mg", 94, 432.40, 799, 1466.40),
-          d("30mg", 119, 547.40, 1011.50, 1856.40, { taskNumber: "#70490", date: "08 JUL 2025", purity: "99.780%", content: "31.08 mg", key: "9ESQLUYRP983", imageUrl: "/coas/coa-retatrutide-30mg.jpg" }),
-          d("40mg", 149, 685.40, 1266.50, 2324.40),
-          d("50mg", 164, 754.40, 1394, 2558.40),
-          d("60mg", 179, 823.40, 1521.50, 2792.40),
-        ], 4.9, 142, "/retatrutide.jpg"),
-    p("tirzepatide", "Tirzepatide", "Weight Loss & Metabolic", [
-          d("5mg", 32.20, 148.12, 273.70, 502.32),
-          d("10mg", 57, 262.20, 484.50, 889.20),
-          d("15mg", 57, 262.20, 484.50, 889.20),
-          d("20mg", 61.60, 283.36, 523.60, 960.96),
-          d("30mg", 64.40, 296.24, 547.40, 1004.64, { taskNumber: "#70489", date: "08 JUL 2025", purity: "99.637%", content: "31.33 mg", key: "9SFDV8AW56HZ", imageUrl: "/coas/coa-tirzepatide-30mg.jpg" }),
-          d("40mg", 78.20, 359.72, 664.70, 1219.92),
-          d("50mg", 87.40, 402.04, 742.90, 1363.44),
-          d("60mg", 101.20, 465.52, 860.20, 1578.72, { taskNumber: "#70489", date: "08 JUL 2025", purity: "99.856%", content: "67.51 mg", key: "VLFK4QWYT8YF", imageUrl: "/coas/coa-tirzepatide-60mg.jpg" }),
-        ], 4.8, 217, "/tirzepatide.jpg"),
-    p("semaglutide", "Semaglutide", "Weight Loss & Metabolic", [
-          d("5mg", 26.70, 122.82, 226.95, 416.52),
-          d("10mg", 26.70, 122.82, 226.95, 416.52),
-          d("15mg", 54.30, 249.78, 461.55, 847.08),
-          d("20mg", 72.70, 334.42, 617.95, 1134.12),
-          d("30mg", 91.10, 419.06, 774.35, 1421.16),
-        ], 4.7, 183),
-    p("cagrilintide", "Cagrilintide", "Weight Loss & Metabolic", [
-          d("5mg", 36.80, 169.28, 312.80, 574.08),
-          d("10mg", 59.80, 275.08, 508.30, 932.88),
-        ], 4.8, 96),
-    p("survodutide", "Survodutide", "Weight Loss & Metabolic", [
-          d("10mg", 67.99, 312.75, 577.92, 1060.64),
-        ], 4.6, 44),
-    p("mazdutide", "Mazdutide", "Weight Loss & Metabolic", [
-          d("10mg", 85, 391, 722.50, 1326),
-        ], 4.5, 31),
-    p("aod-9604", "AOD-9604", "Weight Loss & Metabolic", [
-          d("5mg", 49.99, 229.95, 424.92, 779.84),
-        ], 4.5, 67),
-    p("cagrilintide-semaglutide", "Cagrilintide + Semaglutide", "Weight Loss & Metabolic", [
-          d("10mg", 90, 414, 765, 1404),
-        ], 4.8, 52),
-    p("bpc-157", "BPC-157", "Healing & Recovery", [
-          d("5mg", 23, 105.80, 195.50, 358.80),
-          d("10mg", 25.70, 118.22, 218.45, 400.92, { taskNumber: "#70491", date: "08 JUL 2025", purity: "99.755%", content: "14.04 mg", key: "CGNEL1DPZYUQ", imageUrl: "/coas/coa-bpc157-10mg.jpg" }),
-        ], 4.8, 204, "/bpc-157.jpg"),
-    p("tb-500", "TB-500", "Healing & Recovery", [
-          d("5mg", 26.70, 122.82, 226.95, 416.52),
-          d("10mg", 32.20, 148.12, 273.70, 502.32),
-        ], 4.7, 156),
-    p("bpc-tb-stack", "BPC-157 + TB-500 Stack", "Healing & Recovery", [
-          d("10mg", 40.80, 187.68, 346.80, 636.48, { taskNumber: "#70494", date: "08 JUL 2025", purity: "Verified", content: "BPC 5.71 mg / TB 5.44 mg", key: "YRQWWS5JFKHI", imageUrl: "/coas/coa-bpc-tb-stack-10mg.jpg" }),
-          d("20mg", 55, 253, 467.50, 858),
-        ], 4.9, 112),
-    p("glow-stack", "Glow Stack (BPC+TB+GHK)", "Healing & Recovery", [
-          d("70mg", 71.25, 327.75, 605.63, 1111.50, { taskNumber: "#70495", date: "10 JUL 2025", purity: "Verified Blend", content: "BPC 11.91 / GHK 58.75 / TB 11.23 mg", key: "VLFK4QWYT8YF", imageUrl: "/coas/coa-glow-stack-70mg.jpg" }),
-        ], 4.9, 78),
-    p("multi-repair-stack", "Multi Repair Stack", "Healing & Recovery", [
-          d("80mg", 63, 289.80, 535.50, 982.80),
-        ], 4.8, 63),
-    p("ghk-cu", "GHK-Cu", "Healing & Recovery", [
-          d("50mg", 30, 142.50, 255, 468),
-          d("100mg", 40, 190, 340, 624),
-        ], 4.6, 89),
-    p("ahk-cu", "AHK-Cu", "Healing & Recovery", [
-          d("100mg", 45, 207, 382.50, 702),
-        ], 4.5, 41),
-    p("sermorelin", "Sermorelin", "Growth Hormone & IGF", [
-          d("5mg", 27.60, 126.96, 234.60, 430.56),
-          d("10mg", 43.20, 198.72, 367.20, 673.92),
-        ], 4.6, 98),
-    p("tesamorelin", "Tesamorelin", "Growth Hormone & IGF", [
-          d("5mg", 39.60, 182.16, 336.60, 617.76),
-          d("10mg", 46, 211.60, 391, 717.60, { taskNumber: "#70492", date: "08 JUL 2025", purity: "99.032%", content: "10.66 mg", key: "1SU8R9DKKUFA", imageUrl: "/coas/coa-tesamorelin-10mg.jpg" }),
-        ], 4.7, 74),
-    p("ipamorelin", "Ipamorelin", "Growth Hormone & IGF", [
-          d("5mg", 27.60, 126.96, 234.60, 430.56),
-          d("10mg", 32.20, 148.12, 273.70, 502.32),
-        ], 4.7, 131),
-    p("hexarelin", "Hexarelin", "Growth Hormone & IGF", [
-          d("5mg", 23.24, 106.90, 197.54, 362.54),
-        ], 4.5, 49),
-    p("ghrp-2", "GHRP-2", "Growth Hormone & IGF", [
-          d("5mg", 25, 115, 212.50, 390),
-        ], 4.5, 62),
-    p("ghrp-6", "GHRP-6", "Growth Hormone & IGF", [
-          d("5mg", 25, 115, 212.50, 390),
-          d("10mg", 35, 161, 297.50, 546),
-        ], 4.5, 58),
-    p("igf-1-lr3", "IGF-1 LR3", "Growth Hormone & IGF", [
-          d("0.1mg", 20, 92, 170, 312),
-          d("1mg", 60, 276, 510, 936),
-        ], 4.7, 87),
-    p("gdf-8", "GDF-8 (Myostatin)", "Growth Hormone & IGF", [
-          d("1mg", 80, 368, 680, 1248),
-        ], 4.4, 29),
-    p("ace-031", "ACE-031", "Growth Hormone & IGF", [
-          d("1mg", 80, 368, 680, 1248),
-        ], 4.5, 33),
-    p("nad-plus", "NAD+", "Anti-Aging & Longevity", [
-          d("100mg", 20, 92, 170, 312),
-          d("500mg", 35.64, 163.94, 303.94, 558.86),
-          d("1000mg", 35.64, 163.94, 303.94, 558.86),
-        ], 4.7, 144),
-    p("5-amino-1mq", "5-Amino-1MQ", "Anti-Aging & Longevity", [
-          d("5mg", 31.49, 144.85, 267.67, 491.54),
-          d("50mg", 31.49, 144.85, 267.67, 491.54),
-        ], 4.6, 57),
-    p("mots-c", "MOTS-c", "Anti-Aging & Longevity", [
-          d("10mg", 32.72, 150.52, 278.12, 510.80),
-          d("40mg", 32.72, 150.52, 278.12, 510.80),
-        ], 4.6, 48),
-    p("epitalon", "Epitalon", "Anti-Aging & Longevity", [
-          d("10mg", 24.74, 113.85, 210.39, 386.09),
-          d("50mg", 25.49, 117.31, 216.78, 397.82),
-        ], 4.7, 93),
-    p("cerebrolysin", "Cerebrolysin", "Anti-Aging & Longevity", [
-          d("60mg", 55, 253, 467.50, 858),
-        ], 4.6, 38),
-    p("slu-pp-332", "SLU-PP-332", "Anti-Aging & Longevity", [
-          d("10mg", 90, 414, 765, 1404),
-        ], 4.5, 22),
-    p("ss-31", "SS-31", "Anti-Aging & Longevity", [
-          d("10mg", 65, 299, 552.50, 1014),
-          d("50mg", 65, 299, 552.50, 1014),
-        ], 4.6, 41),
-    p("pt-141", "PT-141 (Bremelanotide)", "Sexual Health & Wellness", [
-          d("10mg", 24.29, 111.73, 206.47, 379.54),
-        ], 4.7, 118),
-    p("mt-2", "Melanotan II (MT-2)", "Sexual Health & Wellness", [
-          d("10mg", 45, 207, 382.50, 702),
-        ], 4.6, 84),
-    p("melanotan-1", "Melanotan 1", "Sexual Health & Wellness", [
-          d("10mg", 50, 230, 425, 780),
-        ], 4.5, 61),
-    p("triptorelin", "Triptorelin", "Sexual Health & Wellness", [
-          d("2mg", 25, 115, 212.50, 390),
-        ], 4.5, 47),
-    p("hcg", "HCG", "Sexual Health & Wellness", [
-          d("5000iu", 45, 207, 382.50, 702),
-          d("10000iu", 90, 414, 765, 1404),
-        ], 4.6, 76),
-    p("kisspeptin-10", "Kisspeptin-10", "Sexual Health & Wellness", [
-          d("5mg", 20, 92, 170, 312),
-          d("10mg", 24.65, 113.39, 209.53, 384.06),
-        ], 4.5, 39),
-    p("oxytocin", "Oxytocin", "Sexual Health & Wellness", [
-          d("2mg", 18.74, 86.20, 159.29, 292.80),
-        ], 4.6, 88),
-    p("alprostadil", "Alprostadil", "Sexual Health & Wellness", [
-          d("20mg", 65, 299, 552.50, 1014),
-        ], 4.5, 35),
-    p("insulin", "Insulin", "Sexual Health & Wellness", [
-          d("100iu/mL", 25, 115, 212.50, 390),
-        ], 4.4, 27),
-    p("selank", "Selank", "Cognitive & Neuro", [
-          d("5mg", 21.25, 97.75, 180.63, 331.50),
-          d("10mg", 21.25, 97.75, 180.63, 331.50),
-        ], 4.6, 72),
-    p("semax", "Semax", "Cognitive & Neuro", [
-          d("5mg", 27.76, 127.70, 235.96, 433.14),
-          d("10mg", 27.76, 127.70, 235.96, 433.14),
-        ], 4.7, 81),
-    p("snap-8", "Snap-8 (Acetyl Octapeptide)", "Cognitive & Neuro", [
-          d("10mg", 25.50, 117.30, 216.75, 397.80),
-        ], 4.5, 53),
-    p("pinealon", "Pinealon", "Cognitive & Neuro", [
-          d("5mg", 25, 115, 212.50, 390),
-          d("10mg", 29.74, 136.71, 252.79, 463.82),
-        ], 4.5, 44),
-    p("thymosin-alpha-1", "Thymosin Alpha-1", "Immune & Inflammation", [
-          d("5mg", 26.99, 124.15, 229.42, 421.72),
-          d("10mg", 26.99, 124.15, 229.42, 421.72),
-        ], 4.7, 97),
-    p("thymalin", "Thymalin", "Immune & Inflammation", [
-          d("10mg", 34.49, 158.63, 293.67, 539.84),
-        ], 4.6, 55),
-    p("ll-37", "LL-37", "Immune & Inflammation", [
-          d("10mg", 75, 345, 637.50, 1170),
-        ], 4.6, 48),
-    p("kpv", "KPV", "Immune & Inflammation", [
-          d("5mg", 31.49, 144.85, 267.67, 491.54),
-          d("10mg", 31.49, 144.85, 267.67, 491.54),
-        ], 4.6, 61),
-    p("ara-290", "Ara-290", "Immune & Inflammation", [
-          d("10mg", 29, 133.40, 246.50, 452.40),
-        ], 4.5, 38),
-    p("adipotide", "Adipotide (FTPP)", "Immune & Inflammation", [
-          d("5mg", 45, 207, 382.50, 702),
-        ], 4.5, 32),
-    p("glutathione", "Glutathione", "Peptide Blends & Combos", [
-          d("600mg", 26.24, 120.70, 223.04, 409.34),
-        ], 4.7, 103),
-    p("hyaluronic-acid", "Hyaluronic Acid", "Peptide Blends & Combos", [
-          d("5mg", 20, 92, 170, 312),
-        ], 4.5, 67),
-    p("lipo-c-b12", "Lipo-C + B12", "Peptide Blends & Combos", [
-          d("216mg", 50, 230, 425, 780),
-        ], 4.6, 82),
-    p("l-carnitine", "L-Carnitine", "Peptide Blends & Combos", [
-          d("600mg", 55, 253, 467.50, 858),
-        ], 4.6, 74),
-    p("lemon-bottle", "Lemon Bottle", "Peptide Blends & Combos", [
-          d("10ml", 28.49, 131.01, 242.17, 444.32),
-        ], 4.5, 56),
-  ];
+  {
+    id: "mt-2",
+    name: "Melanotan II (MT-2)",
+    group: "Dermal Research",
+    variants: [{ size: "10mg", price: 30.99, compareAt: 35.99 }],
+    purity: "99.79%",
+    image: "/products/mt-2-1.jpg",
+    coaImage: "/products/mt-2-2.jpg",
+    description: [
+      "Melanotan II (MT-2) is a synthetic analog of alpha-melanocyte-stimulating hormone (a-MSH), used in laboratory research investigating melanocortin receptor activity, pigmentation pathways, and appetite-regulation models. Each production lot is manufactured as a lyophilized powder and independently verified via HPLC/MS at greater than 99% purity — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: Store lyophilized, unmixed vials in a freezer, protected from light, until ready for use. Reconstitute with bacteriostatic water in a controlled laboratory setting only. Once reconstituted, keep refrigerated and follow your lab's protocol for use window; discard if the solution appears cloudy or discolored.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "ghk-cu",
+    name: "GHK-Cu",
+    group: "Tissue Repair Research",
+    variants: [{ size: "50mg", price: 30.99, compareAt: 35.99 }, { size: "100mg", price: 40.99, compareAt: 47.99 }],
+    purity: "99.49%",
+    image: "/products/ghk-cu-1.jpg",
+    coaImage: "/products/ghk-cu-2.jpg",
+    description: [
+      "GHK-Cu is a naturally occurring copper-binding tripeptide studied extensively in dermal and connective tissue research for its role in collagen synthesis, tissue-repair signaling, and antioxidant activity at the cellular level. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "semax",
+    name: "Semax",
+    group: "Cognitive Research",
+    variants: [{ size: "5mg", price: 35.99, compareAt: 45.99 }, { size: "10mg", price: 45.99, compareAt: 58.99 }],
+    purity: "99.69%",
+    image: "/products/semax-1.jpg",
+    coaImage: "/products/semax-2.jpg",
+    description: [
+      "Semax is a synthetic peptide analog of ACTH(4-10), studied in neuroscience research for its nootropic and neuroprotective properties, including effects on BDNF expression and cognitive performance in animal models. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "kpv",
+    name: "KPV",
+    group: "Tissue Repair Research",
+    variants: [{ size: "5mg", price: 31.99 }, { size: "10mg", price: 39.10 }],
+    purity: "99.613%",
+    image: "/products/kpv-1.jpg",
+    coaImage: "/products/kpv-2.jpg",
+    description: [
+      "KPV is a tripeptide fragment (Lys-Pro-Val) derived from the C-terminus of alpha-MSH, studied for its effects on inflammatory signaling pathways independent of melanocortin receptor pigmentation effects, including research into gut and skin inflammation models. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "glutathione",
+    name: "Glutathione",
+    group: "Dermal Research",
+    variants: [{ size: "600mg", price: 29.99 }],
+    purity: "99.840%",
+    image: "/products/glutathione-1.jpg",
+    coaImage: "/products/glutathione-2.jpg",
+    description: [
+      "Glutathione is the body's primary intracellular antioxidant, a tripeptide of glutamine, cysteine, and glycine studied for its role in oxidative stress regulation, detoxification pathways, and cellular redox balance. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "thymosin-alpha-1",
+    name: "Thymosin Alpha-1",
+    group: "Cellular Research",
+    variants: [{ size: "5mg", price: 26.99, compareAt: 29.99 }, { size: "10mg", price: 32.99, compareAt: 36.99 }],
+    purity: "99.81%",
+    image: "/products/thymosin-alpha-1-1.jpg",
+    coaImage: "/products/thymosin-alpha-1-2.jpg",
+    description: [
+      "Thymosin Alpha-1 is a synthetic peptide fragment of prothymosin alpha, widely studied in immunology research for its role in modulating T-cell function and immune response pathways. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "mots-c",
+    name: "MOTS-c",
+    group: "Cellular Research",
+    variants: [{ size: "10mg", price: 35.99 }, { size: "40mg", price: 58.99 }],
+    purity: "99.86%",
+    image: "/products/mots-c-1.jpg",
+    coaImage: "/products/mots-c-2.jpg",
+    description: [
+      "MOTS-c is a mitochondrial-derived peptide studied in metabolic research for its role in regulating insulin sensitivity, energy homeostasis, and exercise-induced cellular adaptation. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "ipamorelin",
+    name: "Ipamorelin",
+    group: "Secretagogue Research",
+    variants: [{ size: "5mg", price: 27.99, compareAt: 31.99 }, { size: "10mg", price: 33.99, compareAt: 38.99 }],
+    purity: "99.77%",
+    image: "/products/ipamorelin-1.jpg",
+    coaImage: "/products/ipamorelin-2.jpg",
+    description: [
+      "Ipamorelin is a selective growth hormone secretagogue (a ghrelin receptor agonist) studied for its ability to stimulate pulsatile GH release with minimal effect on cortisol or prolactin, making it a frequent pairing with GHRH analogs like CJC-1295 in growth hormone axis research. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "igf-1-lr3",
+    name: "IGF-1 LR3",
+    group: "Cellular Research",
+    variants: [{ size: "0.1mg", price: 25.99 }, { size: "1mg", price: 60.99 }],
+    purity: "99.79%",
+    image: "/products/igf-1-lr3-1.jpg",
+    coaImage: "/products/igf-1-lr3-2.jpg",
+    description: [
+      "IGF-1 LR3 is a long-acting analog of insulin-like growth factor 1, modified to resist protein binding and extend its biological half-life relative to native IGF-1, making it a common tool in cell proliferation and muscle tissue growth research. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "selank",
+    name: "Selank",
+    group: "Cognitive Research",
+    variants: [{ size: "5mg", price: 25.99, compareAt: 31.99 }, { size: "10mg", price: 35.99, compareAt: 43.99 }],
+    purity: "99.83%",
+    image: "/products/selank-1.jpg",
+    coaImage: "/products/selank-2.jpg",
+    description: [
+      "Selank is a synthetic heptapeptide analog of the immunomodulator tuftsin, studied in neuroscience research for its effects on stress-response and cognitive signaling pathways. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "nad-plus",
+    name: "NAD+",
+    group: "Cellular Research",
+    variants: [{ size: "100mg", price: 34.99 }, { size: "500mg", price: 45.99 }, { size: "1000mg", price: 65.99 }],
+    purity: "99.14%",
+    image: "/products/nad-plus-1.jpg",
+    coaImage: "/products/nad-plus-2.jpg",
+    description: [
+      "NAD+ (nicotinamide adenine dinucleotide) is a coenzyme central to cellular energy metabolism, studied for its role in mitochondrial function, DNA repair signaling, and age-related decline in NAD+ availability. Independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "tb-500",
+    name: "TB-500",
+    group: "Tissue Repair Research",
+    variants: [{ size: "5mg", price: 28.99 }, { size: "10mg", price: 36.99 }],
+    purity: "99.78%",
+    image: "/products/tb-500-1.jpg",
+    coaImage: "/products/tb-500-2.jpg",
+    description: [
+      "TB-500 is a synthetic fragment of Thymosin Beta-4, a naturally occurring peptide studied in tissue-repair and regenerative research for its role in actin regulation, cell migration, and tissue-repairsignaling pathways. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "bpc-157",
+    name: "BPC-157",
+    group: "Tissue Repair Research",
+    variants: [{ size: "5mg", price: 27.99 }, { size: "10mg", price: 35.99 }],
+    purity: "99.755%",
+    image: "/products/bpc-157-1.jpg",
+    coaImage: "/products/bpc-157-2.png",
+    description: [
+      "BPC-157 is a pentadecapeptide derived from a protective protein found in gastric juice, extensively studied in tissue-repair research for its effects on angiogenesis, tendon and ligament tissue-repair mechanisms, and gut barrier integrity in animal models. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "cjc-1295-no-dac",
+    name: "CJC-1295 (No DAC)",
+    group: "Tissue Repair Research",
+    variants: [{ size: "5mg", price: 29.99 }, { size: "10mg", price: 35.99 }],
+    purity: "99.755%",
+    image: "/products/cjc-1295-no-dac-1.jpg",
+    coaImage: "/products/cjc-1295-no-dac-2.jpg",
+    description: [
+      "CJC-1295 (No DAC), also known as Mod GRF 1-29, is a GHRH analog with a short half-life, commonly studied alongside GHRP-series compounds (such as Ipamorelin) for pulsatile growth hormone secretion research. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+  {
+    id: "cjc-1295-with-dac",
+    name: "CJC-1295 (With DAC)",
+    group: "Tissue Repair Research",
+    variants: [{ size: "5mg", price: 33.99, compareAt: 38.19 }, { size: "10mg", price: 39.99, compareAt: 44.99 }],
+    purity: "99.840%",
+    image: "/products/cjc-1295-with-dac-1.jpg",
+    coaImage: "/products/cjc-1295-with-dac-2.jpg",
+    description: [
+      "CJC-1295 with DAC (Drug Affinity Complex) is a modified GHRH analog researched for its extended half-life relative to unmodified GHRH, making it a common tool in studies of sustained growth hormone and IGF-1 secretion patterns. Manufactured as a lyophilized powder and independently verified via HPLC/MS for purity above 99% — see the attached Certificate of Analysis for this batch.",
+      "Reconstitution & Storage: store lyophilized vials in a freezer, protected from light. Reconstitute with bacteriostatic water in a controlled laboratory setting only; once mixed, refrigerate and follow your lab's protocol for use window.",
+      "For in-vitro laboratory research use only. Not for human or veterinary use, not a drug, food, or cosmetic, and has not been evaluated by the FDA."
+    ],
+  },
+];
+
+export const FEATURED_IDS = ["mt-2", "ghk-cu", "semax", "kpv", "glutathione", "thymosin-alpha-1", "mots-c", "ipamorelin"];

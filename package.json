@@ -1,11 +1,11 @@
 {
-  "name": "react-example",
+  "name": "ascendlabz",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && node scripts/prerender-seo.mjs",
+    "build": "vite build && tsx scripts/prerender-seo.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

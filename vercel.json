@@ -1,7 +1,377 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/retatrutide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/tirzepatide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/semaglutide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/cagrilintide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/survodutide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/mazdutide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/aod-9604",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/cagrilintide-semaglutide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/bpc-157",
+      "destination": "/products/bpc-157",
+      "permanent": true
+    },
+    {
+      "source": "/tb-500",
+      "destination": "/products/tb-500",
+      "permanent": true
+    },
+    {
+      "source": "/bpc-tb-stack",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/glow-stack",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/multi-repair-stack",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ghk-cu",
+      "destination": "/products/ghk-cu",
+      "permanent": true
+    },
+    {
+      "source": "/ahk-cu",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/sermorelin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/tesamorelin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ipamorelin",
+      "destination": "/products/ipamorelin",
+      "permanent": true
+    },
+    {
+      "source": "/hexarelin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ghrp-2",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ghrp-6",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/igf-1-lr3",
+      "destination": "/products/igf-1-lr3",
+      "permanent": true
+    },
+    {
+      "source": "/gdf-8",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ace-031",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/nad-plus",
+      "destination": "/products/nad-plus",
+      "permanent": true
+    },
+    {
+      "source": "/5-amino-1mq",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/mots-c",
+      "destination": "/products/mots-c",
+      "permanent": true
+    },
+    {
+      "source": "/epitalon",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/cerebrolysin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/slu-pp-332",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ss-31",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/pt-141",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/mt-2",
+      "destination": "/products/mt-2",
+      "permanent": true
+    },
+    {
+      "source": "/melanotan-1",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/triptorelin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/hcg",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/kisspeptin-10",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/oxytocin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/alprostadil",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/insulin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/selank",
+      "destination": "/products/selank",
+      "permanent": true
+    },
+    {
+      "source": "/semax",
+      "destination": "/products/semax",
+      "permanent": true
+    },
+    {
+      "source": "/snap-8",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/pinealon",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/thymosin-alpha-1",
+      "destination": "/products/thymosin-alpha-1",
+      "permanent": true
+    },
+    {
+      "source": "/thymalin",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/ll-37",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/kpv",
+      "destination": "/products/kpv",
+      "permanent": true
+    },
+    {
+      "source": "/ara-290",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/adipotide",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/glutathione",
+      "destination": "/products/glutathione",
+      "permanent": true
+    },
+    {
+      "source": "/hyaluronic-acid",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/lipo-c-b12",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/l-carnitine",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/lemon-bottle",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/melanotan-2",
+      "destination": "/products/mt-2",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/collections/all",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about-us-faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/pages/about-us-faq",
+      "permanent": true
+    },
+    {
+      "source": "/pages/about-testing-3",
+      "destination": "/pages/about-us-faq",
+      "permanent": true
+    },
+    {
+      "source": "/coa",
+      "destination": "/pages/quality-testing",
+      "permanent": true
+    },
+    {
+      "source": "/lab-solutions",
+      "destination": "/pages/quality-testing",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/pages/contact",
+      "permanent": true
+    },
+    {
+      "source": "/policies",
+      "destination": "/policies/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/policies/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/policies/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/research/:path*",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/admin",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/collections/bac-water",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/collections/metabolic-weight-management",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/collections/frontpage",
+      "destination": "/collections/all-peptides",
+      "permanent": true
+    },
+    {
+      "source": "/pages/data-sharing-opt-out",
+      "destination": "/policies/privacy-policy",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/:path*", "destination": "/index.html" }
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
   ]
 }
